@@ -27,11 +27,11 @@
     <!-- 2. KATEQORİYALAR MƏNYUSU -->
     <section class="max-w-7xl mx-auto px-4 mt-6">
         <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none" id="category-filters">
-           <button onclick="filterCategory('all')" class="cat-btn bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-medium shadow-sm whitespace-nowrap">Hamısı</button>
+            <button onclick="filterCategory('all')" class="cat-btn bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-medium shadow-sm whitespace-nowrap">Hamısı</button>
             <button onclick="filterCategory('elektronika')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap">Elektronika</button>
             <button onclick="filterCategory('geyim')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap">Geyim</button>
-            <button onclick="filterCategory('çanta')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap">çanta</button>
-            <button onclick="filterCategory('mebel')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap">mebel</button>
+            <button onclick="filterCategory('çanta')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap">Çanta</button>
+            <button onclick="filterCategory('mebel')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap">Mebel</button>
         </div>
     </section>
 
@@ -61,7 +61,7 @@
                     <span>Cəmi Məbləğ:</span>
                     <span id="cart-total">0.00 AZN</span>
                 </div>
-                <button onclick="checkoutViaWhatsApp()" class="w-full bg-emerald-500 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-emerald-600 transition shadow-lg shadow-emerald-200">
+                <button onclick="checkoutViaWhatsApp()" class="w-full bg-emerald-500 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-emerald-600 transition shadow-lg">
                     <i class="fa-brands fa-whatsapp text-xl"></i>
                     WhatsApp ilə Sifariş Et
                 </button>
@@ -76,11 +76,11 @@
 
         // Nümunə Məhsul Bazası (İstədiyiniz qədər artıra bilərsiniz)
         const products = [
-           { id: 1, name: "İphone 17 pro", price: 3030, category: "elektronika", img: "https://i.postimg.cc/T3Qc46T3/Gemini-Generated-Image-d1fnxgd1fnxgd1fn.png" },
+            { id: 1, name: "İphone 17 pro", price: 3030, category: "elektronika", img: "https://i.postimg.cc/T3Qc46T3/Gemini-Generated-Image-d1fnxgd1fnxgd1fn.png" },
             { id: 2, name: "Televizor", price: 285, category: "elektronika", img: "https://i.postimg.cc/HLxg7dS5/Gemini-Generated-Image-3j0myl3j0myl3j0m.png" },
-            { id: 3, name: "Zərif don", price: , category: "geyim", img: "https://i.postimg.cc/g2f0dwzg/Whats-App-Image-2026-07-18-at-22-21-17.jpg" },
-            { id: 4, name: "Eko dəri çanta", price: 35.00, category: "çanta", img: "https://i.postimg.cc/wvY351nf/Whats-App-Image-2026-07-18-at-22-22-43.jpg" }
-            { id: 5, name: "Sifarişlə yığılır", price: 0, category: "mebel", img: "https://i.postimg.cc/d3tsnr61/Whats-App-Image-2026-07-18-at-22-21-53.jpg" },
+            { id: 3, name: "Zərif don", price: 25.00, category: "geyim", img: "https://i.postimg.cc/g2f0dwzg/Whats-App-Image-2026-07-18-at-22-21-17.jpg" },
+            { id: 4, name: "Eko dəri çanta", price: 35.00, category: "çanta", img: "https://i.postimg.cc/wvY351nf/Whats-App-Image-2026-07-18-at-22-22-43.jpg" },
+            { id: 5, name: "Sifarişlə yığılır", price: 0, category: "mebel", img: "https://i.postimg.cc/d3tsnr61/Whats-App-Image-2026-07-18-at-22-21-53.jpg" }
         ];
 
         let cart = [];
@@ -102,7 +102,7 @@
                                 <h4 class="text-gray-800 font-semibold mt-1">${product.name}</h4>
                             </div>
                             <div class="flex justify-between items-center mt-4">
-                                <span class="text-indigo-600 font-black text-lg">${product.price.toFixed(2)} AZN</span>
+                                <span class="text-indigo-600 font-black text-lg">${(product.price || 0).toFixed(2)} AZN</span>
                                 <button onclick="addToCart(${product.id})" class="bg-indigo-600 text-white p-2 rounded-lg hover:bg-indigo-700 transition">
                                     <i class="fa-solid fa-cart-plus"></i>
                                 </button>
@@ -162,7 +162,7 @@
                         <div class="flex justify-between items-center bg-gray-50 p-3 rounded-xl">
                             <div>
                                 <h5 class="font-semibold text-gray-800 text-sm">${item.name}</h5>
-                                <span class="text-xs text-gray-500">${item.price.toFixed(2)} AZN x ${item.quantity}</span>
+                                <span class="text-xs text-gray-500">${(item.price || 0).toFixed(2)} AZN x ${item.quantity}</span>
                             </div>
                             <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 font-bold text-sm">Sil</button>
                         </div>
@@ -195,7 +195,7 @@
             let message = "🛒 *YENİ SİFARİŞ*\n\n";
             cart.forEach((item, index) => {
                 message += `${index + 1}. *${item.name}* (Kateqoriya: ${item.category})\n`;
-                message += `   ${item.quantity} ədəd x ${item.price.toFixed(2)} AZN\n\n`;
+                message += `   ${item.quantity} ədəd x ${(item.price || 0).toFixed(2)} AZN\n\n`;
             });
 
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
