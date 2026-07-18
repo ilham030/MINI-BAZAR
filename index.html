@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mənim Onlayn Mağazam</title>
+    <title>MİNİBAZAR</title>
     <!-- Modern Dizayn üçün Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- İkonlar üçün FontAwesome -->
@@ -27,10 +27,11 @@
     <!-- 2. KATEQORİYALAR MƏNYUSU -->
     <section class="max-w-7xl mx-auto px-4 mt-6">
         <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none" id="category-filters">
-            <button onclick="filterCategory('all')" class="cat-btn bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-medium shadow-sm whitespace-nowrap">Hamısı</button>
+           <button onclick="filterCategory('all')" class="cat-btn bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-medium shadow-sm whitespace-nowrap">Hamısı</button>
             <button onclick="filterCategory('elektronika')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap">Elektronika</button>
             <button onclick="filterCategory('geyim')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap">Geyim</button>
-            <button onclick="filterCategory('aksesuar')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap">Aksesuar</button>
+            <button onclick="filterCategory('çanta')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap">çanta</button>
+            <button onclick="filterCategory('mebel')" class="cat-btn bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-gray-50 whitespace-nowrap">mebel</button>
         </div>
     </section>
 
@@ -71,15 +72,15 @@
     <!-- 5. MAĞAZANIN MƏNTİQİ (JAVASCRIPT) -->
     <script>
         // Sizin WhatsApp nömrəniz (Beynəlxalq formatda, məs: 99450XXXXXXX)
-        const WHATSAPP_NUMBER = "994501234567"; 
+        const WHATSAPP_NUMBER = "994773911300"; 
 
         // Nümunə Məhsul Bazası (İstədiyiniz qədər artıra bilərsiniz)
         const products = [
-            { id: 1, name: "Simsiz Qulaqlıq", price: 45.00, category: "elektronika", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" },
-            { id: 2, name: "Smart Saat", price: 120.00, category: "elektronika", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" },
-            { id: 3, name: "Minimalist Köynək", price: 25.00, category: "geyim", img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" },
-            { id: 4, name: "Dəri Pulqabı", price: 35.00, category: "aksesuar", img: "https://images.unsplash.com/photo-1627124118123-e4d31489ed5f?w=500" },
-            { id: 5, name: "Klassik Gödəkcə", price: 85.00, category: "geyim", img: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500" }
+           { id: 1, name: "İphone 17 pro", price: 3030, category: "elektronika", img: "https://i.postimg.cc/T3Qc46T3/Gemini-Generated-Image-d1fnxgd1fnxgd1fn.png" },
+            { id: 2, name: "Televizor", price: 285, category: "elektronika", img: "https://i.postimg.cc/HLxg7dS5/Gemini-Generated-Image-3j0myl3j0myl3j0m.png" },
+            { id: 3, name: "Zərif don", price: , category: "geyim", img: "https://i.postimg.cc/g2f0dwzg/Whats-App-Image-2026-07-18-at-22-21-17.jpg" },
+            { id: 4, name: "Eko dəri çanta", price: 35.00, category: "çanta", img: "https://i.postimg.cc/wvY351nf/Whats-App-Image-2026-07-18-at-22-22-43.jpg" }
+            { id: 5, name: "Sifarişlə yığılır", price: 0, category: "mebel", img: "https://i.postimg.cc/d3tsnr61/Whats-App-Image-2026-07-18-at-22-21-53.jpg" },
         ];
 
         let cart = [];
