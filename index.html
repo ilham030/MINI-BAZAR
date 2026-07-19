@@ -250,34 +250,37 @@
     <script src="config.js"></script>
     <script src="script.js"></script>
   <script>
-  // 1. Service Worker-i qeydiyyatdan keçiririk
+  // Service Worker qeydiyyatı
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js');
   }
 
-  // 2. Dəyişənləri təyin edirik
+  // Yükləmə düyməsi üçün dəyişənlər
   let deferredPrompt;
-  const installBtn = document.getElementById('install-btn'); // HTML-dəki id ilə eyni olduğundan əmin ol
+  const installBtn = document.getElementById('install-btn');
 
-  // 3. Brauzer yükləməyə hazır olduqda (hadisə baş verəndə)
+  // Düyməni əvvəlcə gizlə
+  if (installBtn) {
+    installBtn.style.display = 'none';
+  }
+
+  // Yükləməyə hazır olduqda
   window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault(); // Avtomatik banneri bağla
-    deferredPrompt = e; // Hadisəni yadda saxla
-    
-    // Düyməni görünən et
+    e.preventDefault();
+    deferredPrompt = e;
     if (installBtn) {
       installBtn.style.display = 'block';
     }
   });
 
-  // 4. Düyməyə basıldıqda (bu, hadisədən kənarda olmalıdır!)
+  // Düyməyə basıldıqda
   if (installBtn) {
     installBtn.addEventListener('click', () => {
       if (deferredPrompt) {
-        deferredPrompt.prompt(); // Yükləmə pəncərəsini aç
+        deferredPrompt.prompt();
         deferredPrompt.userChoice.then((choiceResult) => {
           if (choiceResult.outcome === 'accepted') {
-            installBtn.style.display = 'none'; // Yükləyəndən sonra gizlə
+            installBtn.style.display = 'none';
           }
           deferredPrompt = null;
         });
