@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-    <button id="installBtn" style="display:none; padding: 12px; background: #25D366; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin: 10px;">
-  MİNİBAZAR-ı Tətbiq kimi yüklə
-</button>
-    <link rel="manifest" href="manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MİNİBAZAR - Onlayn Alış-veriş Mağazası">
     <title>MİNİBAZAR - Alış-veriş</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%8D%EF%B8%8F%3C/text%3E%3C/svg%3E">
 
@@ -20,6 +20,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-50 font-sans">
+
+    <!-- PWA Yükləmə Düyməsi (Head-dən Body-yə keçirildi və mərkəzləşdirildi) -->
+    <div class="flex justify-center">
+        <button id="installBtn" style="display:none; padding: 12px 24px; background: #25D366; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <i class="fa-brands fa-whatsapp mr-2 hidden"></i>📱 MİNİBAZAR-ı Tətbiq kimi yüklə
+        </button>
+    </div>
 
     <!-- NAVİQASİYA (HEADER) -->
     <header class="bg-white shadow-sm sticky top-0 z-50" role="banner">
@@ -242,32 +249,32 @@
     <!-- Skriptlər -->
     <script src="config.js"></script>
     <script src="script.js"></script>
-<script>
-  // 1. Service Worker-i qeydiyyatdan keçiririk
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
+    <script>
+      // 1. Service Worker-i qeydiyyatdan keçiririk
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
 
-  // 2. Tətbiqi yükləmə düyməsini idarə edirik
-  let deferredPrompt;
-  const installBtn = document.getElementById('installBtn');
+      // 2. Tətbiqi yükləmə düyməsini idarə edirik
+      let deferredPrompt;
+      const installBtn = document.getElementById('installBtn');
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display = 'block'; // Düyməni göstər
-  });
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installBtn.style.display = 'block'; // Düyməni göstər
+      });
 
-  installBtn.addEventListener('click', () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          installBtn.style.display = 'none'; // Yükləyəndən sonra gizlə
+      installBtn.addEventListener('click', () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              installBtn.style.display = 'none'; // Yükləyəndən sonra gizlə
+            }
+          });
         }
       });
-    }
-  });
-</script>
+    </script>
 </body>
 </html>
