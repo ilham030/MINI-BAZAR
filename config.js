@@ -19,6 +19,16 @@ const CONFIG = {
 const PRODUCTS = [
     {
         id: 1,
+        name: "iPhone 17 Pro",
+        price: 3030,
+        category: "elektronika",
+        img: "https://i.postimg.cc/qMnyZKpq/Chat-GPT-Image-Jul-19-2026-02-51-30-PM.png",
+        description: "Premium iPhone 17 Pro (256 GB) - Peşəkarların və yüksək keyfiyyət sevənlərin seçimi. Maksimum performans, unikal dizayn. Əvvəlki qiymət: 3599 AZN. Sərfəli kredit imkanı mövcuddur!",
+        rating: 5.0,
+        reviewCount: 18
+    },
+    {
+        id: 2,
         name: "iPhone 16",
         price: 2100,
         category: "elektronika",
@@ -28,7 +38,7 @@ const PRODUCTS = [
         reviewCount: 12
     },
     {
-        id: 2,
+        id: 3,
         name: "iPhone 16 Pro",
         price: 2450,
         category: "elektronika",
@@ -38,7 +48,7 @@ const PRODUCTS = [
         reviewCount: 18
     },
     {
-        id: 3,
+        id: 4,
         name: "iPhone 17",
         price: 2150,
         category: "elektronika",
@@ -48,7 +58,7 @@ const PRODUCTS = [
         reviewCount: 14
     },
     {
-        id: 4,
+        id: 5,
         name: "Stabilizator 5000W",
         price: 350,
         category: "elektronika",
@@ -58,7 +68,7 @@ const PRODUCTS = [
         reviewCount: 9
     },
     {
-        id: 5,
+        id: 6,
         name: "Stabilizator 10000W",
         price: 470,
         category: "elektronika",
@@ -68,7 +78,7 @@ const PRODUCTS = [
         reviewCount: 11
     },
     {
-        id: 6,
+        id: 7,
         name: "Zərif don",
         price: 25.00,
         category: "geyim",
@@ -78,7 +88,7 @@ const PRODUCTS = [
         reviewCount: 8
     },
     {
-        id: 7,
+        id: 8,
         name: "Premium Eko-Dəri Çanta",
         price: 35.00,
         category: "çanta",
@@ -88,7 +98,7 @@ const PRODUCTS = [
         reviewCount: 20
     },
     {
-        id: 8,
+        id: 9,
         name: "Premium Əl İşi Mebel (2m x 2m)",
         price: 0,
         category: "mebel",
