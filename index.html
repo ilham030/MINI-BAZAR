@@ -249,34 +249,41 @@
     <!-- Skriptlər -->
     <script src="config.js"></script>
     <script src="script.js"></script>
-    <script>
-      // 1. Service Worker-i qeydiyyatdan keçiririk
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js');
+  <script>
+  // 1. Service Worker-i qeydiyyatdan keçiririk
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+
+  // 2. Dəyişənləri təyin edirik
+  let deferredPrompt;
+  const installBtn = document.getElementById('install-btn'); // HTML-dəki id ilə eyni olduğundan əmin ol
+
+  // 3. Brauzer yükləməyə hazır olduqda (hadisə baş verəndə)
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault(); // Avtomatik banneri bağla
+    deferredPrompt = e; // Hadisəni yadda saxla
+    
+    // Düyməni görünən et
+    if (installBtn) {
+      installBtn.style.display = 'block';
+    }
+  });
+
+  // 4. Düyməyə basıldıqda (bu, hadisədən kənarda olmalıdır!)
+  if (installBtn) {
+    installBtn.addEventListener('click', () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt(); // Yükləmə pəncərəsini aç
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            installBtn.style.display = 'none'; // Yükləyəndən sonra gizlə
+          }
+          deferredPrompt = null;
+        });
       }
-
-      // 2. Tətbiqi yükləmə düyməsini idarə edirik
-      let deferredPrompt;
-      const installBtn = document.getElementById('installBtn');
-
-      window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-      const installBtn = document.getElementById('install-btn'); // Düyməni tapmağa çalış
-if (installBtn) { // Əgər düymə varsa, stili dəyiş
-    installBtn.style.display = 'block';
-}
-
-      installBtn.addEventListener('click', () => {
-        if (deferredPrompt) {
-          deferredPrompt.prompt();
-          deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-              installBtn.style.display = 'none'; // Yükləyəndən sonra gizlə
-            }
-          });
-        }
-      });
-    </script>
+    });
+  }
+</script>
 </body>
 </html>
