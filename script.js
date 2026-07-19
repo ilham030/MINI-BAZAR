@@ -587,31 +587,44 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+// ============ PWA YÜKLƏMƏ (INSTALL PROMPT) ============
+// Qeyd: bu məntiq YALNIZ burada saxlanılır — index.html-də təkrarlanmır,
+// çünki eyni dəyişənin iki `<script>`-də elan olunması SyntaxError yaradırdı.
 
 let deferredPrompt;
+const installBtn = document.getElementById('install-btn');
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Avtomatik göstərilən bannerin qarşısını alırıq
-  e.preventDefault();
-  // Hadisəni yadda saxlayırıq ki, düyməyə basanda istifadə edək
-  deferredPrompt = e;
+    // Avtomatik göstərilən bannerin qarşısını alırıq
+    e.preventDefault();
+    // Hadisəni yadda saxlayırıq ki, düyməyə basanda istifadə edək
+    deferredPrompt = e;
+    if (installBtn) {
+        installBtn.style.display = 'block';
+    }
 });
 
-// İndi düymənin "click" hadisəsini yazaq (HTML-də düymənə "install-btn" id-sini ver)
-const installButton = document.getElementById('install-btn');
+if (installBtn) {
+    installBtn.addEventListener('click', () => {
+        if (!deferredPrompt) return;
 
-if (installButton) {
-    installButton.addEventListener('click', (e) => {
-      if (deferredPrompt) {
         // Yükləmə pəncərəsini göstər
         deferredPrompt.prompt();
+
         // İstifadəçinin qərarını gözlə
         deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('İstifadəçi tətbiqi yüklədi');
-          }
-          deferredPrompt = null;
+            if (choiceResult.outcome === 'accepted') {
+                console.log('İstifadəçi tətbiqi yüklədi');
+            }
+            deferredPrompt = null;
+            installBtn.style.display = 'none';
         });
-      }
     });
 }
+
+window.addEventListener('appinstalled', () => {
+    if (installBtn) {
+        installBtn.style.display = 'none';
+    }
+    deferredPrompt = null;
+});
