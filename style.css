@@ -68,7 +68,7 @@ html, body {
     animation: slideInRight 0.3s ease-out forwards;
 }
 
-.cart-modal:not(.hidden) {
+#cart-modal:not(.hidden) {
     animation: fadeIn 0.2s ease-out forwards;
 }
 
