@@ -49,7 +49,6 @@
                 Elektronikadan geyimə, evinizin bütün ehtiyaclarını bir ünvandan əldə edin.
             </p>
             <div class="flex flex-wrap justify-center gap-3 text-xs md:text-sm">
-                <!-- Çatdırılma mətni yeniləndi -->
                 <span class="bg-white/15 px-4 py-2 rounded-full backdrop-blur-sm">
                     <i class="fa-solid fa-truck mr-2"></i>Çatdırılma mövcuddur
                 </span>
@@ -60,43 +59,180 @@
         </div>
     </section>
 
-    <!-- Qalan hissələr eyni qalır... -->
+    <!-- ƏSAS MƏZMUN -->
     <div id="main-content" class="flex-1">
-        <!-- Axtarış və məhsullar bölməsi əvvəlki kimi qalır -->
-        <section class="max-w-7xl mx-auto px-4 mt-6">
-            <div class="relative max-w-xl mx-auto md:mx-0">
+        <!-- Axtarış və Kateqoriyalar Bölməsi -->
+        <section class="max-w-7xl mx-auto px-4 mt-8">
+            <!-- Axtarış -->
+            <div class="relative max-w-xl mx-auto md:mx-0 mb-6">
                 <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                <input type="search" id="search-input" oninput="handleSearchInput(this.value)" placeholder="Məhsul axtar..." class="w-full bg-white border border-gray-200 rounded-full py-3 pl-11 pr-4 text-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+                <input 
+                    type="search" 
+                    id="search-input" 
+                    oninput="handleSearchInput(this.value)" 
+                    placeholder="Məhsul axtar..." 
+                    class="w-full bg-white border border-gray-200 rounded-full py-3 pl-11 pr-4 focus:ring-2 focus:ring-indigo-600 focus:border-transparent transition"
+                    aria-label="Məhsul axtar">
             </div>
+
+            <!-- Kateqoriya Filtrsləri -->
+            <div id="category-filters" class="flex flex-wrap gap-2 mb-6" role="tablist" aria-label="Məhsul kateqoriyaları"></div>
+            
+            <!-- Nəticə Sayı -->
+            <div id="results-count" class="text-sm text-gray-600 mb-4"></div>
         </section>
+
+        <!-- Məhsullar Grid-i -->
         <main class="max-w-7xl mx-auto px-4 my-8">
+            <!-- Yüklənmə Göstəricisi -->
+            <div id="loading-spinner" class="flex justify-center py-12">
+                <div class="text-center">
+                    <i class="fa-solid fa-spinner text-4xl text-indigo-600 fa-spin mb-3"></i>
+                    <p class="text-gray-500">Məhsullar yüklənir...</p>
+                </div>
+            </div>
+
+            <!-- Məhsullar Grid -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="products-grid"></div>
+
+            <!-- Boş Vəziyyət -->
+            <div id="empty-state" class="hidden text-center py-12">
+                <i class="fa-solid fa-magnifying-glass text-6xl text-gray-300 mb-4"></i>
+                <p class="text-gray-500 text-lg">Məhsul tapılmadı.</p>
+                <button onclick="clearFilters()" class="mt-4 bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">
+                    Filtrsləri Sıfırla
+                </button>
+            </div>
         </main>
     </div>
+
+    <!-- SƏBƏT MODALI -->
+    <div id="cart-modal" class="hidden fixed inset-0 bg-black/50 z-40" role="dialog" aria-hidden="true" aria-labelledby="cart-modal-title">
+        <div class="fixed right-0 top-0 h-screen w-full md:w-96 bg-white shadow-lg overflow-y-auto slide-in-right flex flex-col">
+            <!-- Modalın Başlığı -->
+            <div class="bg-indigo-600 text-white p-6 flex justify-between items-center sticky top-0 z-10">
+                <h2 id="cart-modal-title" class="text-2xl font-bold">🛒 Səbətim</h2>
+                <button onclick="toggleCartModal()" class="text-2xl hover:text-indigo-200 transition" aria-label="Səbəti kapat">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Səbət Məhsulları -->
+            <div id="cart-items" class="flex-1 p-6 space-y-4">
+                <p class="text-gray-500 text-center py-8">Səbətiniz boşdur.</p>
+            </div>
+
+            <!-- Cəmi -->
+            <div class="border-t border-gray-200 p-6 bg-gray-50 sticky bottom-0">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg font-semibold text-gray-700">Cəmi:</span>
+                    <span class="text-2xl font-bold text-indigo-600" id="cart-total">0,00</span>
+                </div>
+
+                <!-- Checkout Düyməsi -->
+                <button
+                    id="checkout-btn"
+                    onclick="checkoutViaWhatsApp()"
+                    class="w-full bg-emerald-600 text-white py-3 rounded-lg font-bold hover:bg-emerald-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp ilə Sifariş Et</span>
+                    <i id="checkout-loading" class="fa-solid fa-spinner fa-spin hidden"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MƏHSUL DETALLARI MODALI -->
+    <div id="product-modal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" role="dialog" aria-hidden="true">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <!-- Modalın Başlığı -->
+            <div class="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center z-10">
+                <h2 id="product-modal-category" class="text-sm font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full w-fit">KATEQORIYA</h2>
+                <button onclick="closeProductModal()" class="text-2xl text-gray-400 hover:text-gray-600 transition" aria-label="Modali kapat">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Məhsul Şəkili -->
+            <div class="relative h-64 md:h-80 bg-gray-100">
+                <img id="product-modal-img" src="" alt="" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Məhsul Məlumatları -->
+            <div class="p-6">
+                <h3 id="product-modal-name" class="text-2xl font-bold text-gray-800 mb-2"></h3>
+                <p id="product-modal-description" class="text-gray-600 mb-4 text-sm"></p>
+
+                <!-- Reytinq -->
+                <div id="product-modal-rating" class="mb-4 hidden"></div>
+
+                <!-- Qiymət -->
+                <div class="text-3xl font-bold text-indigo-600 mb-6" id="product-modal-price">0,00</div>
+
+                <!-- Düymə -->
+                <button
+                    id="product-modal-add-btn"
+                    onclick="addToCart(1)"
+                    class="w-full bg-indigo-600 text-white py-3 rounded-lg font-bold hover:bg-indigo-700 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-cart-plus"></i>
+                    <span>Səbətə əlavə et</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST MESAJI -->
+    <div id="toast" class="hidden fixed bottom-6 right-6 bg-gray-900 text-white px-6 py-4 rounded-lg shadow-lg toast-message z-50" role="status" aria-live="polite">
+        <span id="toast-text"></span>
+    </div>
+
+    <!-- YUXARI QAYIT DÜYMƏSI -->
+    <button
+        id="back-to-top"
+        onclick="scrollToTop()"
+        class="hidden fixed bottom-6 left-6 bg-indigo-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-indigo-700 transition focus:ring-2 focus:ring-indigo-600 focus:outline-none"
+        aria-label="Yuxarıya qayıt">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <!-- FOOTER -->
     <footer class="bg-gray-900 text-gray-300 mt-16" role="contentinfo">
         <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Mağaza Məlumatı -->
             <div>
                 <h2 class="text-white text-xl font-black mb-3">🛍️ MİNİBAZAR</h2>
                 <div class="flex gap-3 mt-4">
-                    <a id="footer-instagram" href="#" class="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition">
+                    <a id="footer-instagram" href="#" class="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition" aria-label="Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <!-- Facebook yerinə WhatsApp Kanalı -->
-                    <a id="footer-whatsapp-channel" href="#" class="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition" aria-label="WhatsApp Kanalımız">
+                    <a id="footer-whatsapp-channel" href="#" class="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition" aria-label="WhatsApp Kanal">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
                 </div>
             </div>
-            <!-- Digər footer hissələri olduğu kimi saxlanıldı -->
+
+            <!-- Əlaqə Məlumatı -->
             <div>
                 <h3 class="text-white font-semibold mb-3">Əlaqə</h3>
                 <ul class="text-sm space-y-2 text-gray-400">
                     <li><i class="fa-solid fa-phone mr-2 text-gray-500"></i><span id="footer-phone"></span></li>
                     <li><i class="fa-solid fa-location-dot mr-2 text-gray-500"></i><span id="footer-address"></span></li>
+                    <li><i class="fa-solid fa-clock mr-2 text-gray-500"></i><span id="footer-hours"></span></li>
                 </ul>
             </div>
+
+            <!-- Təsvir -->
+            <div>
+                <h3 class="text-white font-semibold mb-3">Haqqımızda</h3>
+                <p class="text-sm text-gray-400">
+                    MİNİBAZAR - təmin etdiyimiz keyfiyyətli məhsullar və sərfəli qiymətlərlə müştəri məmnunluğu bizim prioritet.
+                </p>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-800 mt-8 pt-8 pb-6 text-center text-gray-400 text-sm">
+            <p>&copy; <span id="footer-year"></span> MİNİBAZAR. Bütün hüquqlar qorunur.</p>
         </div>
     </footer>
 
