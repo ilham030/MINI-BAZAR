@@ -23,7 +23,7 @@
 
     <!-- PWA Yükləmə Düyməsi (Head-dən Body-yə keçirildi və mərkəzləşdirildi) -->
     <div class="flex justify-center">
-        <button id="'install-btn'" style="display:none; padding: 12px 24px; background: #25D366; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <button id="install-btn" style="display:none; padding: 12px 24px; background: #25D366; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
             <i class="fa-brands fa-whatsapp mr-2 hidden"></i>📱 MİNİBAZAR-ı Tətbiq kimi yüklə
         </button>
     </div>
@@ -249,44 +249,11 @@
     <!-- Skriptlər -->
     <script src="config.js"></script>
     <script src="script.js"></script>
-  <script>
-  // Service Worker qeydiyyatı
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
-
-  // Yükləmə düyməsi üçün dəyişənlər
-  let deferredPrompt;
-  const installBtn = document.getElementById('install-btn');
-
-  // Düyməni əvvəlcə gizlə
-  if (installBtn) {
-    installBtn.style.display = 'none';
-  }
-
-  // Yükləməyə hazır olduqda
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    if (installBtn) {
-      installBtn.style.display = 'block';
-    }
-  });
-
-  // Düyməyə basıldıqda
-  if (installBtn) {
-    installBtn.addEventListener('click', () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            installBtn.style.display = 'none';
-          }
-          deferredPrompt = null;
-        });
-      }
-    });
-  }
-</script>
+    <script>
+        // Service Worker qeydiyyatı
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
 </body>
 </html>
