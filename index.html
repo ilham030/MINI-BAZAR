@@ -262,8 +262,10 @@
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        installBtn.style.display = 'block'; // Düyməni göstər
-      });
+      const installBtn = document.getElementById('install-btn'); // Düyməni tapmağa çalış
+if (installBtn) { // Əgər düymə varsa, stili dəyiş
+    installBtn.style.display = 'block';
+}
 
       installBtn.addEventListener('click', () => {
         if (deferredPrompt) {
