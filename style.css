@@ -104,11 +104,33 @@ html, body {
     animation: spin 1s linear infinite;
 }
 
+/* ============ SKELETON LOADER ============ */
+
+.skeleton-shimmer {
+    background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 37%, #e5e7eb 63%);
+    background-size: 400% 100%;
+    animation: skeletonShimmer 1.4s ease infinite;
+}
+
+@keyframes skeletonShimmer {
+    0% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
 /* ============ HOVER EFFEKTLƏRI ============ */
 
 /* Kartlar üzərində hover */
 .group:hover {
     background-color: #f9fafb;
+}
+
+/* Məhsul kartı klikləmə göstəricisi */
+#products-grid > .group {
+    cursor: pointer;
 }
 
 /* Focus durumu ♿ */
@@ -124,12 +146,13 @@ button:focus-visible {
     #cart-modal > div {
         max-width: 100% !important;
     }
-    
+
     /* Məhsul şəbəkəsi */
-    #products-grid {
+    #products-grid,
+    #loading-spinner {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
-    
+
     /* Başlıq */
     header {
         padding: 1rem 1rem;
@@ -144,9 +167,10 @@ button:focus-visible {
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
-    
+
     /* Məhsul şəbəkəsi */
-    #products-grid {
+    #products-grid,
+    #loading-spinner {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 0.75rem;
     }
@@ -171,6 +195,19 @@ button:focus-visible {
     }
 }
 
+/* Ekran oxuyucusu üçün gizli, lakin əlçatan mətn */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* ============ DARk MODE (isteğe bağlı) ============ */
 
 @media (prefers-color-scheme: dark) {
@@ -184,10 +221,12 @@ button:focus-visible {
     header,
     #category-filters,
     #cart-modal,
+    #product-modal,
+    #back-to-top,
     #toast {
         display: none;
     }
-    
+
     body {
         background-color: white;
     }
@@ -283,6 +322,11 @@ a:focus-visible {
     outline-offset: 2px;
 }
 
+/* Footer linklərində alt xətt istəmirik */
+footer a:hover {
+    text-decoration: none;
+}
+
 /* ============ KOD SPOTLIGHT ============ */
 
 code {
@@ -350,7 +394,7 @@ main {
     body {
         font-size: 14px;
     }
-    
+
     header {
         padding: 0.75rem 0.5rem;
     }
