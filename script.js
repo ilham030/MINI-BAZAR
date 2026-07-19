@@ -586,3 +586,32 @@ document.addEventListener('keydown', function(e) {
         document.getElementById('cart-toggle-btn').click();
     }
 });
+
+
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Avtomatik göstərilən bannerin qarşısını alırıq
+  e.preventDefault();
+  // Hadisəni yadda saxlayırıq ki, düyməyə basanda istifadə edək
+  deferredPrompt = e;
+});
+
+// İndi düymənin "click" hadisəsini yazaq (HTML-də düymənə "install-btn" id-sini ver)
+const installButton = document.getElementById('install-btn');
+
+if (installButton) {
+    installButton.addEventListener('click', (e) => {
+      if (deferredPrompt) {
+        // Yükləmə pəncərəsini göstər
+        deferredPrompt.prompt();
+        // İstifadəçinin qərarını gözlə
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('İstifadəçi tətbiqi yüklədi');
+          }
+          deferredPrompt = null;
+        });
+      }
+    });
+}
