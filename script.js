@@ -1,5 +1,5 @@
 // ============================================
-// MİNİBAZAR - ƏSAS MƏNTIQ VƏ ADMİN PANELİ
+// MİNİBAZAR - TƏHLÜKƏSİZ VƏ DİNAMİK SCRIPT.JS
 // ============================================
 
 let cart = [];
@@ -7,30 +7,40 @@ let currentCategory = 'all';
 let currentSearchTerm = '';
 let allProducts = [];
 
+// Fallback konfiqurasiyalar (config.js yoxdursa və ya əskikdirsə xəta verməsin)
+if (typeof CONFIG === 'undefined') {
+    var CONFIG = {
+        STORE_NAME: 'MİNİBAZAR',
+        WHATSAPP_NUMBER: '994500000000',
+        STORE_CURRENCY: 'AZN',
+        STORE_ADDRESS: 'İmişli şəhəri',
+        STORE_HOURS: '09:00 - 21:00'
+    };
+}
+
+if (typeof CATEGORIES === 'undefined') {
+    var CATEGORIES = [
+        { id: 'all', label: 'Bütün məhsullar', icon: 'fa-border-all' },
+        { id: 'erzaq', label: 'Ərzaq', icon: 'fa-basket-shopping' },
+        { id: 'meyve', label: 'Meyvə-Tərəvəz', icon: 'fa-apple-whole' }
+    ];
+}
+
 // ============ İNİTİALİZASİYA ============
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Məhsulları yüklə (Default PRODUCTS + LocalStorage-dən əlavə edilənlər)
     initProducts();
-
-    // LocalStorage-dan səbəti yüklə
     loadCartFromStorage();
-
-    // Kateqoriyaları göstər
     renderCategoryButtons();
-
-    // Footer və hero-dakı dinamik məlumatları doldur
     renderStoreInfo();
 
-    // Məhsulları göstər
     setTimeout(() => {
         applyFilters();
-    }, 400);
+    }, 200);
 
-    // Scroll ilə "yuxarı qayıt" düyməsini idarə et
     window.addEventListener('scroll', handleScrollForBackToTop);
 
-    // Escape tuşu ilə açıq modalları bağla
+    // Escape tuşu ilə modalları bağlamaq
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             const cartModal = document.getElementById('cart-modal');
@@ -47,14 +57,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// ============ MƏHSULLARIN İDARƏ EDİLMƏSİ (DİNAMİK) ============
+// ============ MƏHSULLARIN YÜKLƏNMƏSİ ============
 
 function initProducts() {
-    // PRODUCTS obyekti adətən config.js və ya başqa yerdən gəlir
     const savedCustomProducts = localStorage.getItem('minibazar_custom_products');
     let customProducts = savedCustomProducts ? JSON.parse(savedCustomProducts) : [];
-    
-    // İlkin PRODUCTS massivi ilə yaddaşdakı məhsulları birləşdiririk
     const baseProducts = typeof PRODUCTS !== 'undefined' ? PRODUCTS : [];
     allProducts = [...baseProducts, ...customProducts];
 }
@@ -66,7 +73,6 @@ function saveCustomProduct(productData) {
     customProducts.push(productData);
     localStorage.setItem('minibazar_custom_products', JSON.stringify(customProducts));
     
-    // Siyahını yenilə
     initProducts();
     applyFilters();
 }
@@ -76,23 +82,18 @@ function saveCustomProduct(productData) {
 function toggleAdminModal() {
     let adminModal = document.getElementById('admin-modal');
     
-    // Əgər HTML-də hələ admin modalı yoxdursa, avtomatik yaradırıq
     if (!adminModal) {
         createAdminModalHTML();
         adminModal = document.getElementById('admin-modal');
     }
 
     adminModal.classList.toggle('hidden');
-    if (!adminModal.classList.contains('hidden')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = 'auto';
-    }
+    document.body.style.overflow = adminModal.classList.contains('hidden') ? 'auto' : 'hidden';
 }
 
 function createAdminModalHTML() {
     const modalHTML = `
-    <div id="admin-modal" class="fixed inset-0 bg-black bg-z-50 bg-opacity-50 hidden flex items-center justify-center p-4 z-50">
+    <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center p-4 z-50">
         <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-bold text-gray-800"><i class="fa-solid fa-user-gear mr-2 text-indigo-600"></i>Məhsul Əlavə Et (Admin)</h3>
@@ -104,7 +105,7 @@ function createAdminModalHTML() {
                     <input type="text" id="admin-p-name" required class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-600">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">Kateqoriya (Məsələn: erzaq, meyve, ve s.)</label>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Kateqoriya ID (məs: erzaq, meyve)</label>
                     <input type="text" id="admin-p-category" required class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-600">
                 </div>
                 <div>
@@ -116,7 +117,7 @@ function createAdminModalHTML() {
                     <input type="url" id="admin-p-img" placeholder="https://..." required class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-600">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-gray-700 mb-1">Təsvir (İstəyə bağlı)</label>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Təsvir</label>
                     <textarea id="admin-p-desc" class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-600" rows="2"></textarea>
                 </div>
                 <button type="submit" class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-semibold hover:bg-indigo-700 transition">
@@ -132,7 +133,7 @@ function handleAddNewProduct(e) {
     e.preventDefault();
     
     const newProduct = {
-        id: Date.now(), // Unikal ID
+        id: Date.now(),
         name: document.getElementById('admin-p-name').value,
         category: document.getElementById('admin-p-category').value.toLowerCase().trim(),
         price: parseFloat(document.getElementById('admin-p-price').value),
@@ -146,13 +147,11 @@ function handleAddNewProduct(e) {
     showToast('✅ Məhsul uğurla əlavə edildi!');
 }
 
-// ============ MAĞAZA MƏLUMATLARI (FOOTER / HERO) ============
+// ============ STORE INFO ============
 
 function renderStoreInfo() {
     const badge = document.getElementById('free-delivery-badge');
-    if (badge) {
-        badge.innerHTML = `<i class="fa-solid fa-truck mr-2"></i>Çatdırılma mövcuddur`;
-    }
+    if (badge) badge.innerHTML = `<i class="fa-solid fa-truck mr-2"></i>Çatdırılma mövcuddur`;
 
     const phoneEl = document.getElementById('footer-phone');
     if (phoneEl) phoneEl.textContent = formatPhoneDisplay(CONFIG.WHATSAPP_NUMBER);
@@ -168,12 +167,6 @@ function renderStoreInfo() {
 
     const waLink = document.getElementById('footer-whatsapp');
     if (waLink) waLink.href = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}`;
-
-    const igLink = document.getElementById('footer-instagram');
-    if (igLink && CONFIG.SOCIAL && CONFIG.SOCIAL.instagram) igLink.href = CONFIG.SOCIAL.instagram;
-
-    const fbLink = document.getElementById('footer-facebook');
-    if (fbLink && CONFIG.SOCIAL && CONFIG.SOCIAL.facebook) fbLink.href = CONFIG.SOCIAL.facebook;
 }
 
 function formatPhoneDisplay(number) {
@@ -184,7 +177,7 @@ function formatPhoneDisplay(number) {
     return `+${cleaned}`;
 }
 
-// ============ KATEQORIYA FUNKSIYALARI ============
+// ============ KATEQORIYA VƏ FİLTRLƏR ============
 
 function renderCategoryButtons() {
     const container = document.getElementById('category-filters');
@@ -199,9 +192,9 @@ function renderCategoryButtons() {
         button.setAttribute('aria-selected', category.id === 'all');
 
         if (category.id === 'all') {
-            button.className += ` bg-indigo-600 text-white shadow-sm focus:ring-indigo-600`;
+            button.className += ` bg-indigo-600 text-white shadow-sm`;
         } else {
-            button.className += ` bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 focus:ring-indigo-600`;
+            button.className += ` bg-white text-gray-600 border border-gray-200 hover:bg-gray-50`;
         }
 
         button.onclick = () => filterCategory(category.id);
@@ -231,8 +224,6 @@ function filterCategory(category) {
     applyFilters();
 }
 
-// ============ AXTARIŞ FUNKSIYALARI ============
-
 function handleSearchInput(value) {
     currentSearchTerm = value;
     applyFilters();
@@ -241,15 +232,11 @@ function handleSearchInput(value) {
 function clearFilters() {
     currentCategory = 'all';
     currentSearchTerm = '';
-
     const searchInput = document.getElementById('search-input');
     if (searchInput) searchInput.value = '';
-
     setActiveCategoryButton('all');
     applyFilters();
 }
-
-// ============ FİLTRLƏRİ BİRLƏŞDİRƏN FUNKSIYA ============
 
 function applyFilters() {
     let filtered = allProducts;
@@ -273,7 +260,6 @@ function applyFilters() {
 function updateResultsCount(count, isSearching) {
     const resultsEl = document.getElementById('results-count');
     if (!resultsEl) return;
-
     if (!isSearching) {
         resultsEl.textContent = '';
         return;
@@ -281,7 +267,7 @@ function updateResultsCount(count, isSearching) {
     resultsEl.textContent = count === 0 ? '' : `${count} məhsul tapıldı`;
 }
 
-// ============ MƏHSULLARI GÖSTƏRƏN FUNKSIYALAR ============
+// ============ MƏHSULLARI GÖSTƏRMƏK ============
 
 function displayProducts(productsToRender) {
     const grid = document.getElementById('products-grid');
@@ -301,25 +287,14 @@ function displayProducts(productsToRender) {
     grid.innerHTML = '';
 
     productsToRender.forEach(product => {
-        const priceDisplay = product.customPrice
-            ? '<span class="text-indigo-600 font-black text-lg">Sorğu ilə</span>'
-            : `<span class="text-indigo-600 font-black text-lg">${formatPrice(product.price)} ${CONFIG.STORE_CURRENCY}</span>`;
-
-        const ratingDisplay = buildRatingMarkup(product, 'text-xs');
+        const priceDisplay = `<span class="text-indigo-600 font-black text-lg">${formatPrice(product.price)} ${CONFIG.STORE_CURRENCY}</span>`;
 
         const card = document.createElement('div');
-        card.className = 'bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition flex flex-col group focus-within:ring-2 focus-within:ring-indigo-600';
-        card.tabIndex = 0;
-        card.setAttribute('role', 'button');
-        card.setAttribute('aria-label', `${product.name} - detallara bax`);
+        card.className = 'bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition flex flex-col group cursor-pointer';
         card.innerHTML = `
             <div class="h-48 overflow-hidden bg-gray-100 relative">
-                <img 
-                    src="${product.img}" 
-                    alt="${product.name}" 
-                    class="w-full h-full object-cover group-hover:scale-105 transition duration-300 lazy-image"
-                    loading="lazy">
-                <span class="absolute top-2 right-2 bg-indigo-600 text-white text-xs px-3 py-1 rounded-full uppercase">
+                <img src="${product.img}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" loading="lazy">
+                <span class="absolute top-2 right-2 bg-indigo-600 text-white text-xs px-3 py-1 rounded-full uppercase font-semibold">
                     ${product.category}
                 </span>
             </div>
@@ -327,15 +302,10 @@ function displayProducts(productsToRender) {
                 <div>
                     <h4 class="text-gray-800 font-semibold text-sm line-clamp-2">${escapeHtml(product.name)}</h4>
                     <p class="text-gray-500 text-xs mt-1 line-clamp-1">${escapeHtml(product.description || '')}</p>
-                    ${ratingDisplay}
                 </div>
                 <div class="flex justify-between items-center mt-4">
                     ${priceDisplay}
-                    <button 
-                        onclick="event.stopPropagation(); addToCart(${product.id})" 
-                        class="bg-indigo-600 text-white p-2 rounded-lg hover:bg-indigo-700 transition focus:ring-2 focus:ring-indigo-600 focus:outline-none"
-                        aria-label="${product.name} səbətə əlavə et"
-                        title="Səbətə əlavə et">
+                    <button onclick="event.stopPropagation(); addToCart(${product.id})" class="bg-indigo-600 text-white p-2.5 rounded-lg hover:bg-indigo-700 transition" title="Səbətə əlavə et">
                         <i class="fa-solid fa-cart-plus"></i>
                     </button>
                 </div>
@@ -343,30 +313,11 @@ function displayProducts(productsToRender) {
         `;
 
         card.addEventListener('click', () => openProductModal(product.id));
-        card.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openProductModal(product.id);
-            }
-        });
-
         grid.appendChild(card);
     });
 }
 
-function buildRatingMarkup(product, sizeClass) {
-    if (!product.rating) return '';
-
-    const fullStars = Math.round(product.rating);
-    let stars = '';
-    for (let i = 0; i < 5; i++) {
-        stars += i < fullStars
-            ? '<i class="fa-solid fa-star text-amber-400"></i>'
-            : '<i class="fa-regular fa-star text-amber-400"></i>';
-    }
-    const countText = product.reviewCount ? ` (${product.reviewCount})` : '';
-    return `<div class="${sizeClass} mt-1">${stars}<span class="text-gray-400 ml-1">${countText}</span></div>`;
-}
+// ============ MODALLAR VƏ SƏBƏT ============
 
 function openProductModal(id) {
     const product = allProducts.find(p => p.id === id);
@@ -377,64 +328,30 @@ function openProductModal(id) {
     document.getElementById('product-modal-category').textContent = product.category.toUpperCase();
     document.getElementById('product-modal-name').textContent = product.name;
     document.getElementById('product-modal-description').textContent = product.description || '';
+    document.getElementById('product-modal-price').textContent = `${formatPrice(product.price)} ${CONFIG.STORE_CURRENCY}`;
 
-    const priceEl = document.getElementById('product-modal-price');
     const addBtn = document.getElementById('product-modal-add-btn');
-
-    if (product.customPrice) {
-        priceEl.textContent = 'Sorğu ilə';
-        addBtn.innerHTML = '<i class="fa-brands fa-whatsapp"></i><span>WhatsApp ilə soruş</span>';
-    } else {
-        priceEl.textContent = `${formatPrice(product.price)} ${CONFIG.STORE_CURRENCY}`;
-        addBtn.innerHTML = '<i class="fa-solid fa-cart-plus"></i><span>Səbətə əlavə et</span>';
-    }
-
     addBtn.onclick = () => {
         addToCart(product.id);
         closeProductModal();
     };
 
-    const ratingEl = document.getElementById('product-modal-rating');
-    const ratingMarkup = buildRatingMarkup(product, 'text-sm');
-    if (ratingMarkup) {
-        ratingEl.innerHTML = ratingMarkup;
-        ratingEl.classList.remove('hidden');
-    } else {
-        ratingEl.innerHTML = '';
-        ratingEl.classList.add('hidden');
-    }
-
     const modal = document.getElementById('product-modal');
     if (modal) {
         modal.classList.remove('hidden');
-        modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
     }
 }
 
 function closeProductModal() {
     const modal = document.getElementById('product-modal');
-    if (modal) {
-        modal.classList.add('hidden');
-        modal.setAttribute('aria-hidden', 'true');
-    }
-
-    const cartModal = document.getElementById('cart-modal');
-    if (cartModal && cartModal.classList.contains('hidden')) {
-        document.body.style.overflow = 'auto';
-    }
+    if (modal) modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
 }
-
-// ============ SƏBƏT FUNKSIYALARI ============
 
 function addToCart(id) {
     const product = allProducts.find(p => p.id === id);
     if (!product) return;
-
-    if (product.customPrice) {
-        showToast('Zəhmət olmasa WhatsApp üzərindən qiymət soruşun');
-        return;
-    }
 
     const cartItem = cart.find(item => item.id === id);
     if (cartItem) {
@@ -470,12 +387,10 @@ function updateQuantity(id, newQuantity) {
 
 function updateCartUI() {
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const countEl = document.getElementById('cart-count');
-    if (countEl) countEl.innerText = count;
+    document.querySelectorAll('#cart-count').forEach(el => el.innerText = count);
 
     const cartItemsContainer = document.getElementById('cart-items');
     if (!cartItemsContainer) return;
-
     const checkoutBtn = document.getElementById('checkout-btn');
 
     if (cart.length === 0) {
@@ -485,26 +400,20 @@ function updateCartUI() {
         cartItemsContainer.innerHTML = '';
         cart.forEach(item => {
             const itemElement = document.createElement('div');
-            itemElement.className = 'flex justify-between items-center bg-gray-50 p-4 rounded-xl group';
-            itemElement.setAttribute('role', 'listitem');
+            itemElement.className = 'flex justify-between items-center bg-gray-50 p-4 rounded-xl';
             itemElement.innerHTML = `
                 <div class="flex-1">
                     <h5 class="font-semibold text-gray-800 text-sm">${escapeHtml(item.name)}</h5>
-                    <span class="text-xs text-gray-500">${formatPrice(item.price)} × <span id="qty-${item.id}">${item.quantity}</span></span>
+                    <span class="text-xs text-gray-500">${formatPrice(item.price)} × ${item.quantity}</span>
                     <span class="text-xs font-bold text-indigo-600 ml-2">Cəmi: ${formatPrice(item.price * item.quantity)}</span>
                 </div>
                 <div class="flex gap-2 items-center">
                     <div class="flex items-center gap-1 bg-white rounded border border-gray-200">
-                        <button onclick="updateQuantity(${item.id}, ${item.quantity - 1})" class="px-2 py-1 text-gray-500 hover:text-gray-700 focus:outline-none">−</button>
+                        <button onclick="updateQuantity(${item.id}, ${item.quantity - 1})" class="px-2 py-1 text-gray-500">−</button>
                         <span class="px-2 text-sm font-semibold">${item.quantity}</span>
-                        <button onclick="updateQuantity(${item.id}, ${item.quantity + 1})" class="px-2 py-1 text-gray-500 hover:text-gray-700 focus:outline-none">+</button>
+                        <button onclick="updateQuantity(${item.id}, ${item.quantity + 1})" class="px-2 py-1 text-gray-500">+</button>
                     </div>
-                    <button 
-                        onclick="removeFromCart(${item.id})" 
-                        class="text-red-500 hover:text-red-700 font-bold text-sm p-1 rounded hover:bg-red-50 focus:ring-2 focus:ring-red-300 focus:outline-none"
-                        aria-label="Sil">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </button>
+                    <button onclick="removeFromCart(${item.id})" class="text-red-500 p-1"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
             `;
             cartItemsContainer.appendChild(itemElement);
@@ -519,93 +428,34 @@ function updateCartUI() {
 
 function toggleCartModal() {
     const modal = document.getElementById('cart-modal');
-    const cartBtn = document.getElementById('cart-toggle-btn');
     if (!modal) return;
-
     modal.classList.toggle('hidden');
-    if (cartBtn) cartBtn.setAttribute('aria-expanded', !modal.classList.contains('hidden'));
-
-    if (!modal.classList.contains('hidden')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = 'auto';
-    }
+    document.body.style.overflow = modal.classList.contains('hidden') ? 'auto' : 'hidden';
 }
-
-// ============ WHATSAPP CHECKOUT ============
 
 function checkoutViaWhatsApp() {
-    if (cart.length === 0) {
-        showToast('⚠️ Səbətiniz boşdur!');
-        return;
-    }
-
-    const checkoutBtn = document.getElementById('checkout-btn');
-    const checkoutLoading = document.getElementById('checkout-loading');
-
-    if (checkoutBtn) checkoutBtn.disabled = true;
-    if (checkoutLoading) checkoutLoading.classList.remove('hidden');
-
+    if (cart.length === 0) return;
     let message = `🛒 *YENİ SİFARİŞ - ${CONFIG.STORE_NAME}*\n\n`;
-    message += `📋 *SİFARİŞ TƏFSİLATI:*\n`;
-    message += '─'.repeat(40) + '\n\n';
-
     cart.forEach((item, index) => {
-        message += `${index + 1}. *${escapeHtml(item.name)}*\n`;
-        message += `   Qiymət: ${formatPrice(item.price)}\n`;
-        message += `   Miqdar: ${item.quantity} ədəd\n`;
-        message += `   Alt cəmi: ${formatPrice(item.price * item.quantity)}\n\n`;
+        message += `${index + 1}. *${escapeHtml(item.name)}* - ${item.quantity} ədəd (${formatPrice(item.price * item.quantity)} ${CONFIG.STORE_CURRENCY})\n`;
     });
-
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    message += '─'.repeat(40) + '\n';
-    message += `💰 *CƏMI MƏBLƏĞ: ${formatPrice(total)} ${CONFIG.STORE_CURRENCY}*\n\n`;
-    message += '─'.repeat(40) + '\n';
-    message += `⏰ *SƏBƏTİ VAXT:* ${new Date().toLocaleString('az-AZ')}\n\n`;
-    message += '✅ Sifarişimi təsdiq etmək istəyirəm.\n';
-    message += '📍 Zəhmət olmasa çatdırılma məlumatı verin.\n';
-    message += '📞 Danışıqlarımız üçün əlçatan olmağımı xahiş edir.';
-
-    try {
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodedMessage}`;
-
-        setTimeout(() => {
-            window.open(whatsappUrl, '_blank');
-            showToast('✅ WhatsApp açıldı. Sifarişinizi təsdiq edin!');
-        }, 500);
-    } catch (error) {
-        console.error('WhatsApp xətası:', error);
-        showToast('❌ Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.');
-    } finally {
-        if (checkoutBtn) checkoutBtn.disabled = false;
-        if (checkoutLoading) checkoutLoading.classList.add('hidden');
-    }
+    message += `\n💰 *CƏMİ: ${formatPrice(total)} ${CONFIG.STORE_CURRENCY}*`;
+    
+    window.open(`https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
 }
 
-// ============ LocalStorage FUNKSIYALARI ============
-
 function saveCartToStorage() {
-    try {
-        localStorage.setItem('minibazar_cart', JSON.stringify(cart));
-    } catch (error) {
-        console.warn('LocalStorage xətası:', error);
-    }
+    localStorage.setItem('minibazar_cart', JSON.stringify(cart));
 }
 
 function loadCartFromStorage() {
-    try {
-        const saved = localStorage.getItem('minibazar_cart');
-        if (saved) {
-            cart = JSON.parse(saved);
-            updateCartUI();
-        }
-    } catch (error) {
-        console.warn('LocalStorage oxuma xətası:', error);
+    const saved = localStorage.getItem('minibazar_cart');
+    if (saved) {
+        cart = JSON.parse(saved);
+        updateCartUI();
     }
 }
-
-// ============ UTILITY FUNKSIYALARI ============
 
 function formatPrice(price) {
     return parseFloat(price || 0).toFixed(2);
@@ -621,19 +471,14 @@ function showToast(message, duration = 3000) {
     const toast = document.getElementById('toast');
     const toastText = document.getElementById('toast-text');
     if (!toast || !toastText) return;
-
     toastText.textContent = message;
     toast.classList.remove('hidden');
-
-    setTimeout(() => {
-        toast.classList.add('hidden');
-    }, duration);
+    setTimeout(() => toast.classList.add('hidden'), duration);
 }
 
 function handleScrollForBackToTop() {
     const btn = document.getElementById('back-to-top');
     if (!btn) return;
-
     if (window.scrollY > 400) {
         btn.classList.remove('hidden');
         btn.classList.add('flex');
