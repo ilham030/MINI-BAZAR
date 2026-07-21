@@ -1,14 +1,18 @@
 // ============================================
-// ƏSAS MƏNTIQ FİLESİ
+// MİNİBAZAR - ƏSAS MƏNTIQ VƏ ADMİN PANELİ
 // ============================================
 
 let cart = [];
 let currentCategory = 'all';
 let currentSearchTerm = '';
+let allProducts = [];
 
 // ============ İNİTİALİZASİYA ============
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Məhsulları yüklə (Default PRODUCTS + LocalStorage-dən əlavə edilənlər)
+    initProducts();
+
     // LocalStorage-dan səbəti yüklə
     loadCartFromStorage();
 
@@ -18,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Footer və hero-dakı dinamik məlumatları doldur
     renderStoreInfo();
 
-    // Məhsulları göstər (skeleton-un bir anlıq görünməsi üçün qısa gecikmə)
+    // Məhsulları göstər
     setTimeout(() => {
         applyFilters();
     }, 400);
@@ -26,30 +30,130 @@ document.addEventListener('DOMContentLoaded', function() {
     // Scroll ilə "yuxarı qayıt" düyməsini idarə et
     window.addEventListener('scroll', handleScrollForBackToTop);
 
-    // Escape tuşu ilə açıq modalı kapat
+    // Escape tuşu ilə açıq modalları bağla
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             const cartModal = document.getElementById('cart-modal');
             const productModal = document.getElementById('product-modal');
-            if (!productModal.classList.contains('hidden')) {
+            const adminModal = document.getElementById('admin-modal');
+            if (adminModal && !adminModal.classList.contains('hidden')) {
+                toggleAdminModal();
+            } else if (productModal && !productModal.classList.contains('hidden')) {
                 closeProductModal();
-            } else if (!cartModal.classList.contains('hidden')) {
+            } else if (cartModal && !cartModal.classList.contains('hidden')) {
                 toggleCartModal();
             }
         }
     });
 });
 
+// ============ MƏHSULLARIN İDARƏ EDİLMƏSİ (DİNAMİK) ============
+
+function initProducts() {
+    // PRODUCTS obyekti adətən config.js və ya başqa yerdən gəlir
+    const savedCustomProducts = localStorage.getItem('minibazar_custom_products');
+    let customProducts = savedCustomProducts ? JSON.parse(savedCustomProducts) : [];
+    
+    // İlkin PRODUCTS massivi ilə yaddaşdakı məhsulları birləşdiririk
+    const baseProducts = typeof PRODUCTS !== 'undefined' ? PRODUCTS : [];
+    allProducts = [...baseProducts, ...customProducts];
+}
+
+function saveCustomProduct(productData) {
+    const savedCustomProducts = localStorage.getItem('minibazar_custom_products');
+    let customProducts = savedCustomProducts ? JSON.parse(savedCustomProducts) : [];
+    
+    customProducts.push(productData);
+    localStorage.setItem('minibazar_custom_products', JSON.stringify(customProducts));
+    
+    // Siyahını yenilə
+    initProducts();
+    applyFilters();
+}
+
+// ============ ADMİN PANEL MODALI ============
+
+function toggleAdminModal() {
+    let adminModal = document.getElementById('admin-modal');
+    
+    // Əgər HTML-də hələ admin modalı yoxdursa, avtomatik yaradırıq
+    if (!adminModal) {
+        createAdminModalHTML();
+        adminModal = document.getElementById('admin-modal');
+    }
+
+    adminModal.classList.toggle('hidden');
+    if (!adminModal.classList.contains('hidden')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'auto';
+    }
+}
+
+function createAdminModalHTML() {
+    const modalHTML = `
+    <div id="admin-modal" class="fixed inset-0 bg-black bg-z-50 bg-opacity-50 hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-gray-800"><i class="fa-solid fa-user-gear mr-2 text-indigo-600"></i>Məhsul Əlavə Et (Admin)</h3>
+                <button onclick="toggleAdminModal()" class="text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
+            </div>
+            <form id="add-product-form" onsubmit="handleAddNewProduct(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Məhsulun Adı</label>
+                    <input type="text" id="admin-p-name" required class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Kateqoriya (Məsələn: erzaq, meyve, ve s.)</label>
+                    <input type="text" id="admin-p-category" required class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Qiymət (AZN)</label>
+                    <input type="number" step="0.01" id="admin-p-price" required class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Şəkil Linki (URL)</label>
+                    <input type="url" id="admin-p-img" placeholder="https://..." required class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-600">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Təsvir (İstəyə bağlı)</label>
+                    <textarea id="admin-p-desc" class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-indigo-600" rows="2"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-semibold hover:bg-indigo-700 transition">
+                    Məhsulu Yüklə
+                </button>
+            </form>
+        </div>
+    </div>`;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+}
+
+function handleAddNewProduct(e) {
+    e.preventDefault();
+    
+    const newProduct = {
+        id: Date.now(), // Unikal ID
+        name: document.getElementById('admin-p-name').value,
+        category: document.getElementById('admin-p-category').value.toLowerCase().trim(),
+        price: parseFloat(document.getElementById('admin-p-price').value),
+        img: document.getElementById('admin-p-img').value,
+        description: document.getElementById('admin-p-desc').value
+    };
+
+    saveCustomProduct(newProduct);
+    toggleAdminModal();
+    document.getElementById('add-product-form').reset();
+    showToast('✅ Məhsul uğurla əlavə edildi!');
+}
+
 // ============ MAĞAZA MƏLUMATLARI (FOOTER / HERO) ============
 
 function renderStoreInfo() {
-    // Hero-dakı pulsuz çatdırılma nişanı
     const badge = document.getElementById('free-delivery-badge');
-    if (badge && CONFIG.FREE_DELIVERY_THRESHOLD !== undefined) {
-        badge.innerHTML = `<i class="fa-solid fa-truck mr-2"></i>${formatPrice(CONFIG.FREE_DELIVERY_THRESHOLD)} ${CONFIG.STORE_CURRENCY}-dən yuxarı pulsuz çatdırılma`;
+    if (badge) {
+        badge.innerHTML = `<i class="fa-solid fa-truck mr-2"></i>Çatdırılma mövcuddur`;
     }
 
-    // Footer əlaqə məlumatları
     const phoneEl = document.getElementById('footer-phone');
     if (phoneEl) phoneEl.textContent = formatPhoneDisplay(CONFIG.WHATSAPP_NUMBER);
 
@@ -62,7 +166,6 @@ function renderStoreInfo() {
     const yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Footer sosial linklər
     const waLink = document.getElementById('footer-whatsapp');
     if (waLink) waLink.href = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}`;
 
@@ -85,6 +188,7 @@ function formatPhoneDisplay(number) {
 
 function renderCategoryButtons() {
     const container = document.getElementById('category-filters');
+    if (!container) return;
     container.innerHTML = '';
 
     CATEGORIES.forEach(category => {
@@ -148,7 +252,7 @@ function clearFilters() {
 // ============ FİLTRLƏRİ BİRLƏŞDİRƏN FUNKSIYA ============
 
 function applyFilters() {
-    let filtered = PRODUCTS;
+    let filtered = allProducts;
 
     if (currentCategory !== 'all') {
         filtered = filtered.filter(p => p.category === currentCategory);
@@ -184,16 +288,16 @@ function displayProducts(productsToRender) {
     const emptyState = document.getElementById('empty-state');
     const loadingSpinner = document.getElementById('loading-spinner');
 
-    // Yüklənmə göstəricisini gizlə
-    loadingSpinner.classList.add('hidden');
+    if (loadingSpinner) loadingSpinner.classList.add('hidden');
+    if (!grid) return;
 
     if (productsToRender.length === 0) {
         grid.innerHTML = '';
-        emptyState.classList.remove('hidden');
+        if (emptyState) emptyState.classList.remove('hidden');
         return;
     }
 
-    emptyState.classList.add('hidden');
+    if (emptyState) emptyState.classList.add('hidden');
     grid.innerHTML = '';
 
     productsToRender.forEach(product => {
@@ -215,8 +319,8 @@ function displayProducts(productsToRender) {
                     alt="${product.name}" 
                     class="w-full h-full object-cover group-hover:scale-105 transition duration-300 lazy-image"
                     loading="lazy">
-                <span class="absolute top-2 right-2 bg-indigo-600 text-white text-xs px-3 py-1 rounded-full">
-                    ${product.category.toUpperCase()}
+                <span class="absolute top-2 right-2 bg-indigo-600 text-white text-xs px-3 py-1 rounded-full uppercase">
+                    ${product.category}
                 </span>
             </div>
             <div class="p-4 flex flex-col flex-1 justify-between">
@@ -250,9 +354,6 @@ function displayProducts(productsToRender) {
     });
 }
 
-// ============ REYTİNQ (ULDUZ) GÖSTƏRİCİSİ ============
-// Qeyd: yalnız məhsulda real `rating` sahəsi varsa göstərilir - uydurma reytinq əlavə edilmir.
-
 function buildRatingMarkup(product, sizeClass) {
     if (!product.rating) return '';
 
@@ -267,10 +368,8 @@ function buildRatingMarkup(product, sizeClass) {
     return `<div class="${sizeClass} mt-1">${stars}<span class="text-gray-400 ml-1">${countText}</span></div>`;
 }
 
-// ============ MƏHSUL DETALLARI MODALI ============
-
 function openProductModal(id) {
-    const product = PRODUCTS.find(p => p.id === id);
+    const product = allProducts.find(p => p.id === id);
     if (!product) return;
 
     document.getElementById('product-modal-img').src = product.img;
@@ -306,19 +405,22 @@ function openProductModal(id) {
     }
 
     const modal = document.getElementById('product-modal');
-    modal.classList.remove('hidden');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    if (modal) {
+        modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 function closeProductModal() {
     const modal = document.getElementById('product-modal');
-    modal.classList.add('hidden');
-    modal.setAttribute('aria-hidden', 'true');
+    if (modal) {
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden', 'true');
+    }
 
-    // Səbət modalı da açıq deyilsə scroll-u bərpa et
     const cartModal = document.getElementById('cart-modal');
-    if (cartModal.classList.contains('hidden')) {
+    if (cartModal && cartModal.classList.contains('hidden')) {
         document.body.style.overflow = 'auto';
     }
 }
@@ -326,18 +428,15 @@ function closeProductModal() {
 // ============ SƏBƏT FUNKSIYALARI ============
 
 function addToCart(id) {
-    const product = PRODUCTS.find(p => p.id === id);
-
+    const product = allProducts.find(p => p.id === id);
     if (!product) return;
 
-    // Xüsusi qiymət məhsulları üçün xəbərdarlıq
     if (product.customPrice) {
         showToast('Zəhmət olmasa WhatsApp üzərindən qiymət soruşun');
         return;
     }
 
     const cartItem = cart.find(item => item.id === id);
-
     if (cartItem) {
         cartItem.quantity += 1;
     } else {
@@ -370,15 +469,18 @@ function updateQuantity(id, newQuantity) {
 }
 
 function updateCartUI() {
-    // Səbət sayaçı
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.getElementById('cart-count').innerText = count;
+    const countEl = document.getElementById('cart-count');
+    if (countEl) countEl.innerText = count;
 
-    // Səbət elementləri
     const cartItemsContainer = document.getElementById('cart-items');
+    if (!cartItemsContainer) return;
+
+    const checkoutBtn = document.getElementById('checkout-btn');
+
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-8">Səbətiniz boşdur.</p>';
-        document.getElementById('checkout-btn').disabled = true;
+        if (checkoutBtn) checkoutBtn.disabled = true;
     } else {
         cartItemsContainer.innerHTML = '';
         cart.forEach(item => {
@@ -407,22 +509,22 @@ function updateCartUI() {
             `;
             cartItemsContainer.appendChild(itemElement);
         });
-        document.getElementById('checkout-btn').disabled = false;
+        if (checkoutBtn) checkoutBtn.disabled = false;
     }
 
-    // Cəmi qiymət
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    document.getElementById('cart-total').innerText = formatPrice(total);
+    const totalEl = document.getElementById('cart-total');
+    if (totalEl) totalEl.innerText = formatPrice(total);
 }
 
 function toggleCartModal() {
     const modal = document.getElementById('cart-modal');
     const cartBtn = document.getElementById('cart-toggle-btn');
+    if (!modal) return;
 
     modal.classList.toggle('hidden');
-    cartBtn.setAttribute('aria-expanded', !modal.classList.contains('hidden'));
+    if (cartBtn) cartBtn.setAttribute('aria-expanded', !modal.classList.contains('hidden'));
 
-    // Modalda olduğu zaman scroll'u deaktiv et
     if (!modal.classList.contains('hidden')) {
         document.body.style.overflow = 'hidden';
     } else {
@@ -441,11 +543,9 @@ function checkoutViaWhatsApp() {
     const checkoutBtn = document.getElementById('checkout-btn');
     const checkoutLoading = document.getElementById('checkout-loading');
 
-    // Yüklənmə durumunu göstər
-    checkoutBtn.disabled = true;
-    checkoutLoading.classList.remove('hidden');
+    if (checkoutBtn) checkoutBtn.disabled = true;
+    if (checkoutLoading) checkoutLoading.classList.remove('hidden');
 
-    // Sifarişi hazırla
     let message = `🛒 *YENİ SİFARİŞ - ${CONFIG.STORE_NAME}*\n\n`;
     message += `📋 *SİFARİŞ TƏFSİLATI:*\n`;
     message += '─'.repeat(40) + '\n\n';
@@ -470,24 +570,16 @@ function checkoutViaWhatsApp() {
         const encodedMessage = encodeURIComponent(message);
         const whatsappUrl = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
-        // WhatsApp'a yönləndir
         setTimeout(() => {
             window.open(whatsappUrl, '_blank');
-
-            // Səbəti təmizlə (isteğe bağlı - istəməsəniz bu xətti silin)
-            // cart = [];
-            // saveCartToStorage();
-            // updateCartUI();
-            // toggleCartModal();
-
             showToast('✅ WhatsApp açıldı. Sifarişinizi təsdiq edin!');
         }, 500);
     } catch (error) {
         console.error('WhatsApp xətası:', error);
         showToast('❌ Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.');
     } finally {
-        checkoutBtn.disabled = false;
-        checkoutLoading.classList.add('hidden');
+        if (checkoutBtn) checkoutBtn.disabled = false;
+        if (checkoutLoading) checkoutLoading.classList.add('hidden');
     }
 }
 
@@ -528,6 +620,7 @@ function escapeHtml(text) {
 function showToast(message, duration = 3000) {
     const toast = document.getElementById('toast');
     const toastText = document.getElementById('toast-text');
+    if (!toast || !toastText) return;
 
     toastText.textContent = message;
     toast.classList.remove('hidden');
@@ -536,8 +629,6 @@ function showToast(message, duration = 3000) {
         toast.classList.add('hidden');
     }, duration);
 }
-
-// ============ YUXARI QAYIT DÜYMƏSİ ============
 
 function handleScrollForBackToTop() {
     const btn = document.getElementById('back-to-top');
@@ -555,34 +646,3 @@ function handleScrollForBackToTop() {
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-// ============ PERFORMANS OPTİMİZASİYASI ============
-
-// Şəkillərin Lazy Loading
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.src; // Artıq yükləniyi üçün
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.lazy-image').forEach(img => {
-            imageObserver.observe(img);
-        });
-    });
-}
-
-// ============ KEYBOARD NAVIGATION ============
-
-document.addEventListener('keydown', function(e) {
-    // Alt + C: Səbətə git
-    if (e.altKey && e.key === 'c') {
-        e.preventDefault();
-        document.getElementById('cart-toggle-btn').click();
-    }
-});
