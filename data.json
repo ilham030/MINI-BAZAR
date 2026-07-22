@@ -273,6 +273,18 @@
             "oldPrice": 1059,
             "rating": 4.9,
             "reviewCount": 369
+        },
+        {
+            "id": 22,
+            "name": "Samsung Galaxy A27 (8 GB / 256 GB)",
+            "price": 745,
+            "category": "elektronika",
+            "img": "images/products/img_1784736751784_nid783.jpg",
+            "description": "Məhsulun Adı: Samsung Galaxy A27 (8 GB / 256 GB) — Güclü Yaddaş, Böyük Endirim!\n\nMövcud Rənglər: 🖤 Klassik Qara (Black), 💙 Möhtəşəm Göy (Blue)\n\nƏvvəlki Qiymət: ~~800 AZN~~\n\n🔥 YENİ ŞOK QİYMƏT: 745 AZN (Cəmi 55 AZN Xüsusi Qənaət!)\n\n🌟 Niyə Məhz MİNİ BAZAR?\n📜 100% Orijinal: Rəsmi Samsung istehsalı olan tam zəmanətli məhsullar.\n\n🛡️ Rəsmi Zəmanət: Hər bir telefona rəsmi zəmanət təqdim edilir.\n\n💳 Sərfəli Kredit: Büdcənizə uyğun rahat hissə-hissə ödəniş şərtləri!\n\n🚀 Qısa Satış Təsviri:\nYaddaş problemi yaşamaq istəməyənlər və yüksək performans axtaranlar üçün əla fürsət! Samsung Galaxy A27-nin 256 GB daxili yaddaşlı və 8 GB RAM-lı modeli indi xüsusi endirimlə Mini Bazar-da sizi gözləyir. Stilini dəyiş, fürsəti qaçırma!\n\n📞 Sifariş və Əlaqə:\n\n📱 WhatsApp / Zəng: 077 391 13 00\n\n🛒 Mağaza / Kanal: Mini Bazar",
+            "inStock": true,
+            "oldPrice": 800,
+            "rating": 4.8,
+            "reviewCount": 450
         }
     ]
 }
