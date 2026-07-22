@@ -177,6 +177,18 @@
             "oldPrice": 309.99,
             "rating": 4.1,
             "reviewCount": 39
+        },
+        {
+            "id": 14,
+            "name": "Samsung Galaxy A07 (4 GB / 128 GB)",
+            "price": 261,
+            "category": "elektronika",
+            "img": "images/products/img_1784735260269_0a9du8.jpg",
+            "description": "Samsung Galaxy A07 (4 GB / 128 GB)\nMəhsulun Adı: Samsung Galaxy A07 (4 GB / 128 GB)\n\nMövcud Rənglər: 🖤 Black (Qara), 💚 Green (Yaşıl), 💜 Violet (Bənövşəyi)\n\nQiymət: ~~339.99 AZN~~ deyil, cəmi 261 AZN (78.99 AZN Qənaət!)\n\nTəsvir: Şəkillər, videolar və tətbiqlər üçün 2 dəfə daha çox yaddaş! Şık bənövşəyi, yaşıl və qara rəng seçimləri ilə Mini Bazar-da.\n\nSifariş: WhatsApp: 077 391 13 00",
+            "inStock": true,
+            "oldPrice": 339.99,
+            "rating": 4.5,
+            "reviewCount": 45
         }
     ]
 }
