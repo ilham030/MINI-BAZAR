@@ -141,6 +141,18 @@
             "oldPrice": 479,
             "rating": 4.8,
             "reviewCount": 20
+        },
+        {
+            "id": 11,
+            "name": "Samsung Galaxy A17 (6 GB / 128 GB)",
+            "price": 376,
+            "category": "elektronika",
+            "img": "images/products/img_1784726689164_is3ic9.jpg",
+            "description": "Samsung Galaxy A17 (6 GB / 128 GB) - \"Dinamik Güc\"\nVizual Konsepsiya:\n\nMəqsəd: Artırılmış RAM tutumu və daha yüksək performansı, dinamik dizaynla birlikdə təqdim etmək.\n\nFon: Enerjili bir görünüş üçün parlaq mavi və bənövşəyi tonların dinamik keçidi (gradient). Arxa planda sürət hissi verən işıq izləri (light streaks).\n\nƏsas Element: Şəklin mərkəzində üç ədəd Samsung Galaxy A17 (Bütün rənglər: Qara, Boz, Açıq Mavi) yerləşdirilib. Biri düz, digərləri isə bir qədər maili bucaqda, bir-birinin arxasından çıxmış kimi dayanaraq çoxluq və imkan təəssüratı yaradır.\n\nQrafik Elementlər:\n\nBaşlıq: Samsung Galaxy A17 (6GB | 128GB)\n\nVurğu: Çoxlu tapşırıqlar üçün idealdır!\n\nQiymət: 376 AZN (519.99 AZN)\n\nAşağıda: 100% Rəsmi Zəmanət | Kredit Mövcuddur",
+            "inStock": true,
+            "oldPrice": 519.99,
+            "rating": 4.7,
+            "reviewCount": 29
         }
     ]
 }
