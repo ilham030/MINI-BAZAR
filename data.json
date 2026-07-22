@@ -407,6 +407,17 @@
             "inStock": true,
             "rating": 5,
             "reviewCount": 346
+        },
+        {
+            "id": 34,
+            "name": "Premium Çanta",
+            "price": 29,
+            "category": "çanta",
+            "img": "images/products/img_1784742860961_hnebun.jpg",
+            "description": "👜 Karobkalı məhsuldur – Hər biri 29 AZN!\n\n🆘Say çox olduqda əlavə endirim tətbiq olunur 🆘\n\n🔒 Paslanmaz polad aksesuar – 5 il zəmanət\n🌿 Material: Eko dəri\n🎁 Qiymətə karobka daxildir\n\n📲 Sifariş üçün yaz:\n🆘 077-391-13-00 🆘",
+            "inStock": true,
+            "rating": 5,
+            "reviewCount": 469
         }
     ]
 }
