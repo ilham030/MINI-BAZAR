@@ -189,6 +189,18 @@
             "oldPrice": 339.99,
             "rating": 4.5,
             "reviewCount": 45
+        },
+        {
+            "id": 15,
+            "name": "Samsung Galaxy A07 (6 GB / 128 GB)",
+            "price": 274,
+            "category": "elektronika",
+            "img": "images/products/img_1784735340895_e94ozy.jpg",
+            "description": "Samsung Galaxy A07 (6 GB / 128 GB)\nMəhsulun Adı: Samsung Galaxy A07 (6 GB / 128 GB) - Maksimum Performans!\n\nMövcud Rənglər: 🖤 Black (Qara), 💚 Green (Yaşıl), 💜 Violet (Bənövşəyi)\n\nQiymət: ~~359.99 AZN~~ deyil, cəmi 274 AZN (85.99 AZN Qənaət!)\n\nTəsvir: A07 seriyasının ən güclü versiyası! 6 GB RAM ilə donmadan, rahat və sürətli istifadə təcrübəsi. Rəsmi Samsung zəmanəti ilə.\n\nSifariş: WhatsApp: 077 391 13 00",
+            "inStock": true,
+            "oldPrice": 359.99,
+            "rating": 4.4,
+            "reviewCount": 71
         }
     ]
 }
