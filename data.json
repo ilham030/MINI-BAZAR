@@ -201,6 +201,18 @@
             "oldPrice": 359.99,
             "rating": 4.4,
             "reviewCount": 71
+        },
+        {
+            "id": 16,
+            "name": "Samsung Galaxy S26 Ultra (12 GB / 256 GB)",
+            "price": 3100,
+            "category": "elektronika",
+            "img": "images/products/img_1784735616045_mlwv03.jpg",
+            "description": "Samsung Galaxy S26 Ultra (12 GB / 256 GB)\nMəhsulun Adı: Samsung Galaxy S26 Ultra (12 GB / 256 GB)\n\nMövcud Rənglər: 🖤 Black (Qara), 💜 Violet (Bənövşəyi), 🤍 Ağ\n\nQiymət: ~~3499 AZN~~ deyil, cəmi 3100 AZN (399 AZN Qənaət!)\n\nTəsvir: Ən son texnologiya möcüzəsi və üstün performans! S26 Ultra modeli ilə texnologiyanın zirvəsini hiss edin. Tam Rəsmi Samsung Zəmanəti və sərfəli kredit imkanı ilə Mini Bazar-da!\n\nSifariş: WhatsApp: 077 391 13 00",
+            "inStock": true,
+            "oldPrice": 3499,
+            "rating": 5,
+            "reviewCount": 250
         }
     ]
 }
