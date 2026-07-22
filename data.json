@@ -1,10 +1,30 @@
 {
     "categories": [
-        { "id": "all", "label": "Hamısı", "icon": "fa-table-cells" },
-        { "id": "elektronika", "label": "Elektronika", "icon": "fa-laptop" },
-        { "id": "geyim", "label": "Geyim", "icon": "fa-shirt" },
-        { "id": "çanta", "label": "Çantalar", "icon": "fa-bag-shopping" },
-        { "id": "mebel", "label": "Mebel", "icon": "fa-couch" }
+        {
+            "id": "all",
+            "label": "Hamısı",
+            "icon": "fa-table-cells"
+        },
+        {
+            "id": "elektronika",
+            "label": "Elektronika",
+            "icon": "fa-laptop"
+        },
+        {
+            "id": "geyim",
+            "label": "Geyim",
+            "icon": "fa-shirt"
+        },
+        {
+            "id": "çanta",
+            "label": "Çantalar",
+            "icon": "fa-bag-shopping"
+        },
+        {
+            "id": "mebel",
+            "label": "Mebel",
+            "icon": "fa-couch"
+        }
     ],
     "products": [
         {
@@ -16,7 +36,7 @@
             "img": "https://i.postimg.cc/qMnyZKpq/Chat-GPT-Image-Jul-19-2026-02-51-30-PM.png",
             "description": "Premium iPhone 17 Pro (256 GB) - Peşəkarların və yüksək keyfiyyət sevənlərin seçimi. Maksimum performans, unikal dizayn. Sərfəli kredit imkanı mövcuddur!",
             "inStock": true,
-            "rating": 5.0,
+            "rating": 5,
             "reviewCount": 18
         },
         {
@@ -28,7 +48,7 @@
             "img": "https://i.postimg.cc/Hk7jn982/Chat-GPT-Image-Jul-19-2026-02-01-28-PM.png",
             "description": "iPhone 16 (sadə) modelində möhtəşəm endirim! Kredit imkanı mövcuddur!",
             "inStock": true,
-            "rating": 5.0,
+            "rating": 5,
             "reviewCount": 12
         },
         {
@@ -39,7 +59,7 @@
             "img": "https://i.postimg.cc/1RvzH3xS/Chat-GPT-Image-Jul-19-2026-02-31-02-PM.png",
             "description": "Premium Titan Dizayn, Peşəkar Kamera Sistemi, A18 Pro Çipi. Məhdud sayda! Kredit şərtləri mövcuddur.",
             "inStock": true,
-            "rating": 5.0,
+            "rating": 5,
             "reviewCount": 18
         },
         {
@@ -51,7 +71,7 @@
             "img": "https://i.postimg.cc/6QBsgCR0/Chat-GPT-Image-Jul-19-2026-02-34-37-PM.png",
             "description": "Ən son texnologiya, mükəmməl dizayn və inanılmaz performans. Sərfəli kredit şərtləri ilə mövcud!",
             "inStock": true,
-            "rating": 5.0,
+            "rating": 5,
             "reviewCount": 14
         },
         {
@@ -79,7 +99,7 @@
         {
             "id": 7,
             "name": "Zərif don",
-            "price": 25.00,
+            "price": 25,
             "category": "geyim",
             "img": "https://i.postimg.cc/g2f0dwzg/Whats-App-Image-2026-07-18-at-22-21-17.jpg",
             "description": "Əlverişli və zərif geyim",
@@ -90,7 +110,7 @@
         {
             "id": 8,
             "name": "Premium Eko-Dəri Çanta",
-            "price": 35.00,
+            "price": 35,
             "category": "çanta",
             "img": "https://i.postimg.cc/wvY351nf/Whats-App-Image-2026-07-18-at-22-22-43.jpg",
             "description": "Həm zərif, həm də premium görünüşü ilə üslubunuzu tamamlayacaq mükəmməl çanta! Yüksək keyfiyyətli materialı və şık dizaynı ilə həm gündəlik istifadə üçün uyğundur.",
@@ -109,6 +129,18 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 42
+        },
+        {
+            "id": 10,
+            "name": "Samsung Galaxy A17 (4 GB / 128 GB)",
+            "price": 344,
+            "category": "elektronika",
+            "img": "images/products/img_1784726197748_p3rahd.jpg",
+            "description": "Samsung Galaxy A17 (4 GB / 128 GB) - \"Sərfəli Başlanğıc\"\nVizual Konsepsiya:\n\nMəqsəd: Giriş səviyyəli gücü və sərfəli qiyməti vurğulamaq.\n\nFon: Təmiz, minimalist ağ və açıq boz rənglərin ahəngi. Arxa planda abstrakt, yumşaq həndəsi fiqurlar.\n\nƏsas Element: Şəklin mərkəzində iki ədəd Samsung Galaxy A17 (Qara və Açıq Mavi) yan-yana qoyulub. Biri arxası, digəri ekranı tərəfə baxır.\n\nQrafik Elementlər:\n\nBaşlıq: Samsung Galaxy A17 (4GB | 128GB)\n\nVurğu: Ağıllı seçim!\n\nQiymət: 344 AZN (479.99 AZN)\n\nAşağıda: Rəsmi Zəmanət | Kredit İmkanı",
+            "inStock": true,
+            "oldPrice": 479,
+            "rating": 4.8,
+            "reviewCount": 20
         }
     ]
 }
