@@ -1,4 +1,6 @@
-const CACHE_NAME = 'minibazar-v1';
+// Keş versiyasını hər dəfə saytda əsaslı dəyişiklik edəndə artırın (v1 -> v2 -> v3...)
+// Bu, köhnə Service Worker keşinin istifadəçilərdə "yapışıb qalmasının" qarşısını alır.
+const CACHE_NAME = 'minibazar-v2';
 const urlsToCache = [
   './',
   './index.html',
@@ -39,11 +41,25 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Sayta daxil olanda məlumatları keşdən və ya internetdən yükləmək
+// ============ FETCH STRATEGİYASI: ŞƏBƏKƏ ÖNCƏLİKLİ (network-first) ============
+// Qeyd: köhnə versiya "keş öncəlikli" idi (əvvəl caches.match, sonra fetch).
+// Bu, admin paneldən data.json-a yazılan yeniliklərin və ya sayta edilən
+// yeni dəyişikliklərin PWA quraşdırmış istifadəçilərdə HEÇ VAXT görünməməsinə
+// səbəb ola bilərdi — çünki brauzer həmişə köhnə keşlənmiş faylı göstərirdi.
+// İndi əvvəlcə şəbəkədən (ən son versiya) cəhd edilir; yalnız internet
+// yoxdursa keşdən (offline fallback) istifadə olunur.
 self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
-    caches.match(event.request).then(response => {
-      return response || fetch(event.request);
-    })
+    fetch(event.request)
+      .then(networkResponse => {
+        const responseClone = networkResponse.clone();
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, responseClone).catch(() => {});
+        });
+        return networkResponse;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
