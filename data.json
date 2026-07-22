@@ -285,6 +285,18 @@
             "oldPrice": 800,
             "rating": 4.8,
             "reviewCount": 450
+        },
+        {
+            "id": 23,
+            "name": "Samsung Galaxy A27 (6 GB / 128 GB)",
+            "price": 605,
+            "category": "elektronika",
+            "img": "images/products/img_1784737284335_1ugmvb.jpg",
+            "description": "Məhsulun Adı: Samsung Galaxy A27 (6 GB / 128 GB) — Böyük Endirim Həyəcanı!\n\nMövcud Rənglər: 🖤 Klassik Qara (Black), 💙 Möhtəşəm Göy (Blue)\n\nƏvvəlki Qiymət: ~~699 AZN~~\n\n🔥 YENİ ŞOK QİYMƏT: 605 AZN (Cəmi 94 AZN Xüsusi Qənaət!)\n\n🌟 Niyə Məhz MİNİ BAZAR?\n📜 100% Orijinal: Rəsmi Samsung istehsalı olan tam zəmanətli məhsullar.\n\n🛡️ Rəsmi Zəmanət: Hər bir telefona rəsmi zəmanət talonu təqdim edilir.\n\n💳 Sərfəli Kredit: Büdcənizi yormadan, rahat hissə-hissə ödəniş imkanı!\n\n🚀 Qısa Satış Təsviri:\nSmartfonunu yeniləmək istəyənlər üçün ideal fürsət! Həm şık, həm də gündəlik istifadə üçün super sürətli Samsung Galaxy A27 (128 GB) modeli indi xüsusi endirimlə Mini Bazar-da! Stoklar məhduddur, fürsəti qaçırmayın!\n\n📞 Sifariş və Əlaqə:\n\n📱 WhatsApp / Zəng: 077 391 13 00\n\n🛒 Mağaza / Kanal: Mini Bazar",
+            "inStock": true,
+            "oldPrice": 699,
+            "rating": 4.9,
+            "reviewCount": 510
         }
     ]
 }
