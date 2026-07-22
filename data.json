@@ -249,6 +249,18 @@
             "oldPrice": 2750,
             "rating": 4.9,
             "reviewCount": 350
+        },
+        {
+            "id": 20,
+            "name": "Samsung Galaxy A57 (8 GB / 256 GB)",
+            "price": 1050,
+            "category": "elektronika",
+            "img": "images/products/img_1784736303440_1caqy8.jpg",
+            "description": "Məhsulun Adı: Samsung Galaxy A57 (8 GB / 256 GB) — Rəsmi Zəmanətlə!\n\nMövcud Rənglər: 💙 Dark Blue (Tünd Mavi), 🖤 Gray (Boz), 🩵 Light Blue (Açıq Mavi)\n\nƏvvəlki Qiymət: ~~1259 AZN~~\n\n🔥 YENİ ŞOK QİYMƏT: 1050 AZN (Cəmi 209 AZN Şok Qənaət!)\n\n🌟 Niyə Məhz MİNİ BAZAR-dan Almalısınız?\n📜 100% Orijinal: Rəsmi Samsung istehsalı olan tam zəmanətli məhsullar.\n\n🛡️ Rəsmi Zəmanət: Hər bir telefona rəsmi zəmanət talonu təqdim edilir.\n\n💳 Sərfəli Kredit: Büdcənizə uyğun aylıq ödənişlərlə hissə-hissə ödəyin!",
+            "inStock": true,
+            "oldPrice": 1259,
+            "rating": 4.7,
+            "reviewCount": 299
         }
     ]
 }
