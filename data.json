@@ -237,6 +237,18 @@
             "oldPrice": 2449,
             "rating": 5,
             "reviewCount": 600
+        },
+        {
+            "id": 19,
+            "name": "Samsung Galaxy S26 (12 GB / 512 GB)",
+            "price": 2300,
+            "category": "elektronika",
+            "img": "images/products/img_1784736147874_yv5tj4.jpg",
+            "description": "Samsung Galaxy S26 (12 GB / 512 GB) — Maksimum Yaddaş!\n\nMövcud Rənglər: 🖤 Black (Qara)\n\nƏvvəlki Qiymət: ~~2750 AZN~~\n\n🔥 YENİ ŞOK QİYMƏT: 2300 AZN (Cəmi 450 AZN Qənaət!)\n\nLimitsiz yaddaş, maksimum performans! 512 GB tutumlu Galaxy S26 ilə foto, video və işlərinizi bir yerdə toplayın. Şok qiyməti qaçırmamaq üçün elə indi sifariş edin!\n\n💳 Kredit Şərtləri: Sərfəli aylıq ödənişlərlə hissə-hissə ödəyin.\n\nSifariş üçün: WhatsApp: 077 391 13 00",
+            "inStock": true,
+            "oldPrice": 2750,
+            "rating": 4.9,
+            "reviewCount": 350
         }
     ]
 }
