@@ -225,6 +225,18 @@
             "oldPrice": 3899,
             "rating": 4.9,
             "reviewCount": 400
+        },
+        {
+            "id": 18,
+            "name": "Samsung Galaxy S26 (12 GB / 256 GB)",
+            "price": 2100,
+            "category": "elektronika",
+            "img": "images/products/img_1784736049435_fi34gy.jpg",
+            "description": "Samsung Galaxy S26 (12 GB / 256 GB)\nMəhsulun Adı: Samsung Galaxy S26 (12 GB / 256 GB) — Rəsmi Zəmanətlə!\n\nMövcud Rənglər: 🖤 Black (Qara), 🩵 Light Blue (Açıq Mavi), 💜 Violet (Bənövşəyi)\n\nƏvvəlki Qiymət: ~~2449 AZN~~\n\n🔥 Nağd Qiymət: 2120 AZN (Cəmi 329 AZN Net Qənaət!)\n\nƏn son flaqman texnologiyasına sahib olmaq indi daha asandır! 100% orijinal, rəsmi Samsung zəmanətli Galaxy S26 modeli sərfəli kredit və ya nəğd endirimlə Mini Bazar-da sizi gözləyir.",
+            "inStock": true,
+            "oldPrice": 2449,
+            "rating": 5,
+            "reviewCount": 600
         }
     ]
 }
