@@ -165,6 +165,18 @@
             "oldPrice": 619.99,
             "rating": 5,
             "reviewCount": 35
+        },
+        {
+            "id": 13,
+            "name": "Samsung Galaxy A07 (4 GB / 64 GB)",
+            "price": 232,
+            "category": "elektronika",
+            "img": "images/products/img_1784735155209_1kgfu1.jpg",
+            "description": "Samsung Galaxy A07 (4 GB / 64 GB)\nMəhsulun Adı: Samsung Galaxy A07 (4 GB / 64 GB)\n\nMövcud Rənglər: 🖤 Black (Qara), 💚 Green (Yaşıl)\n\nQiymət: ~~309.99 AZN~~ deyil, cəmi 232 AZN (77.99 AZN Qənaət!)\n\nTəsvir: Ən münasib qiymətə rəsmi Samsung keyfiyyəti! Həm büdcənizə dost, həm də gündəlik istifadə üçün tam əlverişli model. Rəsmi zəmanət və kredit imkanı ilə.\n\nSifariş: WhatsApp: 077 391 13 00",
+            "inStock": true,
+            "oldPrice": 309.99,
+            "rating": 4.1,
+            "reviewCount": 39
         }
     ]
 }
