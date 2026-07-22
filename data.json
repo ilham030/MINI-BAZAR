@@ -213,6 +213,18 @@
             "oldPrice": 3499,
             "rating": 5,
             "reviewCount": 250
+        },
+        {
+            "id": 17,
+            "name": "Samsung Galaxy S26 Ultra (12 GB / 512 GB)",
+            "price": 3400,
+            "category": "elektronika",
+            "img": "images/products/img_1784735713453_iuigm7.jpg",
+            "description": "Məhsulun Adı: Samsung Galaxy S26 Ultra (12 GB / 512 GB) - Maksimum Yaddaş və Güc!\n\nMövcud Rənglər: 🖤 Black (Qara), 💜 Violet (Bənövşəyi), 🤍 Ağ\n\nQiymət: ~~3899 AZN~~ deyil, cəmi 3400 AZN (499 AZN Qənaət!)\n\nTəsvir: Şəkilləriniz, 8K videolarınız və böyük fayllarınız üçün nəhəng 512 GB yaddaş! Şok endirim fürsətini qaçırmayın.\n\nSifariş: WhatsApp: 077 391 13 00",
+            "inStock": true,
+            "oldPrice": 3899,
+            "rating": 4.9,
+            "reviewCount": 400
         }
     ]
 }
