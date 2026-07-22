@@ -374,6 +374,17 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 620
+        },
+        {
+            "id": 31,
+            "name": "Premium Çanta",
+            "price": 20,
+            "category": "çanta",
+            "img": "images/products/img_1784741168693_t2s7vg.jpg",
+            "description": "🔥 TREND ÇANTALAR GƏLDİ! – Cəmi 20 AZN 🔥\n💼 Yeni modellər, yumşaq material, gündəlik və dəbli istifadə üçün ideal!\n\n👜 2026-in ən çox satılan formaları – hər rəng mövcuddur\n✨ Keyfiyyətli, yüngül və rahat model – hər kombinə uyğun\n\n📩 Sifariş: 077-391-13-00",
+            "inStock": true,
+            "rating": 5,
+            "reviewCount": 493
         }
     ]
 }
