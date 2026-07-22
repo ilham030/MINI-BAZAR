@@ -10,7 +10,7 @@ const REPO_NAME = 'MINI-BAZAR';
 const DATA_PATH = 'data.json';
 const IMAGES_DIR = 'images/products';
 const API_BASE = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
-const SITE_URL = `https://${REPO_OWNER}.github.io/${REPO_NAME}/index.htm`;
+const SITE_URL = `https://${REPO_OWNER}.github.io/${REPO_NAME}/`;
 
 const LS_PIN = 'mb_admin_pin_hash';
 const LS_TOKEN = 'mb_github_token';
