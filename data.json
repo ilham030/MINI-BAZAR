@@ -153,6 +153,18 @@
             "oldPrice": 519.99,
             "rating": 4.7,
             "reviewCount": 29
+        },
+        {
+            "id": 12,
+            "name": "Samsung Galaxy A17 (8 GB / 256 GB)",
+            "price": 443,
+            "category": "elektronika",
+            "img": "images/products/img_1784726861606_43iq4u.jpg",
+            "description": "Samsung Galaxy A17 (8 GB / 256 GB) - \"Maksimum Performans\"\nVizual Konsepsiya:\n\nMəqsəd: Ən yüksək yaddaş və güc imkanlarını, premium və eksklüziv hisslərlə birlikdə çatdırmaq.\n\nFon: Dərin tünd göy və qızılı/mis rənglərinin qarışığı. Arxa planda Samsung-un A seriyası dizaynına uyğun abstrakt, parlayan \"Awesome\" naxışları.\n\nƏsas Element: Şəklin mərkəzində bir ədəd premium Qara Samsung Galaxy A17 (8GB / 256GB) qoyulub. Cihaz bir qədər yuxarıya doğru yönəldilib və arxasında incə qızılı parıltı var. Ekranında eksklüziv, yüksək keyfiyyətli bir vizual əks olunub.\n\nQrafik Elementlər:\n\nBaşlıq: Samsung Galaxy A17 (8GB | 256GB)\n\nVurğu: Maksimum güc və geniş yaddaş!\n\nQiymət: 443 AZN (619.99 AZN)\n\nAşağıda: Rəsmi Zəmanət | Sərfəli Kredit",
+            "inStock": true,
+            "oldPrice": 619.99,
+            "rating": 5,
+            "reviewCount": 35
         }
     ]
 }
