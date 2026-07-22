@@ -440,6 +440,17 @@
             "inStock": true,
             "rating": 4.6,
             "reviewCount": 276
+        },
+        {
+            "id": 37,
+            "name": "Premium Eko Dəri Çanta",
+            "price": 32,
+            "category": "çanta",
+            "img": "images/products/img_1784743268207_2bfjgh.jpg",
+            "description": "👜  Hər biri 25 azn\n🔒 Paslanmaz polad aksesuar – 5 il zəmanət\n🌿 Material: Eco deri\n\n📦 Say çox olduqda əlavə endirim tətbiq olunur  \n\n📲 Sifariş üçün yaz:\n🆘 077-391-13-00 🆘",
+            "inStock": true,
+            "rating": 4.7,
+            "reviewCount": 320
         }
     ]
 }
