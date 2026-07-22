@@ -308,6 +308,17 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 430
+        },
+        {
+            "id": 25,
+            "name": "HOFFMANN Dondurucu (6 Polka • No Frost)",
+            "price": 750,
+            "category": "elektronika",
+            "img": "images/products/img_1784738422259_v0hpk4.jpg",
+            "description": "HOFFMANN Dondurucu (6 Polka • No Frost)\nQısa Təsvir\n\nHOFFMANN No Frost dondurucu geniş tutumu, müasir dizaynı və enerjiyə qənaət edən sistemi ilə qidalarınızı uzun müddət təzə saxlamaq üçün ideal seçimdir.\n\nMəhsul Haqqında\n\n❄️ HOFFMANN Dondurucu ailə və biznes istifadəsi üçün yüksək keyfiyyətli və etibarlı modeldir. No Frost texnologiyası sayəsində buzlanmanın qarşısını alır və əlavə təmizləmə tələb etmir.\n\nTexniki Xüsusiyyətlər\n\n✅ Marka: HOFFMANN\n\n✅ No Frost texnologiyası\n\n✅ 6 geniş saxlama bölməsi (Polka)\n\n✅ Hündürlük: 170 sm\n\n✅ En: 55 sm\n\n✅ Dərinlik: 60 sm\n\n✅ Ağ rəng\n\n✅ Enerjiyə qənaət edən sistem\n\nQiymət\n\n💰 750 AZN\n\n💳 Kreditlə əldə etmək mümkündür.\n\nÜstünlükləri\n\n✔️ No Frost sistemi\n\n✔️ Geniş daxili həcm\n\n✔️ Səssiz işləmə\n\n✔️ Aşağı enerji sərfiyyatı\n\n✔️ Uzunömürlü istifadə\n\n✔️ Rəsmi zəmanət\n\nÇatdırılma və Sifariş\n\n🚚 Sürətli çatdırılma mövcuddur.\n\n📞 Sifariş və ətraflı məlumat üçün:\n\n077 391 13 00",
+            "inStock": true,
+            "rating": 4.9,
+            "reviewCount": 400
         }
     ]
 }
