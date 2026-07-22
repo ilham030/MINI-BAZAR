@@ -2,19 +2,19 @@
 // ƏSAS MƏNTIQ FİLESİ
 // ============================================
 
+let PRODUCTS = [];
+let CATEGORIES = [];
 let cart = [];
 let currentCategory = 'all';
 let currentSearchTerm = '';
-let PRODUCTS = [];
-let CATEGORIES = [];
 
 // ============ İNİTİALİZASİYA ============
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     // LocalStorage-dan səbəti yüklə
     loadCartFromStorage();
 
-    // Footer-dakı dinamik məlumatları doldur (məhsullardan asılı deyil)
+    // Footer və hero-dakı dinamik məlumatları doldur
     renderStoreInfo();
 
     // Scroll ilə "yuxarı qayıt" düyməsini idarə et
@@ -34,58 +34,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Məhsulları və kateqoriyaları data.json-dan yüklə
-    loadStoreData();
+    await loadStoreData();
 });
 
-function loadStoreData() {
-    const loadingSpinner = document.getElementById('loading-spinner');
+// ============ MƏHSUL MƏLUMATLARININ YÜKLƏNMƏSİ (data.json) ============
+// Admin panelindən edilən bütün əlavələr/redaktələr data.json faylına yazılır.
+// Ona görə sayt həmişə bu faylı, HƏM DƏ keşdən keçmədən (cache: 'no-store' +
+// timestamp) oxumalıdır ki, admin panelindəki yeniliklər dərhal görünsün.
+
+async function loadStoreData() {
     const grid = document.getElementById('products-grid');
-    const emptyState = document.getElementById('empty-state');
-
-    if (loadingSpinner) loadingSpinner.classList.remove('hidden');
-    if (emptyState) emptyState.classList.add('hidden');
-    if (grid) grid.innerHTML = '';
-
-    // Keş problemlərinin qarşısını almaq üçün hər dəfə təzə versiya çəkirik
-    fetch(`data.json?t=${Date.now()}`)
-        .then(response => {
-            if (!response.ok) throw new Error('Şəbəkə xətası');
-            return response.json();
-        })
-        .then(data => {
-            PRODUCTS = data.products || [];
-            CATEGORIES = data.categories || [];
-
-            renderCategoryButtons();
-
-            // Skeleton loader-in bir anlıq görünməsi üçün qısa gecikmə
-            setTimeout(() => {
-                applyFilters();
-            }, 400);
-        })
-        .catch(error => {
-            console.warn('Məhsullar yüklənərkən xəta:', error);
-            showLoadError();
-        });
-}
-
-function showLoadError() {
     const loadingSpinner = document.getElementById('loading-spinner');
-    const grid = document.getElementById('products-grid');
-    const emptyState = document.getElementById('empty-state');
 
-    if (loadingSpinner) loadingSpinner.classList.add('hidden');
-    if (emptyState) emptyState.classList.add('hidden');
-    if (grid) {
-        grid.innerHTML = `
-            <div class="col-span-full text-center py-12">
-                <i class="fa-solid fa-triangle-exclamation text-5xl text-amber-400 mb-4"></i>
-                <p class="text-gray-600 text-lg mb-4">Məhsullar yüklənə bilmədi.</p>
-                <button onclick="loadStoreData()" class="bg-indigo-600 text-white px-6 py-2 rounded-full hover:bg-indigo-700 transition">
-                    Yenidən cəhd et
-                </button>
-            </div>
-        `;
+    try {
+        const response = await fetch(`data.json?t=${Date.now()}`, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const data = await response.json();
+        PRODUCTS = data.products || [];
+        CATEGORIES = data.categories || [];
+
+        renderCategoryButtons();
+        applyFilters();
+    } catch (error) {
+        console.error('data.json yüklənərkən xəta:', error);
+        if (loadingSpinner) loadingSpinner.classList.add('hidden');
+        if (grid) {
+            grid.innerHTML = '<p class="text-red-500 col-span-full text-center">Məhsullar yüklənərkən xəta baş verdi. Zəhmət olmasa səhifəni yeniləyin.</p>';
+        }
     }
 }
 
@@ -112,11 +88,14 @@ function renderStoreInfo() {
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // Footer sosial linklər
+    const waLink = document.getElementById('footer-whatsapp');
+    if (waLink) waLink.href = `https://wa.me/${CONFIG.WHATSAPP_NUMBER}`;
+
     const igLink = document.getElementById('footer-instagram');
     if (igLink && CONFIG.SOCIAL && CONFIG.SOCIAL.instagram) igLink.href = CONFIG.SOCIAL.instagram;
 
-    const waChannelLink = document.getElementById('footer-whatsapp-channel');
-    if (waChannelLink && CONFIG.SOCIAL && CONFIG.SOCIAL.whatsappChannel) waChannelLink.href = CONFIG.SOCIAL.whatsappChannel;
+    const fbLink = document.getElementById('footer-facebook');
+    if (fbLink && CONFIG.SOCIAL && CONFIG.SOCIAL.facebook) fbLink.href = CONFIG.SOCIAL.facebook;
 }
 
 function formatPhoneDisplay(number) {
@@ -223,13 +202,6 @@ function updateResultsCount(count, isSearching) {
     resultsEl.textContent = count === 0 ? '' : `${count} məhsul tapıldı`;
 }
 
-// ============ ENDİRİM HESABLAMASI ============
-
-function getDiscountPercent(product) {
-    if (!product.oldPrice || product.oldPrice <= product.price) return null;
-    return Math.round((1 - (product.price / product.oldPrice)) * 100);
-}
-
 // ============ MƏHSULLARI GÖSTƏRƏN FUNKSIYALAR ============
 
 function displayProducts(productsToRender) {
@@ -250,39 +222,13 @@ function displayProducts(productsToRender) {
     grid.innerHTML = '';
 
     productsToRender.forEach(product => {
-        const discountPercent = getDiscountPercent(product);
         const outOfStock = product.inStock === false;
 
-        let priceDisplay;
-        if (product.customPrice) {
-            priceDisplay = '<span class="text-indigo-600 font-black text-lg">Sorğu ilə</span>';
-        } else if (discountPercent) {
-            priceDisplay = `
-                <div class="flex flex-col">
-                    <span class="text-gray-400 text-xs line-through">${formatPrice(product.oldPrice)} ${CONFIG.STORE_CURRENCY}</span>
-                    <span class="text-indigo-600 font-black text-lg">${formatPrice(product.price)} ${CONFIG.STORE_CURRENCY}</span>
-                </div>`;
-        } else {
-            priceDisplay = `<span class="text-indigo-600 font-black text-lg">${formatPrice(product.price)} ${CONFIG.STORE_CURRENCY}</span>`;
-        }
+        const priceDisplay = product.customPrice
+            ? '<span class="text-indigo-600 font-black text-lg">Sorğu ilə</span>'
+            : `<span class="text-indigo-600 font-black text-lg">${formatPrice(product.price)} ${CONFIG.STORE_CURRENCY}</span>`;
 
         const ratingDisplay = buildRatingMarkup(product, 'text-xs');
-
-        const cartButton = outOfStock
-            ? `<button
-                    disabled
-                    class="bg-gray-200 text-gray-400 p-2 rounded-lg cursor-not-allowed"
-                    aria-label="Stokda yoxdur"
-                    title="Stokda yoxdur">
-                    <i class="fa-solid fa-ban"></i>
-                </button>`
-            : `<button 
-                    onclick="event.stopPropagation(); addToCart(${product.id})" 
-                    class="bg-indigo-600 text-white p-2 rounded-lg hover:bg-indigo-700 transition focus:ring-2 focus:ring-indigo-600 focus:outline-none"
-                    aria-label="${product.name} səbətə əlavə et"
-                    title="Səbətə əlavə et">
-                    <i class="fa-solid fa-cart-plus"></i>
-                </button>`;
 
         const card = document.createElement('div');
         card.className = 'bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition flex flex-col group focus-within:ring-2 focus-within:ring-indigo-600';
@@ -294,13 +240,12 @@ function displayProducts(productsToRender) {
                 <img 
                     src="${product.img}" 
                     alt="${product.name}" 
-                    class="w-full h-full object-cover group-hover:scale-105 transition duration-300 lazy-image ${outOfStock ? 'grayscale opacity-60' : ''}"
+                    class="w-full h-full object-cover group-hover:scale-105 transition duration-300 lazy-image ${outOfStock ? 'opacity-50' : ''}"
                     loading="lazy">
                 <span class="absolute top-2 right-2 bg-indigo-600 text-white text-xs px-3 py-1 rounded-full">
                     ${product.category.toUpperCase()}
                 </span>
-                ${discountPercent ? `<span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">-${discountPercent}%</span>` : ''}
-                ${outOfStock ? `<div class="absolute inset-0 bg-black/40 flex items-center justify-center"><span class="bg-white/90 text-gray-800 text-xs font-bold px-3 py-1 rounded-full">Stokda yoxdur</span></div>` : ''}
+                ${outOfStock ? '<span class="absolute top-2 left-2 bg-gray-800 text-white text-xs px-3 py-1 rounded-full">Stokda yoxdur</span>' : ''}
             </div>
             <div class="p-4 flex flex-col flex-1 justify-between">
                 <div>
@@ -310,7 +255,14 @@ function displayProducts(productsToRender) {
                 </div>
                 <div class="flex justify-between items-center mt-4">
                     ${priceDisplay}
-                    ${cartButton}
+                    <button 
+                        onclick="event.stopPropagation(); addToCart(${product.id})" 
+                        class="bg-indigo-600 text-white p-2 rounded-lg hover:bg-indigo-700 transition focus:ring-2 focus:ring-indigo-600 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed"
+                        aria-label="${product.name} səbətə əlavə et"
+                        title="Səbətə əlavə et"
+                        ${outOfStock ? 'disabled' : ''}>
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </button>
                 </div>
             </div>
         `;
@@ -350,9 +302,6 @@ function openProductModal(id) {
     const product = PRODUCTS.find(p => p.id === id);
     if (!product) return;
 
-    const outOfStock = product.inStock === false;
-    const discountPercent = getDiscountPercent(product);
-
     document.getElementById('product-modal-img').src = product.img;
     document.getElementById('product-modal-img').alt = product.name;
     document.getElementById('product-modal-category').textContent = product.category.toUpperCase();
@@ -363,30 +312,16 @@ function openProductModal(id) {
     const addBtn = document.getElementById('product-modal-add-btn');
 
     if (product.customPrice) {
-        priceEl.innerHTML = 'Sorğu ilə';
+        priceEl.textContent = 'Sorğu ilə';
         addBtn.innerHTML = '<i class="fa-brands fa-whatsapp"></i><span>WhatsApp ilə soruş</span>';
-        addBtn.disabled = false;
-        addBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-    } else if (outOfStock) {
-        priceEl.innerHTML = `${formatPrice(product.price)} ${CONFIG.STORE_CURRENCY}`;
-        addBtn.innerHTML = '<i class="fa-solid fa-ban"></i><span>Stokda yoxdur</span>';
-        addBtn.disabled = true;
-        addBtn.classList.add('opacity-50', 'cursor-not-allowed');
-    } else if (discountPercent) {
-        priceEl.innerHTML = `<span class="text-gray-400 text-lg line-through mr-2">${formatPrice(product.oldPrice)} ${CONFIG.STORE_CURRENCY}</span>${formatPrice(product.price)} ${CONFIG.STORE_CURRENCY}`;
-        addBtn.innerHTML = '<i class="fa-solid fa-cart-plus"></i><span>Səbətə əlavə et</span>';
-        addBtn.disabled = false;
-        addBtn.classList.remove('opacity-50', 'cursor-not-allowed');
     } else {
-        priceEl.innerHTML = `${formatPrice(product.price)} ${CONFIG.STORE_CURRENCY}`;
+        priceEl.textContent = `${formatPrice(product.price)} ${CONFIG.STORE_CURRENCY}`;
         addBtn.innerHTML = '<i class="fa-solid fa-cart-plus"></i><span>Səbətə əlavə et</span>';
-        addBtn.disabled = false;
-        addBtn.classList.remove('opacity-50', 'cursor-not-allowed');
     }
 
     addBtn.onclick = () => {
         addToCart(product.id);
-        if (product.inStock !== false) closeProductModal();
+        closeProductModal();
     };
 
     const ratingEl = document.getElementById('product-modal-rating');
@@ -424,14 +359,14 @@ function addToCart(id) {
 
     if (!product) return;
 
-    if (product.inStock === false) {
-        showToast('⚠️ Bu məhsul hazırda stokda yoxdur');
-        return;
-    }
-
     // Xüsusi qiymət məhsulları üçün xəbərdarlıq
     if (product.customPrice) {
         showToast('Zəhmət olmasa WhatsApp üzərindən qiymət soruşun');
+        return;
+    }
+
+    if (product.inStock === false) {
+        showToast('⚠️ Bu məhsul hazırda stokda yoxdur');
         return;
     }
 
