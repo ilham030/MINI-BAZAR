@@ -341,6 +341,17 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 700
+        },
+        {
+            "id": 28,
+            "name": "❄️ HOFFMANN Mini Soyuducu",
+            "price": 300,
+            "category": "elektronika",
+            "img": "images/products/img_1784740429359_9ms11f.jpg",
+            "description": "❄️ HOFFMANN Mini Soyuducu\nQısa Təsvir\n\nKompakt ölçüsü, səssiz işləməsi və enerjiyə qənaət edən sistemi ilə HOFFMANN Mini Soyuducu ev, ofis, bağ evi və tələbə otaqları üçün ideal seçimdir.\n\nMəhsul Haqqında\n\nHOFFMANN mini soyuducu az yer tutmasına baxmayaraq gündəlik istifadə üçün kifayət qədər saxlama həcmi təqdim edir. Müasir dizaynı, aşağı enerji sərfiyyatı və etibarlı performansı ilə rahat istifadə imkanı yaradır.\n\nTexniki Xüsusiyyətlər\n\n✅ Marka: HOFFMANN\n\n📏 Ölçü: 47 × 85 sm\n\n⚡ Enerji sinfi: A+\n\n🔇 Səssiz işləmə\n\n🥤 İçki və ərzaqlar üçün geniş daxili həcm\n\n🎨 Rəng: Ağ\n\nQiymət\n\n💰 300 AZN\n\n💳 Kreditlə əldə etmək mümkündür.\n\nÜstünlükləri\n\n✔️ Az yer tutur\n\n✔️ Enerjiyə qənaət edir\n\n✔️ Səssiz işləyir\n\n✔️ Müasir və zərif dizayn\n\n✔️ Ev, ofis və bağ evləri üçün ideal seçim\n\n✔️ Rəsmi zəmanət\n\nSifariş\n\n📞 077 391 13 00\n\n🚚 Sürətli çatdırılma mövcuddur.\n\n🛡️ Bütün məhsullar rəsmi zəmanətlə təqdim olunur.",
+            "inStock": true,
+            "rating": 4.5,
+            "reviewCount": 450
         }
     ]
 }
