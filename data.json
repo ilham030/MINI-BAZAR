@@ -330,6 +330,17 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 632
+        },
+        {
+            "id": 27,
+            "name": "PREMIER",
+            "price": 540,
+            "category": "elektronika",
+            "img": "images/products/img_1784740067682_ww7ftw.jpg",
+            "description": "PREMIER kondisioneri yüksək performans, səssiz işləmə və uzunömürlü istifadə üçün hazırlanmışdır. 150 Volt aşağı gərginlikdə belə stabil işləyərək elektrik gərginliyinin zəif olduğu yerlər üçün əla seçimdir.\n\nTexniki Xüsusiyyətlər\n\n✅ Marka: PREMIER\n\n✅ Güclü GMCC Kompressoru\n\n✅ 150 Volt aşağı gərginlikdə işləmə\n\n✅ Enerji sinfi: A\n\n✅ Ekonom rejim\n\n✅ Səssiz işləmə\n\n✅ Soyutma və isitmə funksiyası\n\n🛡️ 3 il rəsmi zəmanət\n\nQiymətlər\n\n💰 45 m² üçün: 540 AZN\n\n💰 60 m² üçün: 745 AZN\n\n💰 80 m² üçün: 985 AZN\n\nQiymətlər hazırkı bazar qiymətlərinə uyğundur.\n\n💳 Kreditlə əldə etmək mümkündür.\n\nÜstünlükləri\n\n✔️ 150 Volt aşağı gərginlikdə işləyir\n\n✔️ Güclü və etibarlı GMCC kompressoru\n\n✔️ Enerjiyə qənaət edir\n\n✔️ Səssiz işləmə\n\n✔️ Soyutma və isitmə rejimi\n\n✔️ 3 il rəsmi zəmanət\n\nSifariş\n\n📞 077 391 13 00\n\n🚚 Sürətli çatdırılma mövcuddur.\n\n🛡️ Bütün məhsullar rəsmi zəmanətlə təqdim olunur.",
+            "inStock": true,
+            "rating": 4.9,
+            "reviewCount": 700
         }
     ]
 }
