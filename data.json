@@ -319,6 +319,17 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 400
+        },
+        {
+            "id": 26,
+            "name": "Samsung No Frost",
+            "price": 1550,
+            "category": "elektronika",
+            "img": "images/products/img_1784739464746_jink67.jpg",
+            "description": "Samsung No Frost soyuducu qidalarınızı daha uzun müddət təzə saxlayır, buzlanmanın qarşısını alır və əlavə təmizləmə tələb etmir. Müasir metal rəngi və geniş daxili bölmələri ilə həm funksional, həm də estetik görünüş təqdim edir.\n\nTexniki Xüsusiyyətlər\n✅ Marka: Samsung\n❄️ No Frost texnologiyası\n📏 Hündürlük: 191 sm\n📏 En: 76 sm\n⚡ Enerjiyə qənaət edən sistem\n🔇 Səssiz işləmə\n🥬 Geniş meyvə-tərəvəz bölməsi\n🧊 Rahat dondurucu bölməsi\n🎨 Rəng: Metal (İnox)\nQiymətlər\n\n💰 Standart qiymət: 1570 AZN\n\n✨ Metal rəng: 1550 AZN\n\n💳 Kreditlə əldə etmək mümkündür.\n\nÜstünlükləri\n\n✔️ No Frost sistemi – buzlanmaya son\n\n✔️ A++ enerji səmərəliliyi\n\n✔️ Geniş daxili həcm\n\n✔️ Səssiz işləmə\n\n✔️ Müasir və zərif dizayn\n\n✔️ Rəsmi zəmanət\n\n✔️ Etibarlı və sürətli çatdırılma\n\nSifariş\n\n📞 077 391 13 00\n\n📦 Sürətli çatdırılma mövcuddur.\n\n🛡️ Bütün məhsullar rəsmi zəmanətlə təqdim olunur.",
+            "inStock": true,
+            "rating": 4.9,
+            "reviewCount": 632
         }
     ]
 }
