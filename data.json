@@ -1021,6 +1021,21 @@
             "oldPrice": 125,
             "rating": 5,
             "reviewCount": 425
+        },
+        {
+            "id": 74,
+            "name": "GALAKSİ ELECTRONİCS GVC-1708 2500W",
+            "price": 65,
+            "category": "elektronika",
+            "img": "images/products/img_1784833416512_fnptnq.jpg",
+            "images": [
+                "images/products/img_1784833416512_fnptnq.jpg"
+            ],
+            "description": "✅2-si 1-də Funksionallıq: Həm dik süpürgə, həm də əl süpürgəsi (portable) kimi istifadə olunur. Bu, həm döşəmələri, həm də divan aralarını və ya maşın salonunu təmizləmək üçün idealdır.\n\n✅Yüksək Güc (2500W): Sinfinin ən güclü mühərriklərindən birinə malikdir. Bu güc sayəsində ən xırda tozları və tükləri belə asanlıqla çəkir.\n\n✅HEPA Filtr Sistemi: Hava təmizləyici filtrə malikdir. Tozu daxilində saxlayır və çölə təmiz hava buraxır (allergiyası olanlar üçün mükəmməldir).\n\n✅Gənə Əleyhinə (Acarus Killing): Parça və xalçalardakı gözlə görünməyən gənələri (miteları) təmizləmək xüsusiyyəti var.\n\n✅Uzun Naqil (5 Metr): 5 metrlik kabel sayəsində otaq daxilində sərbəst hərəkət etmək mümkündür, tez-tez ştepseli dəyişməyə ehtiyac qalmır.\n\n✅2 İl Zəmanət: Müştəri üçün güvən deməkdir; məhsulun keyfiyyətinə olan əminliyi göstərir\n\n💸 QİYMƏT 65 AZN\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "oldPrice": 95,
+            "rating": 5,
+            "reviewCount": 433
         }
     ]
 }
