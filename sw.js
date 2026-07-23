@@ -1,6 +1,6 @@
 // Keş versiyasını hər dəfə saytda əsaslı dəyişiklik edəndə artırın (v1 -> v2 -> v3...)
 // Bu, köhnə Service Worker keşinin istifadəçilərdə "yapışıb qalmasının" qarşısını alır.
-const CACHE_NAME = 'minibazar-v2';
+const CACHE_NAME = 'minibazar-v3';
 const urlsToCache = [
   './',
   './index.html',
