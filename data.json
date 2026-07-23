@@ -682,6 +682,20 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 500
+        },
+        {
+            "id": 51,
+            "name": "HOFFMANN Paltaryuyan Maşın – 7 kq (Ağ Rəng)",
+            "price": 530,
+            "category": "elektronika",
+            "img": "images/products/img_1784828371100_5gjtkx.jpg",
+            "images": [
+                "images/products/img_1784828371100_5gjtkx.jpg"
+            ],
+            "description": "HOFFMANN Paltaryuyan Maşın – 7 kq (Ağ Rəng)\nGeniş Həcm, Maksimum Səmərəlilik!\n\nDaha böyük ailələr və geyim yükü çox olanlar üçün ideal olan HOFFMANN 7 kq (Ağ) modeli yorğan, pərdə və böyük geyimlərinizi rahatlıqla yumağa imkan verir.\n\nTutum: 7 kq\n\nRəng: Klassik Ağ\n\nMühərrik: Inverter Motor\n\nXüsusiyyətlər: Geniş nağara, uşaq kilidi, balans nəzarəti\n\nQiymət: 530 AZN\n\nZəmanət: Rəsmi Zəmanət",
+            "inStock": true,
+            "rating": 4.8,
+            "reviewCount": 530
         }
     ]
 }
