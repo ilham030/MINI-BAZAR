@@ -756,6 +756,20 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 465
+        },
+        {
+            "id": 56,
+            "name": "SİFARİŞLƏ HAZIRLANIR, İSDƏYƏ UYĞUN",
+            "price": 500,
+            "category": "elektronika",
+            "img": "images/products/img_1784829920492_pq43gi.jpg",
+            "images": [
+                "images/products/img_1784829920492_pq43gi.jpg"
+            ],
+            "description": "🤩MƏHSULLARIMIZ HƏR BİRİ ƏL İŞİDİR‼️\n\n‼️BÜTÜN MEBELLƏRİMİZƏ RƏSMİ OLARAQ 1İL ZƏMANƏT VERİLİR‼️\n\n💸 500  AZN-DƏN BAŞLIYAN QİYMƏTLƏ\n\n✅AÇILIB BAĞLANMA FUNKSİYASI VAR‼️\n\nMƏHSULLARIMIZ SİFARİŞLƏ HAZIRLANIR🤩\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "rating": 5,
+            "reviewCount": 560
         }
     ]
 }
