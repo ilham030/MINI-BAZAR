@@ -1081,6 +1081,21 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 666
+        },
+        {
+            "id": 78,
+            "name": "SAMSUNG 9KG PALTARYUYANI",
+            "price": 940,
+            "category": "elektronika",
+            "img": "images/products/img_1784833786810_2o2ao5.jpg",
+            "images": [
+                "images/products/img_1784833786810_2o2ao5.jpg"
+            ],
+            "description": "🏠 SAMSUNG 9 KG\n\n💸QİYMƏT 940🤩\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "oldPrice": 1050,
+            "rating": 4.9,
+            "reviewCount": 495
         }
     ]
 }
