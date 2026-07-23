@@ -68,7 +68,7 @@ html, body {
     animation: slideInRight 0.3s ease-out forwards;
 }
 
-#cart-modal:not(.hidden) {
+.cart-modal:not(.hidden) {
     animation: fadeIn 0.2s ease-out forwards;
 }
 
@@ -148,7 +148,8 @@ button:focus-visible {
     }
 
     /* Məhsul şəbəkəsi */
-    #products-grid {
+    #products-grid,
+    #loading-spinner {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 
@@ -168,7 +169,8 @@ button:focus-visible {
     }
 
     /* Məhsul şəbəkəsi */
-    #products-grid {
+    #products-grid,
+    #loading-spinner {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 0.75rem;
     }
