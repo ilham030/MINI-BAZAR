@@ -577,6 +577,21 @@
             "inStock": true,
             "rating": 4.6,
             "reviewCount": 527
+        },
+        {
+            "id": 44,
+            "name": "HOFFMANN NFBT-186BGT Diviər Tipli Soyuducu",
+            "price": 870,
+            "category": "elektronika",
+            "img": "images/products/img_1784805939488_ko1qge.jpg",
+            "images": [
+                "images/products/img_1784805939488_ko1qge.jpg"
+            ],
+            "description": "HOFFMANN NFBT-186BGT Diviər Tipli Soyuducu\nMətbəxinizə Premium Görünüş və Maksimum Rahatlıq Qatın!\nMüasir dizaynı və güclü texniki göstəriciləri ilə HOFFMANN NFBT-186BGT soyuducusu qidalarınızın təravətini uzun müddət qorumaq üçün mükəmməl seçimdir.\n Aynalı (Mirror) qapı dizaynı mətbəxinizə xüsusi bir zəriflik qatarkən, geniş daxili həcmi bütün ehtiyaclarınızı rahatlıqla qarşılayır.Keyfiyyət və Üstünlüklər:No Frost Sistemi: Buzlanma və qarlama olmadan daha effektiv, bərabər soyutma.\nGüzgülü Qapı (Mirror): Zərif və müasir xarici görünüş ilə mətbəxinizdə fərqli atmosfer yaradır.\nGeniş daxili tutum: 550 litrlik ümumi həcm sayəsində böyük ailələr üçün ideal istifadə rahatlığı.\nElektron İdarəetmə: Dəqiq temperatur tənzimləmə və asan istifadə olunan rəqəmsal panel.\nA+ Enerji Səmərəliliyi: Elektrik enerjisinə maksimum qənaət edərək büdcənizi qoruyur.\nAşağı Səs Səviyyəsi: $\\le 42\\text{ dB}$ səssiz işləmə rejimilə evinizdə sakitliyi təmin edir.\nTexniki Xüsusiyyətlər:XüsusiyyətGöstəriciÜmumi Həcm550 LSoyuducu Bölmə372 LDondurucu Bölmə178 LRəngAynalı (Mirror)İdarəetmə PanelıElektronÖlçülər (H x E x D)$1860 \\times 830 \\times 640\\text{ mm}$Enerji SinfiA+Səs Səviyyəsi$\\le 42\\text{ dB}$İqlim SinfiSN / N / ST / T\nQiymət: 870 AZN (Nağd qiymət)\nZəmanət: 1 İl Rəsmi Zəmanət",
+            "inStock": true,
+            "oldPrice": 1050,
+            "rating": 5,
+            "reviewCount": 450
         }
     ]
 }
