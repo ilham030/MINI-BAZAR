@@ -990,6 +990,21 @@
             "oldPrice": 150,
             "rating": 4.9,
             "reviewCount": 565
+        },
+        {
+            "id": 72,
+            "name": "BLACKBİRD TOZSOVURAN 3500W",
+            "price": 145,
+            "category": "elektronika",
+            "img": "images/products/img_1784833078965_mpx93q.jpg",
+            "images": [
+                "images/products/img_1784833078965_mpx93q.jpg"
+            ],
+            "description": "✅Ekstremal Güc (3500W): Sinfinin ən güclü modellərindən biridir. Ən qalın xalçaların dibindəki qumu və tozu belə çətinlik çəkmədən təmizləyir.\n\n✅Səssiz Texnologiya (Low Noise): Standart tozsoranlarla müqayisədə 60% daha az səs çıxarır. Bu, evdə körpə olanda və ya axşam saatlarında təmizlik edərkən böyük üstünlükdür.\n\n✅7+1 Multitsiklon Sistemi: Çoxmərhələli filtrasiya sayəsində toz birbaşa haznədə ayrılır, mühərrikə getmir. Bu da cihazın illər boyu eyni yüksək sovurma gücündə qalmasını təmin edir.\n\n✅EPA Filtr: Sağlamlıq üçün vacibdir. Havada olan mikroskopik tozları və allergenləri tutub saxlayır, çölə tam təmiz hava buraxır.\n\n✅İdarəetmə Rahatlığı: Gövdə üzərindəki güc tənzimləyicisi ilə pərdələrdən tutmuş qalın xalçalara qədər hər səth üçün uyğun gücü seçmək olar.\n\n✅Torbasız və Praktik: Toz torbası ilə məşğul olmağa ehtiyac yoxdur. Şəffaf haznə dolduqda asanlıqla çıxarılıb boşaldılır və yuyulur\n\n💸 QİYMƏT  145 AZN\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "oldPrice": 195,
+            "rating": 4.9,
+            "reviewCount": 350
         }
     ]
 }
