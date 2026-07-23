@@ -3,7 +3,7 @@
    ============================================ */
 
 :root {
-    --primary-color: #4f46e5;
+    --primary-color: #ea580c;
     --secondary-color: #10b981;
     --danger-color: #ef4444;
     --text-primary: #1f2937;
@@ -262,7 +262,7 @@ select:focus,
 textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12);
 }
 
 /* ============ TABLİST STİLLƏRİ ============ */
@@ -273,7 +273,7 @@ textarea:focus {
 }
 
 [role="tab"][aria-selected="true"] {
-    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.3);
 }
 
 /* ============ LİST STİLLƏRİ ============ */
@@ -430,4 +430,79 @@ main {
         text-shadow: none !important;
         box-shadow: none !important;
     }
+}
+
+/* ============================================
+   PREMIUM YENİLƏMƏLƏR (v3.0)
+   ============================================ */
+
+/* Hero bölməsindəki dekorativ işıq effekti */
+.hero-glow {
+    background:
+        radial-gradient(circle at 15% 20%, rgba(249, 115, 22, 0.45) 0%, transparent 45%),
+        radial-gradient(circle at 85% 0%, rgba(99, 102, 241, 0.35) 0%, transparent 40%),
+        radial-gradient(circle at 50% 100%, rgba(249, 115, 22, 0.25) 0%, transparent 50%);
+}
+
+/* Ağıllı Köməkçi düyməsinin diqqətcəkici "nəbz" effekti */
+@keyframes pulseRing {
+    0% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.45); }
+    70% { box-shadow: 0 0 0 12px rgba(234, 88, 12, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0); }
+}
+
+.pulse-ring {
+    animation: pulseRing 2.5s ease-out infinite;
+}
+
+.pulse-ring:hover {
+    animation: none;
+}
+
+/* iOS cihazlarda alt naviqasiya üçün təhlükəsiz sahə boşluğu */
+.safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Məhsul kartlarına premium hover-lift effekti */
+#products-grid > .group {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#products-grid > .group:hover {
+    transform: translateY(-4px);
+}
+
+/* Üfüqi sürüşkən sıraların (oxşar məhsullar, son baxılanlar) kənarlarını yumşaldır */
+#recently-viewed-grid,
+#product-modal-related,
+#product-modal-thumbs {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#recently-viewed-grid::-webkit-scrollbar,
+#product-modal-related::-webkit-scrollbar,
+#product-modal-thumbs::-webkit-scrollbar {
+    display: none;
+}
+
+/* Sırala seçimi (select) üçün ox işarəsi düzəlişi */
+#sort-select {
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%236b7280' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    padding-right: 2rem;
+}
+
+/* Sevimlilər ürəyi düyməsinə yüngül böyümə effekti */
+.wishlist-heart-btn i {
+    transition: transform 0.15s ease;
+}
+
+.wishlist-heart-btn:active i {
+    transform: scale(1.25);
 }
