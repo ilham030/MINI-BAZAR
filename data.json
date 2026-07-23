@@ -710,6 +710,20 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 340
+        },
+        {
+            "id": 53,
+            "name": "YOSHİRO YRF-B435NF70MX NO FROST",
+            "price": 1020,
+            "category": "elektronika",
+            "img": "images/products/img_1784828948876_znj47y.jpg",
+            "images": [
+                "images/products/img_1784828948876_znj47y.jpg"
+            ],
+            "description": "Əsas Üstünlükləri və Xüsusiyyətləri:Geniş Həcm: $435\\text{ Litr}$ ümumi həcm – böyük ailələr üçün ideal.\nInvertor Texnologiyası: Maksimum enerji qənaəti və uzunömürlü iş prinsipi.\nNo Frost Sistem: Qarlama və buzlanma olmadan bərabər soyutma.\nMetal Cooling: Metal arxa panel sayəsində soyuqluq daha uzun müddət qorunub saxlanılır.\nChiller 2X Room: Ət və balıq məhsulları üçün xüsusi 2 ayrı təravət bölməsi.\nSəssiz İşləmə: Sakit və konfortlu istifadə.\nÖlçülər: $1880 \\times 700 \\times 660\\text{ mm}$\nNəğd Qiymət: 1020 AZN\nZəmanət: Rəsmi Zəmanət\nSatış Ünvanı: MINIBAZAR – Ən Sərfəli Alış-veriş! 🛒",
+            "inStock": true,
+            "rating": 5,
+            "reviewCount": 420
         }
     ]
 }
