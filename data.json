@@ -898,6 +898,21 @@
             "oldPrice": 195,
             "rating": 4.9,
             "reviewCount": 222
+        },
+        {
+            "id": 66,
+            "name": "🏠Vestel Soyuducular",
+            "price": 880,
+            "category": "elektronika",
+            "img": "images/products/img_1784831710585_0bqfv2.jpg",
+            "images": [
+                "images/products/img_1784831710585_0bqfv2.jpg"
+            ],
+            "description": "🏠Vestel Soyuducular (Gümüşü və Tünd Boz)\n✅Mətbəxində həm şıklığa, həm də qənaətə önəm verənlər üçün əla seçimdir:\n\n✅A+ Enerji Sinfi: Elektrik enerjisinə maksimum qənaət edərək büdcənizi qoruyur.\n\n✅Müasir Dizayn: Barmaq izi saxlamayan xüsusi səth (inox/tünd boz) və gizli qulp dizaynı hər bir mətbəxə lüks görünüş verir.\n\n✅Səssiz İşləmə: Yeni nəsil kompressor texnologiyası sayəsində evdə küy yaratmadan işləyir.\n\n✅Geniş Daxili Həcm: Erqonomik rəflər ərzaqların daha nizamlı yerləşməsinə imkan verir.\n\n💸QİYMƏT 880 AZN\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR",
+            "inStock": true,
+            "oldPrice": 1000,
+            "rating": 4.9,
+            "reviewCount": 343
         }
     ]
 }
