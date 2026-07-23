@@ -770,6 +770,20 @@
             "inStock": true,
             "rating": 5,
             "reviewCount": 560
+        },
+        {
+            "id": 57,
+            "name": "SİFARİŞLƏ ƏL İLƏ YIĞILIR, İSDƏYƏ UYĞUN",
+            "price": 540,
+            "category": "elektronika",
+            "img": "images/products/img_1784830093970_ibet8x.jpg",
+            "images": [
+                "images/products/img_1784830093970_ibet8x.jpg"
+            ],
+            "description": "🤩MƏHSULLARIMIZ HƏR BİRİ ƏL İŞİDİR‼️\n\n‼️BÜTÜN MEBELLƏRİMİZƏ RƏSMİ OLARAQ 1İL ZƏMANƏT VERİLİR‼️\n\n💸6 ƏDƏDİ 540 AZN -DƏN BAŞLIYAN QİYMƏTLƏRLƏ\n\nMƏHSULLARIMIZ SİFARİŞLƏ HAZIRLANIR🤩\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "rating": 4.9,
+            "reviewCount": 499
         }
     ]
 }
