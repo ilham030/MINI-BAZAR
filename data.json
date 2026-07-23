@@ -959,6 +959,21 @@
             "oldPrice": 190,
             "rating": 5,
             "reviewCount": 364
+        },
+        {
+            "id": 70,
+            "name": "SAMSUNG TOZSOVURAN",
+            "price": 230,
+            "category": "elektronika",
+            "img": "images/products/img_1784832135937_rzfti5.jpg",
+            "images": [
+                "images/products/img_1784832135937_rzfti5.jpg"
+            ],
+            "description": "‼️‼️\"Keyfiyyət axtarırsınızsa, seçiminiz Samsung olmalıdır. 2200W gücü ilə evdə toz qoymur, torbasız dizaynı ilə isə sizi artıq xərclərdən azad edir. Şəffaf haznəsi sayəsində təmizliyin nəticəsini gözlə görəcəksiniz. Güc tənzimləyicisi sayəsində həm həssas pərdələrinizi, həm də ağır xalçalarınızı eyni cihazla rahatlıqla təmizləyə bilərsiniz. Samsung — həm güc, həm də uzun illərin sınağından çıxmış etibarlılıq deməkdir!\"‼️🤩\n\n✅Xüsusiyyət-Detal\n✅Brend-Samsung\n✅Güc-2200 Watt\n✅Növ-Torbasız (Cyclonic)\n✅İdarəetmə-Gövdə üzərində tənzimlənən mexaniki düymə\n✅Görünüş-\"Müasir ağ-qara dizayn, şəffaf toz qabı\"\n\n💸 QİYMƏT 230\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "oldPrice": 295,
+            "rating": 5,
+            "reviewCount": 430
         }
     ]
 }
