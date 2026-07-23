@@ -541,6 +541,23 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 244
+        },
+        {
+            "id": 42,
+            "name": "Polo 3 Düymələr",
+            "price": 13.9,
+            "category": "geyim",
+            "img": "images/products/img_1784803699043_ecbsix.jpg",
+            "images": [
+                "images/products/img_1784803699043_ecbsix.jpg",
+                "images/products/img_1784803700446_umzg9k.jpg",
+                "images/products/img_1784803701813_euq2ne.jpg",
+                "images/products/img_1784803703294_jyz8ck.jpg"
+            ],
+            "description": "Yeni sezon polo 3 düymə kofta \nStandart 36-42\nQiymət 13.90",
+            "inStock": true,
+            "rating": 4.7,
+            "reviewCount": 444
         }
     ]
 }
