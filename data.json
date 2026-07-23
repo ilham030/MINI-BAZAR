@@ -944,6 +944,21 @@
             "oldPrice": 290,
             "rating": 5,
             "reviewCount": 600
+        },
+        {
+            "id": 69,
+            "name": "🏠Samsung Air Track (Siklon Tozsoran)",
+            "price": 155,
+            "category": "elektronika",
+            "img": "images/products/img_1784832014550_oi4cw4.jpg",
+            "images": [
+                "images/products/img_1784832014550_oi4cw4.jpg"
+            ],
+            "description": "🏠Samsung Air Track (Siklon Tozsoran)\nBu məhsul maksimum güc və brend keyfiyyəti axtaranlar üçündür.\n\n✅Twin Chamber (İkili Kamera): Tozu və havanı fərqli kameralara ayırır. Bu, toz qabı dolsa belə sovurma gücünün azalmamasını təmin edir.\n\n✅Easy Empty (Asan Boşaltma): Toz torbası yoxdur. Bir düymə ilə haznəni çıxarıb zibil qutusuna boşaltmaq kifayətdir (həm gigiyenik, həm ekonomikdir).\n\n✅Kompakt Dizayn: Güclü mühərrikinə baxmayaraq kiçik ölçülüdür, hər yerə rahat sığır.\n\n✅Brend Etibarı: Samsung-un illərlə sınaqdan keçmiş motor texnologiyası və uzun ömürlülüyü.\n\n✅Güc Tənzimləyicisi: Alt hissədəki tənzimləyici ilə pərdədən xalçaya qədər hər səthə uyğun gücü seçmək olar.\n\n💸QİYMƏT 155 AZN \n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "oldPrice": 190,
+            "rating": 5,
+            "reviewCount": 364
         }
     ]
 }
