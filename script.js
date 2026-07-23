@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const helperPanel = document.getElementById('helper-panel');
             if (lightbox && !lightbox.classList.contains('hidden')) {
                 closeImageLightbox();
-            } else if (!productModal.classList.contains('hidden')) {
+            } else if (productModal && !productModal.classList.contains('hidden')) {
                 closeProductModal();
             } else if (!cartModal.classList.contains('hidden')) {
                 toggleCartModal();
