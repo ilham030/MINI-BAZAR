@@ -149,15 +149,13 @@
         <main class="max-w-2xl mx-auto px-4 py-6 pb-28">
             <p id="form-error" class="hidden bg-red-50 text-red-600 text-sm rounded-xl px-4 py-3 mb-4"></p>
 
-            <!-- Şəkil -->
-            <label class="block text-sm font-semibold text-gray-700 mb-2">Şəkil</label>
-            <div id="image-preview-wrap" class="hidden mb-3">
-                <img id="image-preview" src="" alt="" class="w-full h-48 object-cover rounded-xl bg-gray-100 border border-gray-200">
-            </div>
+            <!-- Şəkillər (bir neçə şəkil dəstəklənir) -->
+            <label class="block text-sm font-semibold text-gray-700 mb-2">Şəkillər <span class="text-gray-400 font-normal">(ilk şəkil əsas şəkil kimi göstərilir)</span></label>
+            <div id="image-thumbs-grid" class="grid grid-cols-3 gap-2 mb-3"></div>
             <label class="flex items-center justify-center gap-2 border-2 border-dashed border-gray-300 rounded-xl py-4 text-gray-500 hover:border-indigo-400 hover:text-indigo-600 transition cursor-pointer mb-6">
                 <i class="fa-solid fa-camera"></i>
-                <span class="text-sm font-medium">Şəkil seç (kamera və ya qalereya)</span>
-                <input id="image-file-input" type="file" accept="image/*" capture="environment" class="hidden" onchange="handleImageSelect(this)">
+                <span class="text-sm font-medium">Şəkil əlavə et (kamera və ya qalereya, birdən çox seçilə bilər)</span>
+                <input id="image-file-input" type="file" accept="image/*" capture="environment" multiple class="hidden" onchange="handleImageSelect(this)">
             </label>
 
             <!-- Ad -->
