@@ -624,6 +624,20 @@
             "oldPrice": 789,
             "rating": 4.9,
             "reviewCount": 399
+        },
+        {
+            "id": 47,
+            "name": "HOFFMANN FFD-179BGT Diviər Tipli 4 Qapılı Soyuducu",
+            "price": 1160,
+            "category": "elektronika",
+            "img": "images/products/img_1784807530166_rnrk7j.jpg",
+            "images": [
+                "images/products/img_1784807530166_rnrk7j.jpg"
+            ],
+            "description": "HOFFMANN FFD-179BGT Diviər Tipli 4 Qapılı Soyuducu\nMətbəxinizə Premium Görünüş, Maksimum Rahatlıq və Zəriflik Qatın!\n\nMüasir dizaynı və güclü texniki göstəriciləri ilə HOFFMANN FFD-179BGT soyuducusu qidalarınızın təravətini uzun müddət qorumaq üçün mükəmməl seçimdir. Aynalı (Mirror) qapı dizaynı mətbəxinizə xüsusi bir zəriflik qatarkən, 4 qapılı erqonomik quruluşu və geniş daxili həcmi bütün ehtiyaclarınızı rahatlıqla qarşılayır.\n\nƏsas Üstünlükləri:\nNo Frost Sistemi: Buzlanma və qarlama olmadan daha effektiv və bərabər soyutma.\n\nGüzgülü Qapı (Mirror): Zərif və müasir xarici görünüş ilə mətbəxinizdə fərqli atmosfer yaradır.\n\n4 Qapılı Dizayn: Geniş və rahat istifadə imkanı təmin edərək soyuq havanın itkisini azaldır.\n\nLED İşiqlandırma: Enerjiyə qənaət edən parlaq daxili işıqlandırma.\n\nElektron İdarəetmə: Dəqiq temperatur tənzimləmə və asan istifadə olunan rəqəmsal panel.\n\nAşağı Səs Səviyyəsi: ≤42 dB səssiz işləmə rejimi ilə evinizdə sakitliyi qoruyur.\n\nA+ Enerji Səmərəliliyi: Elektrik enerjisinə maksimum qənaət edərək büdcənizi qoruyur.\n\nTexniki Xüsusiyyətlər:\nXüsusiyyət\tGöstərici\nÜmumi Həcm\t430 L\nSoyuducu Bölmə\t285 L\nDondurucu Bölmə\t145 L\nRəng\tAynalı (Mirror)\nİdarəetmə Panelı\tElektron\nÖlçülər (H x E x D)\t1790×830×640 mm\nEnerji Sinfi\tA+\nSəs Səviyyəsi\t≤42 dB\nİqlim Sinfi\tSN / N / ST / T\nQiymət: 1160 AZN (Nağd qiymət)\n\nZəmanət: 1 İl Rəsmi Zəmanət\n\nMağaza: MINIBAZAR – Keyfiyyətli Alış-verişin Ünvanı!",
+            "inStock": true,
+            "rating": 4.9,
+            "reviewCount": 466
         }
     ]
 }
