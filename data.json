@@ -1051,6 +1051,21 @@
             "oldPrice": 149,
             "rating": 5,
             "reviewCount": 455
+        },
+        {
+            "id": 76,
+            "name": "SAMSUNG SOYUDUCU",
+            "price": 1550,
+            "category": "elektronika",
+            "img": "images/products/img_1784833574119_erspic.jpg",
+            "images": [
+                "images/products/img_1784833574119_erspic.jpg",
+                "images/products/img_1784833575727_xcv57m.jpg"
+            ],
+            "description": "🏠 SAMSUNG SOYUDUCU\n\nEni76 h 191 qiymət 1570 azn\n metalida 1550 azn\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "rating": 4.9,
+            "reviewCount": 555
         }
     ]
 }
