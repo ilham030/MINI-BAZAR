@@ -883,6 +883,21 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 325
+        },
+        {
+            "id": 65,
+            "name": "Lanova, LNMFS-20S.",
+            "price": 145,
+            "category": "elektronika",
+            "img": "images/products/img_1784831329227_9sw8bp.jpg",
+            "images": [
+                "images/products/img_1784831329227_9sw8bp.jpg"
+            ],
+            "description": "Məhsulun Əsas Xüsusiyyətləri\n✅Brend və Model: Lanova, LNMFS-20S.\n\n✅Dizayn: Şık və minimalist tam qara şüşə panel (Mirror Finish). Həm müasir, həm də klassik mətbəxlərə vizual olaraq uyğun gəlir.\n\n✅İdarəetmə: Rahat istifadə üçün həm düyməli, həm də fırlanan (rotary) tənzimləyici ilə təchiz olunub.\n\n✅Həcm: Adətən bu seriya modellər 20 litr həcmində olur ki, bu da gündəlik ev istifadəsi üçün idealdır.\n\nFunksional Üstünlüklər\n✅Defrost (Buz açma): Dondurulmuş qidaların sürətli və sağlam şəkildə donunu açmaq üçün xüsusi proqram. (Qutunun üzərində \"Deforst\" olaraq qeyd edilib).\n\n✅Auto Cooking (Avtomatik Bişirmə): Müxtəlif yeməklər üçün əvvəlcədən təyin edilmiş vaxt və güc rejimləri.\n\n✅Child Lock (Uşaq kilidi): Kiçik uşaqları olan ailələr üçün təhlükəsizliyi təmin edən vacib funksiya.\n\n✅Start/+30s: Tək toxunuşla sürətli başlatma və vaxt artırma imkanı.\n\nSatış Arqumentləri (Niyə Almalı?)\n✅Erqonomik Tutacaq: Qapının açılması üçün möhkəm və rahat tutacağı var, bu da düyməli modellərə nisbətən daha uzunömürlüdür.\n\n✅Yığcam Ölçü: Mətbəx piştaxtasında çox yer tutmur, lakin daxili genişliyi standart boşqablar üçün kifayətdir.\n\n✅Asan Təmizlik: Daxili örtüyü və hamar ön şüşə paneli sayəsində yağ və ləkələri asanlıqla silmək mümkündür.\n\n💸 QİYMƏT 145 AZN \n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "oldPrice": 195,
+            "rating": 4.9,
+            "reviewCount": 222
         }
     ]
 }
