@@ -404,8 +404,11 @@ function openProductModal(id) {
     renderModalImage();
     renderModalThumbs();
 
-    // Endirim nişanı
-    const discountEl = document.getElementById('product-modal-discount');
+   // Endirim nişanı
+const discountEl = document.getElementById('product-modal-discount');
+
+// Əgər element HTML-də mövcuddursa, əməliyyatı yerinə yetir
+if (discountEl) {
     const hasDiscount = !product.customPrice && product.oldPrice && product.oldPrice > product.price;
     if (hasDiscount) {
         const percent = Math.round((1 - (product.price / product.oldPrice)) * 100);
@@ -414,6 +417,7 @@ function openProductModal(id) {
     } else {
         discountEl.classList.add('hidden');
     }
+}
 
     const priceEl = document.getElementById('product-modal-price');
     const oldPriceEl = document.getElementById('product-modal-old-price');
