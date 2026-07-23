@@ -784,6 +784,21 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 499
+        },
+        {
+            "id": 58,
+            "name": "SİFARİŞLƏ ƏL İLƏ YIĞILIR, İSDƏYƏ UYĞUN",
+            "price": 350,
+            "category": "mebel",
+            "img": "images/products/img_1784830199684_0xbk2h.jpg",
+            "images": [
+                "images/products/img_1784830199684_0xbk2h.jpg",
+                "images/products/img_1784830201208_ggjiwt.jpg"
+            ],
+            "description": "🤩MƏHSULLARIMIZ HƏR BİRİ ƏL İŞİDİR‼️\n\n‼️BÜTÜN MEBELLƏRİMİZƏ RƏSMİ OLARAQ 1İL ZƏMANƏT VERİLİR‼️\n\n💸6 ƏDƏDİ 350AZN-DƏN BAŞLIYAN QİYMƏTLƏRLƏ\n\nMƏHSULLARIMIZ SİFARİŞLƏ HAZIRLANIR🤩\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "rating": 5,
+            "reviewCount": 635
         }
     ]
 }
