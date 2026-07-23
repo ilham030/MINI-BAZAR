@@ -495,6 +495,29 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 211
+        },
+        {
+            "id": 40,
+            "name": "💼TREND ÇANTALAR👜",
+            "price": 16.9,
+            "category": "çanta",
+            "img": "images/products/img_1784803044080_rn2rin.jpg",
+            "images": [
+                "images/products/img_1784803044080_rn2rin.jpg",
+                "images/products/img_1784803045388_r2o04o.jpg",
+                "images/products/img_1784803046771_2ervex.jpg",
+                "images/products/img_1784803048294_5idm7d.jpg",
+                "images/products/img_1784803049751_yqike7.jpg",
+                "images/products/img_1784803050925_lle0c8.jpg",
+                "images/products/img_1784803052295_5t91e8.jpg",
+                "images/products/img_1784803053662_lq1j6g.jpg",
+                "images/products/img_1784803054952_2jwodj.jpg",
+                "images/products/img_1784803056444_mr5kc1.jpg"
+            ],
+            "description": "🔥 TREND ÇANTALAR GƏLDİ! – Cəmi 16.90AZN 🔥\n💼 Yeni modellər, yumşaq material, gündəlik və dəbli istifadə üçün ideal!\n\n👜 2026-in ən çox satılan formaları – hər rəng mövcuddur\n✨ Keyfiyyətli, yüngül və rahat model – hər kombinə uyğun\n\n📩 Sifariş: 077-391-13-00",
+            "inStock": true,
+            "rating": 4.9,
+            "reviewCount": 223
         }
     ]
 }
