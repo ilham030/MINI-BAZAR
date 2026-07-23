@@ -1066,6 +1066,21 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 555
+        },
+        {
+            "id": 77,
+            "name": "VESTEL SOYUDUCU",
+            "price": 990,
+            "category": "elektronika",
+            "img": "images/products/img_1784833678899_54dsw0.jpg",
+            "images": [
+                "images/products/img_1784833678899_54dsw0.jpg",
+                "images/products/img_1784833680313_98xkgb.jpg"
+            ],
+            "description": "🏠 VESTEL SOYUDUCU\n\nEni 70 h 185 \nqiymət \nağ rəng 990 AZN \nmetal 1030 AZN\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "rating": 4.9,
+            "reviewCount": 666
         }
     ]
 }
