@@ -668,6 +668,20 @@
             "inStock": true,
             "rating": 4.6,
             "reviewCount": 380
+        },
+        {
+            "id": 50,
+            "name": "HOFFMANN Paltaryuyan Maşın – 6 kq (Metal / İnox Rəng)",
+            "price": 500,
+            "category": "elektronika",
+            "img": "images/products/img_1784828301602_1y4u8n.jpg",
+            "images": [
+                "images/products/img_1784828301602_1y4u8n.jpg"
+            ],
+            "description": "HOFFMANN Paltaryuyan Maşın – 6 kq (Metal / İnox Rəng)\nMətbəxinizə Modern Şıqlıq Qatın!\n\nHOFFMANN 6 kq (Metal) modeli premium inox görünüşü ilə interyerinizə xüsusi bir estetika qatacaq. Güclü sıxma funksiyası və müxtəlif yuma rejimləri ilə geyimlərinizi ehtiyatla təmizləyir.\n\nTutum: 6 kq\n\nRəng: Metal / İnox\n\nMühərrik: Inverter Motor\n\nXüsusiyyətlər: Hızlı yuma, ekspress rejimlər, yüksək enerji səmərəliliyi\n\nQiymət: 500 AZN\n\nZəmanət: Rəsmi Zəmanət",
+            "inStock": true,
+            "rating": 4.9,
+            "reviewCount": 500
         }
     ]
 }
