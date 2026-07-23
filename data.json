@@ -592,6 +592,22 @@
             "oldPrice": 1050,
             "rating": 5,
             "reviewCount": 450
+        },
+        {
+            "id": 45,
+            "name": "YOSHIRO M515NF83MX 4 Qapılı Soyuducu (Inverter Motor)",
+            "price": 1100,
+            "category": "elektronika",
+            "img": "images/products/img_1784806406211_363143.jpg",
+            "images": [
+                "images/products/img_1784806406211_363143.jpg",
+                "images/products/img_1784806407641_987qdt.jpg"
+            ],
+            "description": "YOSHIRO M515NF83MX 4 Qapılı Soyuducu (Inverter Motor)\nMətbəxinizdə Müasir Şıqlıq və Enerjiyə Qənaətin Adı – YOSHIRO!MINIBAZAR ailəsi olaraq sizə premium seqmentə aid, müasir 4 qapılı YOSHIRO M515NF83MX soyuducusunu təqdim edirik! \nQabaqcıl Inverter Motor texnologiyası ilə təchiz olunmuş bu model həm enerjiyə maksimum qənaət edir, həm də ultra-sakit işləmə rejimi ilə evinizdə sakitliyi təmin edir.\nGeniş daxili hacmi, erqonomik 4 qapılı dizaynı və paslanmaz polad xarici görünüşü ilə mətbəxinizə xüsusi bir dəbdəbə qatacaq.\nƏsas Üstünlükləri:Inverter Motor Texnologiyası: Yüksək effektivlik, uzunömürlü istifadə və elektrik enerjisinə ciddi qənaət.4 Qapılı Erqonomik Dizayn: Qidaları daha rahat təşkil etmək və soyuq havanın itkisini minimuma endirmək üçün idealdır.\nNo Frost Soyutma Sistemi: Dondurucu və soyuducu bölmələrində buzlanma və qarlama olmur.\nGeniş Daxili Həcm: Bütün həftəlik alış-verişinizi rahatlıqla yerləşdirə biləcəyiniz geniş rəflər və çəkməcələr.Rəqəmsal İdarəetmə Paneli: Qapı üzərində yerləşən LED sensor panel ilə temperaturu dəqiq tənzimləyin.\nTexniki Xüsusiyyətlər:XüsusiyyətGöstəriciBrend / ModelYOSHIRO M515NF83MXNövü4 Qapılı (French Door / Multi-Door)Mühərrik TipiInverter MotorHündürlük$189\\text{ sm } (1.89\\text{ m})$Eni$83\\text{ sm}$RəngInox / Gümüşü (Paslanmaz Polad Görünüşlü)Soyutma SistemiNo FrostİdarəetməElektron (LED Ekran)\nÖzəl Qiymət: 1100 AZN (Nağd)\nMağaza: MINIBAZAR – Keyfiyyətli Alış-verişin Ünvanı!",
+            "inStock": true,
+            "oldPrice": 1350,
+            "rating": 5,
+            "reviewCount": 489
         }
     ]
 }
