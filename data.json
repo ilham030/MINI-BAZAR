@@ -929,6 +929,21 @@
             "oldPrice": 550,
             "rating": 4.9,
             "reviewCount": 450
+        },
+        {
+            "id": 68,
+            "name": "🏠Samsung Mikrodalğalı Soba (Ceramic Inside)",
+            "price": 230,
+            "category": "elektronika",
+            "img": "images/products/img_1784831943546_pej4b4.jpg",
+            "images": [
+                "images/products/img_1784831943546_pej4b4.jpg"
+            ],
+            "description": "🏠Samsung Mikrodalğalı Soba (Ceramic Inside)\nBu məhsulun ən böyük üstünlüyü gigiyena və uzunömürlülükdür.\n\n✅Bio-Keramika Örtük: Daxili səthi cızılmır və paslanmır. Ən əsası, 99.9% antibakterialdır və qoxu saxlamır. Təmizlənməsi çox asandır.\n\n✅10 İllik Zəmanət: Samsung daxili keramika örtüyünə tam 10 il zəmanət verir, bu da məhsulun dözümlülüyünün sübutudur.\n\n✅Sürətli Buz Açma (Quick Defrost): Qidaların buzunu daxildən xaricə doğru bərabər və sürətli açır, təravətini qoruyur.\n\n✅Eko-Rejim: Gözləmə rejimində minimum elektrik enerjisi sərf edərək büdcənizə qənaət edir.\n\n✅Ənənəvi Reseptlər: İçindəki proqramlar sayəsində bir toxunuşla ev xörəklərini mükəmməl isidə və ya hazırlaya bilərsiniz.\n\n‼️Ömürlük məhsuldur, bir dəfə alın, illərlə təmiz və sağlam şəkildə istifadə edin‼️\n\n💸QİYMƏT 230 AZN \n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "oldPrice": 290,
+            "rating": 5,
+            "reviewCount": 600
         }
     ]
 }
