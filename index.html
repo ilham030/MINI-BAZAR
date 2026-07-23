@@ -14,51 +14,114 @@
     <meta property="og:description" content="Elektronika, geyim, çanta və daha çoxu bir ünvanda. WhatsApp ilə sürətli sifariş edin.">
     <meta property="og:type" content="website">
 
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ea580c">
+
+    <!-- Premium Şrift -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // MİNİBAZAR marka rəngləri: "indigo" adı script.js daxilində istifadə
+        // olunan bütün dinamik sinifləri əhatə etdiyi üçün, saytın brend
+        // rənglərinə (narıncı + tünd lacivərd) uyğun olaraq elə buradaca
+        // yenidən təyin olunur - beləliklə heç bir JS faylını dəyişmədən
+        // bütöv sayt marka üslubunu alır.
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        indigo: {
+                            50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa',
+                            300: '#fdba74', 400: '#fb923c', 500: '#f97316',
+                            600: '#ea580c', 700: '#c2410c', 800: '#9a3412',
+                            900: '#7c2d12', 950: '#431407'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     <!-- FontAwesome İkonlar -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Özel CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 font-sans">
+<body class="bg-gray-50 font-sans pb-16 md:pb-0">
 
     <!-- NAVİQASİYA (HEADER) -->
-    <header class="bg-white shadow-sm sticky top-0 z-50" role="banner">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#main-content" class="text-2xl font-black text-indigo-600 tracking-wider hover:text-indigo-700 transition">
-                🛍️ MİNİBAZAR
+    <header class="bg-white/85 backdrop-blur-lg shadow-sm sticky top-0 z-50" role="banner">
+        <div class="max-w-7xl mx-auto px-4 py-3 md:py-4 flex justify-between items-center gap-3">
+            <a href="#main-content" class="flex items-center gap-2 text-xl md:text-2xl font-black text-gray-900 tracking-wide hover:opacity-80 transition">
+                <span>🛍️</span> MİNİBAZAR
             </a>
 
-            <!-- Səbət Düyməsi -->
-            <button
-                id="cart-toggle-btn"
-                onclick="toggleCartModal()"
-                class="relative bg-indigo-50 text-indigo-600 p-3 rounded-full hover:bg-indigo-100 transition focus:ring-2 focus:ring-indigo-600 focus:outline-none"
-                aria-label="Alış-veriş səbətini aç"
-                aria-expanded="false">
-                <i class="fa-solid fa-shopping-bag text-xl"></i>
-                <span
-                    id="cart-count"
-                    class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold"
-                    aria-live="polite">0</span>
-            </button>
+            <div class="flex items-center gap-2">
+                <!-- PWA Quraşdırma Düyməsi (yalnız brauzer imkan verdikdə görünür) -->
+                <button
+                    id="install-btn"
+                    style="display:none;"
+                    class="items-center gap-2 bg-gray-900 text-white text-xs font-semibold px-4 py-2.5 rounded-full hover:bg-gray-800 transition focus:ring-2 focus:ring-gray-500 focus:outline-none">
+                    <i class="fa-solid fa-download"></i>
+                    <span class="hidden sm:inline">Tətbiqi yüklə</span>
+                </button>
+
+                <!-- Sevimlilər və Səbət (Masaüstü) -->
+                <div class="hidden md:flex items-center gap-2">
+                    <button
+                        id="wishlist-toggle-btn-desktop"
+                        onclick="toggleWishlistModal()"
+                        class="relative bg-rose-50 text-rose-500 p-3 rounded-full hover:bg-rose-100 transition focus:ring-2 focus:ring-rose-400 focus:outline-none"
+                        aria-label="Sevimlilər siyahısını aç"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-heart text-xl"></i>
+                        <span
+                            id="wishlist-count-desktop"
+                            class="hidden absolute -top-1 -right-1 bg-rose-500 text-white text-xs w-5 h-5 rounded-full text-center leading-5 font-bold"
+                            aria-live="polite">0</span>
+                    </button>
+                    <button
+                        id="cart-toggle-btn"
+                        onclick="toggleCartModal()"
+                        class="relative bg-indigo-50 text-indigo-600 p-3 rounded-full hover:bg-indigo-100 transition focus:ring-2 focus:ring-indigo-600 focus:outline-none"
+                        aria-label="Alış-veriş səbətini aç"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-shopping-bag text-xl"></i>
+                        <span
+                            id="cart-count-desktop"
+                            class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold"
+                            aria-live="polite">0</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </header>
 
     <!-- HERO / BANNER -->
-    <section class="bg-gradient-to-r from-indigo-600 to-indigo-500 text-white" aria-label="Xoş gəlmisiniz">
-        <div class="max-w-7xl mx-auto px-4 py-10 md:py-14 text-center">
-            <h1 class="text-2xl md:text-4xl font-black mb-3">Hər gün sərfəli qiymətlər 🛍️</h1>
-            <p class="text-indigo-100 text-sm md:text-base mb-6 max-w-xl mx-auto">
+    <section class="relative overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-indigo-800 text-white" aria-label="Xoş gəlmisiniz">
+        <div class="absolute inset-0 opacity-20 pointer-events-none hero-glow"></div>
+        <div class="relative max-w-7xl mx-auto px-4 py-12 md:py-20 text-center">
+            <span class="inline-block bg-white/10 border border-white/20 text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full backdrop-blur-sm mb-4">✨ Premium Onlayn Alış-veriş Təcrübəsi</span>
+            <h1 class="text-3xl md:text-5xl font-black mb-4 leading-tight">Hər gün <span class="text-indigo-400">sərfəli</span> qiymətlər 🛍️</h1>
+            <p class="text-gray-300 text-sm md:text-lg mb-8 max-w-xl mx-auto">
                 Elektronikadan geyimə, evinizin bütün ehtiyaclarını bir ünvandan əldə edin — sifarişiniz bir neçə kliklə qapınızda.
             </p>
             <div class="flex flex-wrap justify-center gap-3 text-xs md:text-sm">
-                <span id="free-delivery-badge" class="bg-white/15 px-4 py-2 rounded-full backdrop-blur-sm">
-                    <i class="fa-solid fa-truck mr-2"></i>
+                <span id="free-delivery-badge" class="bg-white/10 border border-white/10 px-4 py-2.5 rounded-full backdrop-blur-sm font-medium">
+                    <i class="fa-solid fa-truck mr-2 text-indigo-400"></i>Sürətli çatdırılma
                 </span>
-                <span class="bg-white/15 px-4 py-2 rounded-full backdrop-blur-sm">
-                    <i class="fa-brands fa-whatsapp mr-2"></i>Sürətli WhatsApp sifariş
+                <span class="bg-white/10 border border-white/10 px-4 py-2.5 rounded-full backdrop-blur-sm font-medium">
+                    <i class="fa-brands fa-whatsapp mr-2 text-emerald-400"></i>Sürətli WhatsApp sifariş
+                </span>
+                <span class="bg-white/10 border border-white/10 px-4 py-2.5 rounded-full backdrop-blur-sm font-medium">
+                    <i class="fa-solid fa-shield-heart mr-2 text-indigo-400"></i>Zəmanətli keyfiyyət
                 </span>
             </div>
         </div>
@@ -75,17 +138,38 @@
                     id="search-input"
                     oninput="handleSearchInput(this.value)"
                     placeholder="Məhsul axtar..."
-                    class="w-full bg-white border border-gray-200 rounded-full py-3 pl-11 pr-4 text-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none focus:border-indigo-600"
+                    class="w-full bg-white border border-gray-200 rounded-full py-3 pl-11 pr-4 text-sm shadow-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none focus:border-indigo-600"
                     aria-label="Məhsul axtar">
             </div>
             <p id="results-count" class="text-sm text-gray-500 mt-2 max-w-xl mx-auto md:mx-0" aria-live="polite"></p>
         </section>
 
-        <!-- KATEQORİYALAR MƏNYUSU -->
+        <!-- KATEQORİYALAR VƏ SIRALAMA -->
         <section class="max-w-7xl mx-auto px-4 mt-4" aria-label="Məhsul Kateqoriyaları">
-            <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none" id="category-filters" role="tablist">
-                <!-- Kateqoriya düymələri JavaScript tərəfindən doldurulur -->
+            <div class="flex items-center gap-2">
+                <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none flex-1" id="category-filters" role="tablist">
+                    <!-- Kateqoriya düymələri JavaScript tərəfindən doldurulur -->
+                </div>
+                <select
+                    id="sort-select"
+                    onchange="handleSortChange(this.value)"
+                    aria-label="Məhsulları sırala"
+                    class="flex-shrink-0 bg-white border border-gray-200 rounded-full py-2.5 px-3 text-xs md:text-sm font-medium text-gray-600 shadow-sm focus:ring-2 focus:ring-indigo-600 focus:outline-none">
+                    <option value="default">Sırala</option>
+                    <option value="price-asc">Qiymət: Aşağıdan yuxarı</option>
+                    <option value="price-desc">Qiymət: Yuxarıdan aşağı</option>
+                    <option value="rating">Reytinqə görə</option>
+                    <option value="newest">Ən yeni</option>
+                </select>
             </div>
+        </section>
+
+        <!-- SON BAXDIQLARINIZ -->
+        <section id="recently-viewed-section" class="hidden max-w-7xl mx-auto px-4 mt-6">
+            <h2 class="text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left text-indigo-500"></i>Son baxdıqlarınız
+            </h2>
+            <div id="recently-viewed-grid" class="flex gap-3 overflow-x-auto pb-2 scrollbar-none"></div>
         </section>
 
         <!-- MƏHSULLAR ŞƏBƏKƏSI -->
@@ -154,9 +238,6 @@
                     <a id="footer-instagram" href="#" class="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition focus:ring-2 focus:ring-indigo-500 focus:outline-none" aria-label="Instagram səhifəmiz">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-                    <a id="footer-facebook" href="#" class="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-600 transition focus:ring-2 focus:ring-indigo-500 focus:outline-none" aria-label="Facebook səhifəmiz">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
                     <a id="footer-whatsapp" href="#" class="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-emerald-600 transition focus:ring-2 focus:ring-emerald-500 focus:outline-none" aria-label="WhatsApp ilə yazın">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
@@ -188,28 +269,59 @@
     <!-- MƏHSUL DETALLARI MODAL -->
     <div
         id="product-modal"
-        class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+        class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
         role="dialog"
         aria-labelledby="product-modal-name"
         aria-hidden="true"
         onclick="if(event.target === this) closeProductModal()">
-        <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl fade-in">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[92vh] overflow-y-auto shadow-2xl fade-in">
             <div class="relative">
-                <img id="product-modal-img" src="" alt="" class="w-full h-64 object-cover rounded-t-2xl bg-gray-100">
+                <img id="product-modal-img" src="" alt="" class="w-full h-72 object-cover rounded-t-3xl bg-gray-100 cursor-zoom-in" onclick="openImageLightbox()">
+                <span id="product-modal-discount" class="hidden absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full"></span>
+
                 <button
                     onclick="closeProductModal()"
                     class="absolute top-3 right-3 bg-white/90 hover:bg-white text-gray-600 w-9 h-9 rounded-full flex items-center justify-center shadow focus:ring-2 focus:ring-indigo-600 focus:outline-none"
                     aria-label="Bağla">
                     &times;
                 </button>
+
+                <button
+                    id="product-modal-prev"
+                    onclick="changeModalImage(-1)"
+                    class="hidden absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 w-9 h-9 rounded-full items-center justify-center shadow focus:ring-2 focus:ring-indigo-600 focus:outline-none"
+                    aria-label="Əvvəlki şəkil">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button
+                    id="product-modal-next"
+                    onclick="changeModalImage(1)"
+                    class="hidden absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 w-9 h-9 rounded-full items-center justify-center shadow focus:ring-2 focus:ring-indigo-600 focus:outline-none"
+                    aria-label="Növbəti şəkil">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+                <button
+                    id="product-modal-wishlist-btn"
+                    onclick="toggleWishlistItem(currentModalProductId)"
+                    class="absolute bottom-3 right-3 bg-white/90 hover:bg-white w-10 h-10 rounded-full flex items-center justify-center shadow focus:ring-2 focus:ring-rose-400 focus:outline-none"
+                    aria-label="Sevimlilərə əlavə et">
+                    <i class="fa-regular fa-heart text-gray-500"></i>
+                </button>
             </div>
+
+            <div id="product-modal-thumbs" class="hidden gap-2 px-6 pt-3 overflow-x-auto scrollbar-none"></div>
+
             <div class="p-6">
-                <span id="product-modal-category" class="text-xs font-medium text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full"></span>
-                <h3 id="product-modal-name" class="text-xl font-bold text-gray-800 mt-3"></h3>
-                <p id="product-modal-description" class="text-gray-500 text-sm mt-2"></p>
+                <span id="product-modal-category" class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full"></span>
+                <h3 id="product-modal-name" class="text-xl font-black text-gray-800 mt-3"></h3>
+                <p id="product-modal-description" class="text-gray-500 text-sm mt-2 leading-relaxed"></p>
                 <div id="product-modal-rating" class="mt-2 hidden"></div>
                 <div class="flex items-center justify-between mt-6 gap-4">
-                    <span id="product-modal-price" class="text-2xl font-black text-indigo-600"></span>
+                    <div class="flex flex-col">
+                        <span id="product-modal-old-price" class="hidden text-gray-400 text-sm line-through"></span>
+                        <span id="product-modal-price" class="text-2xl font-black text-indigo-600"></span>
+                    </div>
                     <button
                         id="product-modal-add-btn"
                         class="bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition flex items-center gap-2 focus:ring-2 focus:ring-indigo-600 focus:outline-none">
@@ -217,8 +329,27 @@
                         <span>Səbətə əlavə et</span>
                     </button>
                 </div>
+
+                <div id="product-modal-related-wrap" class="hidden mt-8 pt-6 border-t border-gray-100">
+                    <h4 class="text-sm font-bold text-gray-700 mb-3">Oxşar məhsullar</h4>
+                    <div id="product-modal-related" class="flex gap-3 overflow-x-auto pb-1 scrollbar-none"></div>
+                </div>
             </div>
         </div>
+    </div>
+
+    <!-- ŞƏKİL LIGHTBOX (böyüdülmüş şəkil) -->
+    <div
+        id="image-lightbox"
+        class="hidden fixed inset-0 bg-black/90 z-[60] items-center justify-center p-4"
+        onclick="if(event.target === this) closeImageLightbox()">
+        <button
+            onclick="closeImageLightbox()"
+            class="absolute top-4 right-4 text-white/80 hover:text-white w-11 h-11 rounded-full flex items-center justify-center text-2xl focus:ring-2 focus:ring-white focus:outline-none"
+            aria-label="Bağla">
+            &times;
+        </button>
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-full object-contain rounded-lg">
     </div>
 
     <!-- SƏBƏT MODAL (PƏNCƏRƏSİ) -->
@@ -269,19 +400,99 @@
         </div>
     </div>
 
+    <!-- SEVİMLİLƏR MODAL (PƏNCƏRƏSİ) -->
+    <div
+        id="wishlist-modal"
+        class="hidden fixed inset-0 bg-black/50 z-50 flex justify-end transition-opacity cart-modal"
+        role="dialog"
+        aria-labelledby="wishlist-title"
+        aria-hidden="true"
+        onclick="if(event.target === this) toggleWishlistModal()">
+        <div class="bg-white w-full max-w-md h-full flex flex-col p-6 shadow-2xl slide-in-right">
+            <div class="flex justify-between items-center border-b pb-4">
+                <h2 id="wishlist-title" class="text-xl font-bold text-gray-800"><i class="fa-solid fa-heart text-rose-500 mr-2"></i>Sevimlilər</h2>
+                <button
+                    onclick="toggleWishlistModal()"
+                    class="text-gray-400 hover:text-gray-600 text-2xl focus:ring-2 focus:ring-gray-400 rounded p-1 focus:outline-none"
+                    aria-label="Sevimlilər siyahısını bağla">
+                    &times;
+                </button>
+            </div>
+
+            <div id="wishlist-items" class="flex-1 overflow-y-auto py-4 space-y-3" role="list">
+                <p class="text-gray-500 text-center py-8">Sevimlilər siyahınız boşdur.</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Yuxarı Qayıt Düyməsi -->
     <button
         id="back-to-top"
         onclick="scrollToTop()"
-        class="hidden fixed bottom-6 left-6 bg-indigo-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center hover:bg-indigo-700 transition z-40 focus:ring-2 focus:ring-indigo-600 focus:outline-none"
+        class="hidden fixed bottom-24 md:bottom-6 left-6 bg-indigo-600 text-white w-12 h-12 rounded-full shadow-lg items-center justify-center hover:bg-indigo-700 transition z-40 focus:ring-2 focus:ring-indigo-600 focus:outline-none"
         aria-label="Səhifənin yuxarısına qayıt">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
 
+    <!-- Ağıllı Köməkçi (FAQ Widget) -->
+    <button
+        id="helper-toggle-btn"
+        onclick="toggleHelperPanel()"
+        aria-expanded="false"
+        aria-label="Ağıllı köməkçini aç"
+        class="fixed bottom-24 md:bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center z-40 transition focus:ring-2 focus:ring-indigo-400 focus:outline-none pulse-ring">
+        <i class="fa-solid fa-comment-dots text-xl"></i>
+    </button>
+
+    <div
+        id="helper-panel"
+        class="hidden fixed bottom-[9.5rem] md:bottom-24 right-6 left-6 md:left-auto md:w-96 bg-white rounded-2xl shadow-2xl border border-gray-100 z-40 max-h-[70vh] flex flex-col overflow-hidden fade-in">
+        <div class="bg-indigo-600 text-white px-4 py-3 flex justify-between items-center flex-shrink-0">
+            <span class="font-bold text-sm"><i class="fa-solid fa-headset mr-2"></i>Ağıllı Köməkçi</span>
+            <button onclick="toggleHelperPanel()" class="text-white/80 hover:text-white text-xl leading-none focus:outline-none" aria-label="Bağla">&times;</button>
+        </div>
+        <div id="helper-body" class="p-3 space-y-2 overflow-y-auto flex-1"></div>
+        <a
+            id="helper-whatsapp-link"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            class="flex-shrink-0 flex items-center justify-center gap-2 bg-emerald-50 text-emerald-700 text-sm font-semibold py-3 hover:bg-emerald-100 transition border-t border-gray-100">
+            <i class="fa-brands fa-whatsapp"></i>Daha çox sual üçün yazın
+        </a>
+    </div>
+
     <!-- Toast Bildirişi -->
-    <div id="toast" class="hidden fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 toast-message">
+    <div id="toast" class="hidden fixed bottom-24 md:bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 toast-message">
         <span id="toast-text"></span>
     </div>
+
+    <!-- Mobil Aşağı Naviqasiya -->
+    <nav id="mobile-bottom-nav" class="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-gray-100 flex items-center justify-around py-2 z-40 safe-area-bottom" aria-label="Mobil naviqasiya">
+        <a href="#main-content" class="flex flex-col items-center gap-0.5 text-gray-500 hover:text-indigo-600 transition px-4 py-1">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px] font-medium">Ana səhifə</span>
+        </a>
+        <button
+            id="wishlist-toggle-btn-mobile"
+            onclick="toggleWishlistModal()"
+            aria-expanded="false"
+            aria-label="Sevimlilər"
+            class="relative flex flex-col items-center gap-0.5 text-gray-500 hover:text-rose-500 transition px-4 py-1 focus:outline-none">
+            <i class="fa-solid fa-heart text-lg"></i>
+            <span class="text-[10px] font-medium">Sevimlilər</span>
+            <span id="wishlist-count-mobile" class="hidden absolute -top-0.5 right-2 bg-rose-500 text-white text-[9px] w-4 h-4 rounded-full text-center leading-4 font-bold">0</span>
+        </button>
+        <button
+            id="cart-toggle-btn-mobile"
+            onclick="toggleCartModal()"
+            aria-label="Səbət"
+            class="relative flex flex-col items-center gap-0.5 text-gray-500 hover:text-indigo-600 transition px-4 py-1 focus:outline-none">
+            <i class="fa-solid fa-shopping-bag text-lg"></i>
+            <span class="text-[10px] font-medium">Səbət</span>
+            <span id="cart-count-mobile" class="absolute -top-0.5 right-2 bg-red-500 text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+        </button>
+    </nav>
 
     <!-- Skriptlər -->
     <script src="config.js"></script>
