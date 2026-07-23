@@ -472,6 +472,29 @@
             "inStock": true,
             "rating": 4.8,
             "reviewCount": 321
+        },
+        {
+            "id": 39,
+            "name": "Premium Çanta",
+            "price": 13.5,
+            "category": "elektronika",
+            "img": "images/products/img_1784802725139_usvrs8.jpg",
+            "images": [
+                "images/products/img_1784802725139_usvrs8.jpg",
+                "images/products/img_1784802726665_i3bsc9.jpg",
+                "images/products/img_1784802728317_5dow2x.jpg",
+                "images/products/img_1784802729865_a3c6mz.jpg",
+                "images/products/img_1784802731364_wp2k0e.jpg",
+                "images/products/img_1784802732869_t4hj7n.jpg",
+                "images/products/img_1784802734263_mvidou.jpg",
+                "images/products/img_1784802735825_qy8kpn.jpg",
+                "images/products/img_1784802737248_euz60t.jpg",
+                "images/products/img_1784802738587_cnczb9.jpg"
+            ],
+            "description": "🔥13.50 AZN 🔥\n💼 Yeni modellər, yumşaq material, gündəlik və dəbli istifadə üçün ideal!\n\n👜 2026-in ən çox satılan formaları – hər rəng mövcuddur\n✨ Keyfiyyətli, yüngül və rahat model – hər kombinə uyğun\n\n📩 Sifariş: 077-391-13-00",
+            "inStock": true,
+            "rating": 4.9,
+            "reviewCount": 211
         }
     ]
 }
