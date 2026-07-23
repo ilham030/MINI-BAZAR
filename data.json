@@ -913,6 +913,22 @@
             "oldPrice": 1000,
             "rating": 4.9,
             "reviewCount": 343
+        },
+        {
+            "id": 67,
+            "name": "🏠Hisense Soyuducu (Yeni nəsil dizayn)",
+            "price": 430,
+            "category": "elektronika",
+            "img": "images/products/img_1784831864188_dabqyr.jpg",
+            "images": [
+                "images/products/img_1784831864188_dabqyr.jpg",
+                "images/products/img_1784831865613_2h5uez.jpg"
+            ],
+            "description": "🏠Hisense Soyuducu (Yeni nəsil dizayn)\n✅Bu brend hazırda dünyada qiymət-keyfiyyət nisbətinə görə ən çox seçilən markalardan biridir.\n\n✅Şık və Minimalist Dizayn: Parlaq ağ rəngi və gizli qulp sistemi ilə hər bir müasir mətbəxə tam uyğun gəlir.\n\n✅A+ Enerji Səmərəliliyi: Elektrik enerjisinə maksimum qənaət edərək büdcənizi qoruyur.\n\n✅Səssiz Texnologiya: Yeni nəsil kompressoru sayəsində çox səssiz işləyir.\n\n✅Geniş Daxili Həcm: Kompakt görünməsinə baxmayaraq, rəflərin erqonomik yerləşimi sayəsində ərzaqlar üçün geniş yer təklif edir.\n\n💸 QİYMƏT 430 AZN\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR",
+            "inStock": true,
+            "oldPrice": 550,
+            "rating": 4.9,
+            "reviewCount": 450
         }
     ]
 }
