@@ -558,6 +558,23 @@
             "inStock": true,
             "rating": 4.7,
             "reviewCount": 444
+        },
+        {
+            "id": 43,
+            "name": "✨Alo Kapri Dəst ✨",
+            "price": 15,
+            "category": "geyim",
+            "img": "images/products/img_1784804069293_a3bn48.jpg",
+            "images": [
+                "images/products/img_1784804069293_a3bn48.jpg",
+                "images/products/img_1784804070641_v2v98n.jpg",
+                "images/products/img_1784804072036_rr73jy.jpg",
+                "images/products/img_1784804073452_njqper.jpg"
+            ],
+            "description": "✨ YENİ: Alo kapri Dəst ✨\nHəm dəbli, həm ucuz, həm də rahat! 💯\n▫️ Parça: Mayıçnı\n▫️ Ölçü: 1XL, 2XL, 3Xl \n▫️ *Qiymət: 15₼*\nSifariş üçün mesaj bölməsinə keçin. 📩\nBu fürsəti qaçırmayın!",
+            "inStock": true,
+            "rating": 4.6,
+            "reviewCount": 527
         }
     ]
 }
