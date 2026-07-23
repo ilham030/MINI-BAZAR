@@ -404,12 +404,13 @@ function openProductModal(id) {
     renderModalImage();
     renderModalThumbs();
 
-   // Endirim nişanı
+// Endirim nişanı
 const discountEl = document.getElementById('product-modal-discount');
 
-// Əgər element HTML-də mövcuddursa, əməliyyatı yerinə yetir
+// Əvvəlcə 'hasDiscount' dəyişənini dəqiq təyin edirik
+const hasDiscount = !product.customPrice && product.oldPrice && product.oldPrice > product.price;
+
 if (discountEl) {
-    const hasDiscount = !product.customPrice && product.oldPrice && product.oldPrice > product.price;
     if (hasDiscount) {
         const percent = Math.round((1 - (product.price / product.oldPrice)) * 100);
         discountEl.textContent = `-${percent}%`;
