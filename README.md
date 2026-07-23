@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/30301952/README.md)
 # 🛍️ MİNİBAZAR - Onlayn Alış-veriş Mağazası
 
 Azərbaycan dilində qurulmuş, WhatsApp ilə inteqre olunmuş **modern, responsiv və erişilebilir** onlayn alış-veriş platforması.
