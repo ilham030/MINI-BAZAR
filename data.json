@@ -654,6 +654,20 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 356
+        },
+        {
+            "id": 49,
+            "name": "HOFFMANN Paltaryuyan Maşın – 6 kq (Ağ Rəng)",
+            "price": 480,
+            "category": "elektronika",
+            "img": "images/products/img_1784828230315_fx71ni.jpg",
+            "images": [
+                "images/products/img_1784828230315_fx71ni.jpg"
+            ],
+            "description": "HOFFMANN Paltaryuyan Maşın – 6 kq (Ağ Rəng)\nYığcam, Qənaətcil və Efektiv Təmizlik!\n\nSakit işləmə rejimi və müasir inverteor mühərriyi ilə HOFFMANN 6 kq (Ağ) modeli kiçik və orta ailələr üçün mükəmməl seçimdir. Ağ rəngli klassik dizaynı mətbəx və ya vannanıza tam uyğunlaşır.\n\nTutum: 6 kq\n\nRəng: Klassik Ağ\n\nMühərrik: Inverter Motor (Səssiz və enerjiyə qənaətcil)\n\nİdarəetmə: Rəqəmsal LED ekran və rahat proqram seçici\n\nQiymət: 480 AZN\n\nZəmanət: Rəsmi Zəmanət",
+            "inStock": true,
+            "rating": 4.6,
+            "reviewCount": 380
         }
     ]
 }
