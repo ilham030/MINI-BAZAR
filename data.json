@@ -451,6 +451,27 @@
             "inStock": true,
             "rating": 4.7,
             "reviewCount": 320
+        },
+        {
+            "id": 38,
+            "name": "Premium Çanta",
+            "price": 16.5,
+            "category": "çanta",
+            "img": "images/products/img_1784802180029_4tbzck.jpg",
+            "images": [
+                "images/products/img_1784802180029_4tbzck.jpg",
+                "images/products/img_1784802181428_6jkzza.jpg",
+                "images/products/img_1784802182967_8wyy22.jpg",
+                "images/products/img_1784802184428_g7qjsn.jpg",
+                "images/products/img_1784802185687_n4w3xs.jpg",
+                "images/products/img_1784802187112_s6v2f0.jpg",
+                "images/products/img_1784802188500_k13ans.jpg",
+                "images/products/img_1784802189831_2o7w7k.jpg"
+            ],
+            "description": "🔥16.50 AZN 🔥\n💼 Yeni modellər, yumşaq material, gündəlik və dəbli istifadə üçün ideal!\n\n👜 2026-in ən çox satılan formaları – hər rəng mövcuddur\n✨ Keyfiyyətli, yüngül və rahat model – hər kombinə uyğun\n\n📩 Sifariş: 077-391-13-00\n\n🤲 Allah hər kəsə bol və bərəkətli qazanc versin.",
+            "inStock": true,
+            "rating": 4.8,
+            "reviewCount": 321
         }
     ]
 }
