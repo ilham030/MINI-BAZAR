@@ -1036,6 +1036,21 @@
             "oldPrice": 95,
             "rating": 5,
             "reviewCount": 433
+        },
+        {
+            "id": 75,
+            "name": "🏠Gimilux VC-2800 Dik Süpürgə",
+            "price": 90,
+            "category": "elektronika",
+            "img": "images/products/img_1784833488460_xrzzdv.jpg",
+            "images": [
+                "images/products/img_1784833488460_xrzzdv.jpg"
+            ],
+            "description": "🏠Gimilux VC-2800 Dik Süpürgə — Əsas Satış Üstünlükləri\n\n✅Güclü Performans: 500 W motor gücü ilə gündəlik təmizlik üçün yüksək sovurma qabiliyyətinə malikdir.\n\n✅Səssiz İşləmə: Aşağı səs səviyyəsi sayəsində günün istənilən vaxtı ətrafdakıları narahat etmədən istifadə oluna bilər.\n\n✅Yuyula Bilən Filtr: Əlavə filtr xərcinə ehtiyac yoxdur; filtri asanlıqla çıxarıb yuyub yenidən istifadə etmək mümkündür.\n\n✅Geniş Toz Haznəsi: Toz qabı böyük olduğu üçün tez-tez boşaltmağa ehtiyac qalmır, təmizlik prosesi daha sürətli başa çatır.\n\n✅Erqonomik Dizayn: Dik forması sayəsində bel ağrısı yaratmır və evdə çox az yer tutur (şkaf daxilində və ya qapı arxasında rahatlıqla saxlanılır).\n\n✅Keyfiyyət: Türkiyə istehsalıdır, bu da məhsulun davamlılığına və material keyfiyyətinə zəmanət verir.\n\n💸QİYMƏTİ 90 AZN\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "oldPrice": 149,
+            "rating": 5,
+            "reviewCount": 455
         }
     ]
 }
