@@ -1006,6 +1006,21 @@
             "oldPrice": 195,
             "rating": 4.9,
             "reviewCount": 350
+        },
+        {
+            "id": 73,
+            "name": "BLACKBİRD LUXURY SERİES TOZSOVURAN 2800W",
+            "price": 75,
+            "category": "elektronika",
+            "img": "images/products/img_1784833299827_odpfzp.jpg",
+            "images": [
+                "images/products/img_1784833299827_odpfzp.jpg"
+            ],
+            "description": "✅Ekstremal Güc (2800W / 3000W): Bu, bir dik süpürgə üçün inanılmaz yüksək göstəricidir. Xalçanın ən dərinindəki tozları belə bir toxunuşla çəkir.\n\n✅Ultra Səssiz İşləmə (62 dB): Güclü mühərrikinə baxmayaraq, cəmi 62 desibel səs çıxarır. Bu, normal danışıq səsi qədərdir – təmizlik zamanı evdəkiləri narahat etmir.\n\n✅EPA Filtr Texnologiyası: Tozu daxilində tam həbs edir. Havaya toz qoxusu vermir və allergiyadan əziyyət çəkənlər üçün ən təhlükəsiz seçimdir.\n\n✅Eco-Cyclon Twin-Spin: Bu texnologiya sayəsində sovurma gücü toz qabı dolsa belə azalmır.\n\n✅Universal İstifadə (2-si 1-də): Cəmi bir kliklə uzun borusunu çıxarıb divan təmizləyən əl süpürgəsinə çevrilir.\n\n✅Geniş Hərəkət Radiusu: 5 metrlik kabeli və uzun borusu ilə bir rozetkadan bütün otağı təmizləmək mümkündür\n\n💸QİYMƏT 75 AZN\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "oldPrice": 125,
+            "rating": 5,
+            "reviewCount": 425
         }
     ]
 }
