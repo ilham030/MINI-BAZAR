@@ -739,6 +739,23 @@
             "customPrice": true,
             "rating": 5,
             "reviewCount": 556
+        },
+        {
+            "id": 55,
+            "name": "SİFARİŞLƏ HAZIRLANIR, İSDƏYƏ UYĞUN",
+            "price": 450,
+            "category": "elektronika",
+            "img": "images/products/img_1784829791157_puuqfl.jpg",
+            "images": [
+                "images/products/img_1784829791157_puuqfl.jpg",
+                "images/products/img_1784829792607_9ofp1w.jpg",
+                "images/products/img_1784829794023_owshbu.jpg",
+                "images/products/img_1784829795403_hzfolt.jpg"
+            ],
+            "description": "🤩MƏHSULLARIMIZ HƏR BİRİ ƏL İŞİDİR‼️\n\n‼️BÜTÜN MEBELLƏRİMİZƏ RƏSMİ OLARAQ 1İL ZƏMANƏT VERİLİR‼️\n\n💸 450  AZN- DƏN BAŞLIYAN QİYMƏTLƏRLƏ\n\n✅MƏHSULLARIMIZ 15 GÜN ƏRZİNDƏ SİFARİŞLƏ HAZIRLANIR🤩\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "rating": 4.9,
+            "reviewCount": 465
         }
     ]
 }
