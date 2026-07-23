@@ -20,8 +20,12 @@ let githubToken = null;
 let currentData = { categories: [], products: [] };
 let currentSha = null;
 let editingProductId = null; // null = yeni məhsul rejimi
-let pendingImageBase64 = null; // seçilmiş yeni şəkil (resize edilmiş, prefiksiz base64)
-let pendingImageExt = 'jpg';
+
+// Formadakı şəkillərin siyahısı. Hər element:
+//   { type: 'existing', path: '<github yolu>', src: '<göstərmək üçün url>' }
+//   { type: 'new', base64: '<prefiksiz base64>', ext: 'jpg', src: '<data url>' }
+// Massivdəki İLK element = əsas şəkil (kartlarda görünən).
+let formImages = [];
 
 // ============ KÖMƏKÇİ FUNKSİYALAR ============
 
@@ -363,7 +367,6 @@ function toggleNewCategoryInput() {
 
 function openForm(productId) {
     editingProductId = productId || null;
-    pendingImageBase64 = null;
     $('image-file-input').value = '';
     $('form-error').classList.add('hidden');
 
@@ -385,13 +388,10 @@ function openForm(productId) {
     populateCategorySelect(product ? product.category : null);
     togglePriceFields();
 
-    if (product && product.img) {
-        $('image-preview').src = product.img;
-        $('image-preview-wrap').classList.remove('hidden');
-    } else {
-        $('image-preview-wrap').classList.add('hidden');
-        $('image-preview').src = '';
-    }
+    // Mövcud məhsulun şəkillərini formImages massivinə yüklə (yoxdursa boş massiv = yeni məhsul)
+    const existingPaths = product ? (Array.isArray(product.images) && product.images.length ? product.images : (product.img ? [product.img] : [])) : [];
+    formImages = existingPaths.map(path => ({ type: 'existing', path, src: path }));
+    renderFormImageThumbs();
 
     showScreen('screen-form');
 }
@@ -405,24 +405,58 @@ function togglePriceFields() {
     $('price-field-wrap').classList.toggle('hidden', isCustom);
 }
 
-async function handleImageSelect(input) {
-    const file = input.files && input.files[0];
-    if (!file) return;
+// ============ ŞƏKİL QALEREYASI (FORMA) ============
 
-    if (!file.type.startsWith('image/')) {
-        showToast('Zəhmət olmasa şəkil faylı seçin.', true);
+function renderFormImageThumbs() {
+    const grid = $('image-thumbs-grid');
+    if (!grid) return;
+
+    grid.innerHTML = formImages.map((img, i) => `
+        <div class="relative rounded-xl overflow-hidden border border-gray-200 aspect-square bg-gray-100">
+            <img src="${img.src}" alt="" class="w-full h-full object-cover">
+            ${i === 0 ? '<span class="absolute top-1 left-1 bg-indigo-600 text-white text-[9px] px-1.5 py-0.5 rounded-full font-bold">ƏSAS</span>' : ''}
+            <button type="button" onclick="removeFormImage(${i})" class="absolute top-1 right-1 bg-black/60 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs leading-none hover:bg-red-600 transition" aria-label="Şəkli sil">&times;</button>
+            <div class="absolute bottom-1 right-1 flex gap-1">
+                ${i > 0 ? `<button type="button" onclick="moveFormImage(${i}, -1)" class="bg-black/60 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] hover:bg-black/80 transition" aria-label="Sola daşı">‹</button>` : ''}
+                ${i < formImages.length - 1 ? `<button type="button" onclick="moveFormImage(${i}, 1)" class="bg-black/60 text-white w-5 h-5 rounded-full flex items-center justify-center text-[10px] hover:bg-black/80 transition" aria-label="Sağa daşı">›</button>` : ''}
+            </div>
+        </div>
+    `).join('');
+}
+
+function removeFormImage(index) {
+    formImages.splice(index, 1);
+    renderFormImageThumbs();
+}
+
+function moveFormImage(index, direction) {
+    const target = index + direction;
+    if (target < 0 || target >= formImages.length) return;
+    [formImages[index], formImages[target]] = [formImages[target], formImages[index]];
+    renderFormImageThumbs();
+}
+
+async function handleImageSelect(input) {
+    const files = input.files ? Array.from(input.files) : [];
+    if (files.length === 0) return;
+
+    const invalid = files.find(f => !f.type.startsWith('image/'));
+    if (invalid) {
+        showToast('Zəhmət olmasa yalnız şəkil faylları seçin.', true);
         return;
     }
 
     try {
-        const { base64, dataUrl } = await resizeImageFile(file, 1280, 0.78);
-        pendingImageBase64 = base64;
-        pendingImageExt = 'jpg';
-        $('image-preview').src = dataUrl;
-        $('image-preview-wrap').classList.remove('hidden');
+        for (const file of files) {
+            const { base64, dataUrl } = await resizeImageFile(file, 1280, 0.78);
+            formImages.push({ type: 'new', base64, ext: 'jpg', src: dataUrl });
+        }
+        renderFormImageThumbs();
     } catch (e) {
         console.error(e);
         showToast('Şəkil emal edilərkən xəta baş verdi.', true);
+    } finally {
+        input.value = '';
     }
 }
 
@@ -481,8 +515,8 @@ async function handleSave() {
     if (!isCustomPrice && (!priceRaw || isNaN(parseFloat(priceRaw)) || parseFloat(priceRaw) < 0)) {
         return showFormError('Düzgün qiymət daxil edin (və ya "Qiymət sorğu ilə" seçin).');
     }
-    if (!editingProductId && !pendingImageBase64) {
-        return showFormError('Zəhmət olmasa məhsul üçün şəkil seçin.');
+    if (formImages.length === 0) {
+        return showFormError('Zəhmət olmasa məhsul üçün ən azı bir şəkil seçin.');
     }
 
     const btn = $('form-save-btn');
@@ -505,14 +539,21 @@ async function handleSave() {
             categoryId = newId;
         }
 
-        // 3. Şəkli lazım olsa GitHub-a yüklə
-        let imgPath = editingProductId ? (data.products.find(p => p.id === editingProductId) || {}).img : null;
-        if (pendingImageBase64) {
-            const filename = `img_${Date.now()}_${Math.random().toString(36).slice(2, 8)}.${pendingImageExt}`;
+        // 3. Yeni (hələ GitHub-da olmayan) şəkilləri ardıcıl yüklə, mövcud şəkillərin yolunu saxla
+        const finalImagePaths = [];
+        for (let i = 0; i < formImages.length; i++) {
+            const img = formImages[i];
+            if (img.type === 'existing') {
+                finalImagePaths.push(img.path);
+                continue;
+            }
+            setBusy(btn, true, `Şəkillər yüklənir (${i + 1}/${formImages.length})...`);
+            const filename = `img_${Date.now()}_${Math.random().toString(36).slice(2, 8)}.${img.ext}`;
             const fullPath = `${IMAGES_DIR}/${filename}`;
-            await githubPutFile(fullPath, pendingImageBase64, `Admin panel: şəkil əlavə edildi (${name})`, null);
-            imgPath = fullPath;
+            await githubPutFile(fullPath, img.base64, `Admin panel: şəkil əlavə edildi (${name})`, null);
+            finalImagePaths.push(fullPath);
         }
+        setBusy(btn, true, 'Yadda saxlanılır...');
 
         // 4. Məhsul obyektini qur
         const productObj = {
@@ -520,7 +561,8 @@ async function handleSave() {
             name,
             price: isCustomPrice ? 0 : parseFloat(priceRaw),
             category: categoryId,
-            img: imgPath,
+            img: finalImagePaths[0] || '',
+            images: finalImagePaths,
             description,
             inStock
         };
