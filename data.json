@@ -799,6 +799,20 @@
             "inStock": true,
             "rating": 5,
             "reviewCount": 635
+        },
+        {
+            "id": 59,
+            "name": "Silver Mini Dondurucu! ❄️ 150LT",
+            "price": 398,
+            "category": "elektronika",
+            "img": "images/products/img_1784830696346_l3s0s8.jpg",
+            "images": [
+                "images/products/img_1784830696346_l3s0s8.jpg"
+            ],
+            "description": "Günün təklifi: Silver Mini Dondurucu! ❄️ 150LT\n\n​Həm ev, həm də ofis üçün ideal seçimdir. Kompakt ölçüsü ilə yer tutmur, amma performansı ilə göz doldurur!\n\n​✅ Marka: Silver\n✅ Vəziyyəti: Yeni (bağlı qutuda)\n✅ Üstünlüyü: A+ enerji qənaəti, səssiz işləmə rejimi\n​Məhdud sayda var! Maraqlananlar direktə və ya WhatsApp-a yaza bilər. 📲\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "rating": 4.8,
+            "reviewCount": 580
         }
     ]
 }
