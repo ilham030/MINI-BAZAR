@@ -638,6 +638,22 @@
             "inStock": true,
             "rating": 4.9,
             "reviewCount": 466
+        },
+        {
+            "id": 48,
+            "name": "GORENJE Full NoFrost Soyuducu",
+            "price": 960,
+            "category": "elektronika",
+            "img": "images/products/img_1784808334639_qepnql.jpg",
+            "images": [
+                "images/products/img_1784808334639_qepnql.jpg",
+                "images/products/img_1784808336223_sso805.jpg",
+                "images/products/img_1784808337635_tc6nv0.jpg"
+            ],
+            "description": "GORENJE Full NoFrost Soyuducu \n($70 \\times 185\\text{ sm}$)Avropa Keyfiyyəti və Şıq İnox Dizayn – Mətbəxinizdə Gorenje Fərqini Hiss Edin!\nMINIBAZAR təqdim edir: Tanınmış Avropa brendi GORENJE soyuducusu! Paslanmaz polad (inox) görünüşlü, erqonomik ölçüləri ($70\\text{ sm}$ en / $185\\text{ sm}$ hündürlük) və Full NoFrost texnologiyası ilə bu model qidalarınızın təravətini uzun müddət ilk günkü kimi saxlamaq üçün hazırlanmışdır.\nƏsas Üstünlükləri:Full NoFrost Texnologiyası: Nə dondurucu, nə də soyuducu bölməsində buzlanma və qarlama olmur. \nManual əritməyə ehtiyac qalmır.Erqonomik Ölçülər ($70 \\times 185\\text{ sm}$): Optimal eni və hündürlüyü sayəsində həm geniş daxili həcm təqdim edir, həm də mətbəxdə yerə qənaət edir.\nPremium Inox Korpus: Barmaq izi saxlamayan, təmizlənməsi asan və modern paslanmaz polad xarici səth.\nBərabər Hava Dövriyyəsi: Daxili soyutma kanalları sayəsində hər rəfdə eyni temperatur qorunur.\nYüksək Enerji Səmərəliliyi: Elektrik enerjisinə qənaət edən müasir kompressor sistemi.\nTexniki Xüsusiyyətlər:XüsusiyyətGöstəriciBrendGORENJESoyutma SistemiFull NoFrostÖlçülər (En x Hündürlük)$70 \\times 185\\text{ sm}$Rəng / MaterialGümüşü / İnoxDondurucu BölməYuxarıda yerləşənİdarəetməMexaniki / Elektron tənzimləmə\nÖzəl Qiymət: 960 AZN (Nağd)\nZəmanət: Rəsmi Zəmanət\nMağaza: MINIBAZAR – Alış-verişin Ən Sərfəli Ünvanı!",
+            "inStock": true,
+            "rating": 4.9,
+            "reviewCount": 356
         }
     ]
 }
