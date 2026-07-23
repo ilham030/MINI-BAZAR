@@ -724,6 +724,21 @@
             "inStock": true,
             "rating": 5,
             "reviewCount": 420
+        },
+        {
+            "id": 54,
+            "name": "KÜNÇ DİVANLAR",
+            "price": 0,
+            "category": "elektronika",
+            "img": "images/products/img_1784829385060_fsr1wb.jpg",
+            "images": [
+                "images/products/img_1784829385060_fsr1wb.jpg"
+            ],
+            "description": "🤩MƏHSULLARIMIZ HƏR BİRİ ƏL İŞİDİR‼️\n\n‼️BÜTÜN MEBELLƏRİMİZƏ RƏSMİ OLARAQ 1İL ZƏMANƏT VERİLİR‼️\n\n✅ BEL HİSSƏLƏRİ AÇILIR\n\n✅MƏHSULLARIMIZ 15 GÜN ƏRZİNDƏ SİFARİŞLƏ HAZIRLANIR🤩\n\nQİYMƏTLƏR BU GÜNKİ BAZAR QİYMƏTİNƏ UYĞUNDUR‼️\n\n📲SİFARİŞ 0773911300\n\n💳KREDİT MÖVCUDDUR‼️\n\n‼️MƏHSULLAR QARANTİYALI MƏHSULLARDIR‼️",
+            "inStock": true,
+            "customPrice": true,
+            "rating": 5,
+            "reviewCount": 556
         }
     ]
 }
